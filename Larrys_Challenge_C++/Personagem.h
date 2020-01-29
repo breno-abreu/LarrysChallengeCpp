@@ -6,7 +6,7 @@ class Personagem : public Entidade
 {
 protected:
 	float velocidade;
-
+	int direcao;
 
 public:
 	Personagem();

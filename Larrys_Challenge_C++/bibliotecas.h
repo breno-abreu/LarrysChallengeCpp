@@ -6,5 +6,12 @@
 #include <list>
 #include <fstream>
 
+enum {
+	DIREITA,
+	ESQUERDA,
+	CIMA,
+	BAIXO
+};
+
 using namespace std;
 using namespace sf;

@@ -5,15 +5,21 @@ class Entidade
 {
 protected:
 	int codigo;
-	float cx;
-	float cy;
+	Vector2f coordenadas;
 	int profundidade;
-	int comprimento;
-	int altura;
+	IntRect dimensoes;
 	bool existe;
 	float proporcao;
+	int contAnimacao;
+	int velAnimacao;
+	int xTile;
+	int yTile;
+	int contFrames;
+	
+	IntRect coordenadasTile;
+	Vector2i quantidadeTile;
 	RenderWindow* window;
-	RectangleShape* entidade;
+	RectangleShape entidade;
 	Texture* textura;
 
 
