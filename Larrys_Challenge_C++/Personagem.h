@@ -10,12 +10,9 @@ protected:
 
 public:
 	Personagem();
+	Personagem(RenderWindow* _window, const float cx, const float cy, const int _codigo);
 	~Personagem();
 	virtual void existir() = 0;
-	virtual void movimentarDireita() = 0;
-	virtual void movimentarEsquerda() = 0;
-	virtual void movimentarCima() = 0;
-	virtual void movimentarBaixo() = 0;
 
 };
 

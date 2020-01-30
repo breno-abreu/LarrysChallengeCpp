@@ -9,12 +9,9 @@ private:
 
 public:
 	Jogador();
+	Jogador(RenderWindow* _window, const float cx, const float cy, const int _codigo);
 	~Jogador();
 	void existir();
-	void movimentarDireita();
-	void movimentarEsquerda();
-	void movimentarCima();
-	void movimentarBaixo();
 	bool getAcao()const;
 
 

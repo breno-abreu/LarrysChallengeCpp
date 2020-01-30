@@ -7,13 +7,11 @@ protected:
 	int codigo;
 	Vector2f coordenadas;
 	int profundidade;
-	IntRect dimensoes;
+	Vector2f dimensoes;
 	bool existe;
 	float proporcao;
 	int contAnimacao;
 	int velAnimacao;
-	int xTile;
-	int yTile;
 	int contFrames;
 	
 	IntRect coordenadasTile;
@@ -25,13 +23,12 @@ protected:
 
 public:
 	Entidade();
+	Entidade(RenderWindow* _window, const float cx, const float cy, const int _codigo);
 	~Entidade();
 	virtual void existir() = 0;
-	float getcx() const;
-	float getcy() const;
 	int getProfundidade() const;
-	int getComprimento() const;
-	int getAltura() const;
+	Vector2f getDimensoes() const;
 	bool getExistir() const;
+	Vector2f getCoordenadas() const;
 };
 

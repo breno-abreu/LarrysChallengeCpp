@@ -7,8 +7,8 @@ Entidade::Entidade()
 	coordenadas.x = 0;
 	coordenadas.y = 0;
 	profundidade = 0;
-	dimensoes.height = 0;
-	dimensoes.width = 0;
+	dimensoes.x = 0;
+	dimensoes.y = 0;
 	existe = false;
 	proporcao = 0;
 	window = NULL;
@@ -17,29 +17,47 @@ Entidade::Entidade()
 	//dimensoes.width = textura->getSize().x / (float)quantidadeTile.x;
 	//dimensoes.height = textura->getSize().y / (float)quantidadeTile.y;
 }
+
+Entidade::Entidade(RenderWindow* _window, const float cx, const float cy, const int _codigo)
+{
+	codigo = _codigo;
+	coordenadas.x = cx;
+	coordenadas.y = cy;
+	profundidade = 0;
+
+	textura = new Texture();
+	
+	proporcao = 5;
+	quantidadeTile.x = 6;
+	quantidadeTile.y = 8;
+	existe = true;
+	
+	contAnimacao = 0;
+	velAnimacao = 7;
+	contFrames = 0;
+	coordenadasTile.width = 0;
+	coordenadasTile.height = 0;
+	window = _window;
+
+	entidade.setPosition(coordenadas.x, coordenadas.y);
+}
 Entidade::~Entidade()
 {
+	delete textura;
+}
 
-}
-float Entidade::getcx() const
+Vector2f Entidade::getCoordenadas() const
 {
-	return cx;
+	return coordenadas;
 }
-float Entidade::getcy() const
+
+Vector2f Entidade::getDimensoes() const
 {
-	return cy;
+	return dimensoes;
 }
 int Entidade::getProfundidade() const
 {
 	return profundidade;
-}
-int Entidade::getComprimento() const
-{
-	return comprimento;
-}
-int Entidade::getAltura() const
-{
-	return altura;
 }
 bool Entidade::getExistir() const
 {
