@@ -6,7 +6,10 @@ LarrysChallenge::LarrysChallenge()
 	listaEntidades = new ListaEntidades(window);
 	window->setFramerateLimit(60);
 	window->setMouseCursorVisible(false);
-	listaEntidades->adicionar_entidade(100, 100);
+	//listaEntidades->adicionar_entidade(100, 100);
+
+	jogador = new Jogador(window, 100, 100, 1);
+	zumbi = new Zumbi(window, 200, 200, 1);
 	executar();
 
 }
@@ -28,7 +31,9 @@ void LarrysChallenge::executar()
 		}
 
 		window->clear(Color(50, 90, 80, 255));
-		listaEntidades->percorrer();
+		jogador->existir();
+		zumbi->setCoodenadasJogador(jogador->getCoordenadas().x, jogador->getCoordenadas().y);
+		zumbi->existir();
 		window->display();
 
 	}

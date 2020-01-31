@@ -15,6 +15,8 @@ Jogador::Jogador(RenderWindow* _window, const float cx, const float cy, const in
 	entidade.setPosition(coordenadas.x, coordenadas.y);
 	entidade.setSize(dimensoes);
 	entidade.setTexture(textura);
+
+	velocidade = 6;
 }
 Jogador::~Jogador()
 {
@@ -67,8 +69,8 @@ void Jogador::existir()
 		else if (direcao == BAIXO)
 			coordenadasTile.height = 7 * dimensoes.y;
 	}
-	
-	
+
+	cout << coordenadas.x << endl;
 
 
 	if (Keyboard::isKeyPressed(Keyboard::Key::E))

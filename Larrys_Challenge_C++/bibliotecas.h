@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include <list>
 #include <fstream>
+#include <math.h>
 
 enum {
 	DIREITA,
