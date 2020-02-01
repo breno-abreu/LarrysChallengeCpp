@@ -53,7 +53,7 @@ Vector2f Entidade::getCoordenadas() const
 
 Vector2f Entidade::getDimensoes() const
 {
-	return dimensoes;
+	return dimensoesAux;
 }
 int Entidade::getProfundidade() const
 {

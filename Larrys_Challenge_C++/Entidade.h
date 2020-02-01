@@ -13,6 +13,7 @@ protected:
 	int contAnimacao;
 	int velAnimacao;
 	int contFrames;
+	Vector2f dimensoesAux;
 	
 	IntRect coordenadasTile;
 	Vector2i quantidadeTile;

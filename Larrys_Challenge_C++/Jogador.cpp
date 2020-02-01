@@ -8,10 +8,13 @@ Jogador::Jogador(RenderWindow* _window, const float cx, const float cy, const in
 	Personagem(_window, cx, cy, _codigo)
 {
 	acao = false;
+	acaoPressionado = false;
 	textura->loadFromFile("Tiny Dungeon Pack/Character/Character.png");
 
 	dimensoes.x = (textura->getSize().x / quantidadeTile.x);
 	dimensoes.y = (textura->getSize().y / quantidadeTile.y);
+	dimensoesAux.x = dimensoes.x * proporcao;
+	dimensoesAux.y = dimensoes.x * proporcao;
 	entidade.setPosition(coordenadas.x, coordenadas.y);
 	entidade.setSize(dimensoes);
 	entidade.setTexture(textura);
@@ -24,8 +27,6 @@ Jogador::~Jogador()
 }
 void Jogador::existir()
 {
-	if (acao)
-		acao = false;
 
 	if (Keyboard::isKeyPressed(Keyboard::Key::Right) ||
 		Keyboard::isKeyPressed(Keyboard::Key::Left) ||
@@ -38,19 +39,19 @@ void Jogador::existir()
 			direcao = DIREITA;
 		}
 
-		if (Keyboard::isKeyPressed(Keyboard::Key::Left)) {
+		else if (Keyboard::isKeyPressed(Keyboard::Key::Left)) {
 			coordenadasTile.height = dimensoes.y;
 			coordenadas.x -= velocidade;
 			direcao = ESQUERDA;
 		}
 
-		if (Keyboard::isKeyPressed(Keyboard::Key::Up)) {
+		else if (Keyboard::isKeyPressed(Keyboard::Key::Up)) {
 			coordenadas.y -= velocidade;
 			coordenadasTile.height = 2 * dimensoes.y;
 			direcao = CIMA;
 		}
 
-		if (Keyboard::isKeyPressed(Keyboard::Key::Down)) {
+		else if (Keyboard::isKeyPressed(Keyboard::Key::Down)) {
 			coordenadas.y += velocidade;
 			coordenadasTile.height = 3 * dimensoes.y;
 			direcao = BAIXO;
@@ -70,11 +71,22 @@ void Jogador::existir()
 			coordenadasTile.height = 7 * dimensoes.y;
 	}
 
-	cout << coordenadas.x << endl;
 
 
-	if (Keyboard::isKeyPressed(Keyboard::Key::E))
-		acao = true;
+	if (Keyboard::isKeyPressed(Keyboard::Key::E) && !acaoPressionado) {
+		acaoPressionado = true;
+		if (acao)
+			acao = false;
+		else
+			acao = true;
+	}
+	else if (Keyboard::isKeyPressed(Keyboard::Key::E) && acaoPressionado){
+		acao = false;
+	}
+
+	if (!Keyboard::isKeyPressed(Keyboard::Key::E)) 
+		acaoPressionado = false;
+	
 
 	contAnimacao++;
 
@@ -101,4 +113,18 @@ void Jogador::existir()
 bool Jogador::getAcao()const
 {
 	return acao;
+}
+
+void Jogador::setMovimentadorx(const float _velocidade)
+{
+	coordenadas.x += _velocidade;
+}
+void Jogador::setMovimentadory(const float _velocidade)
+{
+	coordenadas.y += _velocidade;
+}
+
+bool Jogador::getAcaoPressionado() const
+{
+	return acaoPressionado;
 }

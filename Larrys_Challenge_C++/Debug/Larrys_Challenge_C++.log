@@ -1,5 +1,5 @@
-﻿  Jogador.cpp
-C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\Jogador.cpp(13,38): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
+﻿  Bau.cpp
+C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\Bau.cpp(13,38): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=unsigned int
@@ -8,7 +8,7 @@ C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\L
           [
               T=float
           ]
-C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\Jogador.cpp(14,38): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
+C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\Bau.cpp(14,38): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=unsigned int
@@ -17,7 +17,7 @@ C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\L
           [
               T=float
           ]
-C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\Jogador.cpp(42,38): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
+C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\Bau.cpp(33,39): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=float
@@ -26,7 +26,7 @@ C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\L
           [
               T=int
           ]
-C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\Jogador.cpp(49,31): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
+C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\Bau.cpp(44,103): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=float
@@ -35,70 +35,7 @@ C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\L
           [
               T=int
           ]
-C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\Jogador.cpp(55,31): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-          and
-          [
-              T=int
-          ]
-C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\Jogador.cpp(61,31): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-          and
-          [
-              T=int
-          ]
-C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\Jogador.cpp(64,31): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-          and
-          [
-              T=int
-          ]
-C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\Jogador.cpp(67,31): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-          and
-          [
-              T=int
-          ]
-C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\Jogador.cpp(70,31): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-          and
-          [
-              T=int
-          ]
-C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\Jogador.cpp(84,38): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-          and
-          [
-              T=int
-          ]
-C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\Jogador.cpp(95,103): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-          and
-          [
-              T=int
-          ]
-C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\Jogador.cpp(95,90): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\Bau.cpp(44,90): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=float

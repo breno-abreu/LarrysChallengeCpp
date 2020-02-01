@@ -6,6 +6,7 @@ class Jogador : public Personagem
 {
 private:
 	bool acao;
+	bool acaoPressionado;
 
 public:
 	Jogador();
@@ -13,6 +14,9 @@ public:
 	~Jogador();
 	void existir();
 	bool getAcao()const;
+	void setMovimentadorx(const float _velocidade);
+	void setMovimentadory(const float _velocidade);
+	bool getAcaoPressionado() const;
 
 
 };

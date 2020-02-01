@@ -143,22 +143,34 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bau.cpp" />
+    <ClCompile Include="Botao.cpp" />
     <ClCompile Include="Entidade.cpp" />
     <ClCompile Include="Inimigo.cpp" />
+    <ClCompile Include="Interativo.cpp" />
+    <ClCompile Include="Interruptor.cpp" />
     <ClCompile Include="Jogador.cpp" />
     <ClCompile Include="LarrysChallenge.cpp" />
     <ClCompile Include="ListaEntidades.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Movimentador.cpp" />
+    <ClCompile Include="Obstaculo.cpp" />
     <ClCompile Include="Personagem.cpp" />
     <ClCompile Include="Zumbi.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bau.h" />
     <ClInclude Include="bibliotecas.h" />
+    <ClInclude Include="Botao.h" />
     <ClInclude Include="Entidade.h" />
     <ClInclude Include="Inimigo.h" />
+    <ClInclude Include="Interativo.h" />
+    <ClInclude Include="Interruptor.h" />
     <ClInclude Include="Jogador.h" />
     <ClInclude Include="LarrysChallenge.h" />
     <ClInclude Include="ListaEntidades.h" />
+    <ClInclude Include="Movimentador.h" />
+    <ClInclude Include="Obstaculo.h" />
     <ClInclude Include="Personagem.h" />
     <ClInclude Include="Zumbi.h" />
   </ItemGroup>
