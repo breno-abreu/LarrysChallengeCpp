@@ -63,3 +63,17 @@ bool Entidade::getExistir() const
 {
 	return existe;
 }
+
+void Entidade::setExiste(const bool _existe)
+{
+	existe = _existe;
+}
+
+void Entidade::setxEntidade(const float x)
+{
+	coordenadas.x = x;
+}
+void Entidade::setyEntidade(const float y)
+{
+	coordenadas.y = y;
+}

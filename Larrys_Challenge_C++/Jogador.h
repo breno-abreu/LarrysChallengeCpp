@@ -17,7 +17,7 @@ public:
 	void setMovimentadorx(const float _velocidade);
 	void setMovimentadory(const float _velocidade);
 	bool getAcaoPressionado() const;
-
+	int getDirecao()const;
 
 };
 

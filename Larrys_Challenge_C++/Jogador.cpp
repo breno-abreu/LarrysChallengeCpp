@@ -128,3 +128,7 @@ bool Jogador::getAcaoPressionado() const
 {
 	return acaoPressionado;
 }
+int Jogador::getDirecao()const
+{
+	return direcao;
+}

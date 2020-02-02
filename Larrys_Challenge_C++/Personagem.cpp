@@ -16,3 +16,8 @@ Personagem::~Personagem()
 {
 
 }
+
+float Personagem::getVelocidade()const
+{
+	return velocidade;
+}

@@ -14,7 +14,8 @@ protected:
 	int velAnimacao;
 	int contFrames;
 	Vector2f dimensoesAux;
-	
+	Vector2f hitBox;
+
 	IntRect coordenadasTile;
 	Vector2i quantidadeTile;
 	RenderWindow* window;
@@ -31,5 +32,8 @@ public:
 	Vector2f getDimensoes() const;
 	bool getExistir() const;
 	Vector2f getCoordenadas() const;
+	void setExiste(const bool _existe);
+	void setxEntidade(const float x);
+	void setyEntidade(const float y);
 };
 

@@ -83,6 +83,7 @@ void LarrysChallenge::executar()
 			jogador->getCoordenadas().y < botao->getCoordenadas().y + botao->getDimensoes().y &&
 			jogador->getCoordenadas().y + jogador->getDimensoes().y > botao->getCoordenadas().y) {
 			
+			botao->setExiste(true);
 			botao->setAtivado(true);
 		}
 		else 
@@ -107,6 +108,29 @@ void LarrysChallenge::executar()
 			jogador->getCoordenadas().x + jogador->getDimensoes().x > bau->getCoordenadas().x&&
 			jogador->getCoordenadas().y < bau->getCoordenadas().y + bau->getDimensoes().y &&
 			jogador->getCoordenadas().y + jogador->getDimensoes().y > bau->getCoordenadas().y) {
+
+			/*if (jogador->getCoordenadas().x < bau->getCoordenadas().x + bau->getDimensoes().x &&
+				jogador->getCoordenadas().x + jogador->getDimensoes().x > bau->getCoordenadas().x + bau->getDimensoes().x)
+				jogador->setxEntidade(jogador->getCoordenadas().x + jogador->getVelocidade());
+			if (jogador->getCoordenadas().x + jogador->getDimensoes().x > bau->getCoordenadas().x &&
+				jogador->getCoordenadas().x < bau->getCoordenadas().x + bau->getDimensoes().x)
+				jogador->setxEntidade(jogador->getCoordenadas().x - jogador->getVelocidade());
+			if (jogador->getCoordenadas().y < bau->getCoordenadas().y + bau->getDimensoes().y &&
+				jogador->getCoordenadas().y + jogador->getDimensoes().y > bau->getCoordenadas().y + bau->getDimensoes().y)
+				jogador->setyEntidade(jogador->getCoordenadas().y + jogador->getVelocidade());
+			if (jogador->getCoordenadas().y + jogador->getDimensoes().y > bau->getCoordenadas().y &&
+				jogador->getCoordenadas().y < bau->getCoordenadas().y + bau->getDimensoes().y)
+				jogador->setyEntidade(jogador->getCoordenadas().y - jogador->getVelocidade());*/
+
+			if (jogador->getDirecao() == DIREITA)
+				jogador->setxEntidade(jogador->getCoordenadas().x - jogador->getVelocidade());
+			else if (jogador->getDirecao() == ESQUERDA)
+				jogador->setxEntidade(jogador->getCoordenadas().x + jogador->getVelocidade());
+			else if (jogador->getDirecao() == CIMA)
+				jogador->setyEntidade(jogador->getCoordenadas().y + jogador->getVelocidade());
+			else if (jogador->getDirecao() == BAIXO)
+				jogador->setyEntidade(jogador->getCoordenadas().y - jogador->getVelocidade());
+
 
 
 			if (jogador->getAcao() && !bau->getAtivado()) {

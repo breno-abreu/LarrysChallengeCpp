@@ -19,6 +19,7 @@ Botao::Botao(RenderWindow* _window, const float cx, const float cy, const int _c
 	entidade.setTexture(textura);
 	coordenadasTile.height = 0;
 	coordenadasTile.width = 0;
+	existe = false;
 }
 Botao::~Botao()
 {
@@ -26,14 +27,16 @@ Botao::~Botao()
 }
 void Botao::existir()
 {
-	if (!ativado) 
-		coordenadasTile.width = 0;
-		
-	else 
-		coordenadasTile.width = dimensoes.x;
-		
-	entidade.setTextureRect(IntRect(coordenadasTile.width, coordenadasTile.height, dimensoes.x, dimensoes.y));
-	entidade.setSize(Vector2f(dimensoes.x * proporcao, dimensoes.y * proporcao));
-	window->draw(entidade);
+	if (existe) {
+		if (!ativado)
+			coordenadasTile.width = 0;
+
+		else
+			coordenadasTile.width = dimensoes.x;
+
+		entidade.setTextureRect(IntRect(coordenadasTile.width, coordenadasTile.height, dimensoes.x, dimensoes.y));
+		entidade.setSize(Vector2f(dimensoes.x * proporcao, dimensoes.y * proporcao));
+		window->draw(entidade);
+	}
 }
 
