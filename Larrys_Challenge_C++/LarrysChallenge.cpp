@@ -18,6 +18,18 @@ LarrysChallenge::LarrysChallenge()
 	jogador = new Jogador(window, 100, 100, 1);
 	zumbi = new Zumbi(window, 200, 200, 1);
 	bau = new Bau(window, 600, 200, 1);
+	aux2 = false;
+
+	texto = new Text();
+	fonte = new Font();
+	if (!fonte->loadFromFile("Arial.ttf")) {
+		cout << "Erro ao carregar a fonte!" << endl;
+	}
+	texto->setFont(*fonte);
+	texto->setString("Teste");
+	texto->setCharacterSize(70);
+	texto->setFillColor(Color::Blue);
+	texto->setPosition(400, 400);
 	executar();
 
 }
@@ -38,7 +50,13 @@ void LarrysChallenge::executar()
 			}
 		}
 
+
+
+
 		window->clear(Color(50, 90, 80, 255));
+
+		if (aux2)
+			window->draw(*texto);
 		interruptor->existir();
 		botao->existir();
 		bau->existir();
@@ -97,10 +115,12 @@ void LarrysChallenge::executar()
 			
 			if (jogador->getAcao() && interruptor->getAtivado()) {
 				interruptor->setAtivado(false);
+				aux2 = true;
 			}
 
 			else if (jogador->getAcao() && !interruptor->getAtivado()) {
 				interruptor->setAtivado(true);
+				aux2 = true;
 			}
 		}
 

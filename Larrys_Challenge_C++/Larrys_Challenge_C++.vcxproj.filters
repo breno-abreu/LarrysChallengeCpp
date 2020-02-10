@@ -57,6 +57,39 @@
     <ClCompile Include="Bau.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GerenciadorEntidades.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Superficie.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tocha.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Barreira.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pedra.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Coluna.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Atirador.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Letal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Flecha.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Abismo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bibliotecas.h">
@@ -99,6 +132,39 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Bau.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GerenciadorEntidades.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Superficie.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tocha.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Barreira.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pedra.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Coluna.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Atirador.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Letal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Flecha.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Abismo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

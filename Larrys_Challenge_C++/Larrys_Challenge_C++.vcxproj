@@ -143,35 +143,57 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Abismo.cpp" />
+    <ClCompile Include="Atirador.cpp" />
+    <ClCompile Include="Barreira.cpp" />
     <ClCompile Include="Bau.cpp" />
     <ClCompile Include="Botao.cpp" />
+    <ClCompile Include="Coluna.cpp" />
     <ClCompile Include="Entidade.cpp" />
+    <ClCompile Include="Flecha.cpp" />
+    <ClCompile Include="GerenciadorEntidades.cpp" />
     <ClCompile Include="Inimigo.cpp" />
     <ClCompile Include="Interativo.cpp" />
     <ClCompile Include="Interruptor.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="Jogador.cpp" />
     <ClCompile Include="LarrysChallenge.cpp" />
+    <ClCompile Include="Letal.cpp" />
     <ClCompile Include="ListaEntidades.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Movimentador.cpp" />
     <ClCompile Include="Obstaculo.cpp" />
+    <ClCompile Include="Pedra.cpp" />
     <ClCompile Include="Personagem.cpp" />
+    <ClCompile Include="Superficie.cpp" />
+    <ClCompile Include="Tocha.cpp" />
     <ClCompile Include="Zumbi.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Abismo.h" />
+    <ClInclude Include="Atirador.h" />
+    <ClInclude Include="Barreira.h" />
     <ClInclude Include="Bau.h" />
     <ClInclude Include="bibliotecas.h" />
     <ClInclude Include="Botao.h" />
+    <ClInclude Include="Coluna.h" />
     <ClInclude Include="Entidade.h" />
+    <ClInclude Include="Flecha.h" />
+    <ClInclude Include="GerenciadorEntidades.h" />
     <ClInclude Include="Inimigo.h" />
     <ClInclude Include="Interativo.h" />
     <ClInclude Include="Interruptor.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="Jogador.h" />
     <ClInclude Include="LarrysChallenge.h" />
+    <ClInclude Include="Letal.h" />
     <ClInclude Include="ListaEntidades.h" />
     <ClInclude Include="Movimentador.h" />
     <ClInclude Include="Obstaculo.h" />
+    <ClInclude Include="Pedra.h" />
     <ClInclude Include="Personagem.h" />
+    <ClInclude Include="Superficie.h" />
+    <ClInclude Include="Tocha.h" />
     <ClInclude Include="Zumbi.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

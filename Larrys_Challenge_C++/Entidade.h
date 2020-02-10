@@ -25,7 +25,7 @@ protected:
 
 public:
 	Entidade();
-	Entidade(RenderWindow* _window, const float cx, const float cy, const int _codigo);
+	Entidade(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo);
 	~Entidade();
 	virtual void existir() = 0;
 	int getProfundidade() const;

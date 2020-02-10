@@ -71,8 +71,6 @@ void Jogador::existir()
 			coordenadasTile.height = 7 * dimensoes.y;
 	}
 
-
-
 	if (Keyboard::isKeyPressed(Keyboard::Key::E) && !acaoPressionado) {
 		acaoPressionado = true;
 		if (acao)

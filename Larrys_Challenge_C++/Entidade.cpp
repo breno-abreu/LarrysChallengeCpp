@@ -18,14 +18,14 @@ Entidade::Entidade()
 	//dimensoes.height = textura->getSize().y / (float)quantidadeTile.y;
 }
 
-Entidade::Entidade(RenderWindow* _window, const float cx, const float cy, const int _codigo)
+Entidade::Entidade(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo)
 {
 	codigo = _codigo;
 	coordenadas.x = cx;
 	coordenadas.y = cy;
-	profundidade = 0;
+	profundidade = _profundidade;
 
-	textura = new Texture();
+	textura = _textura;
 	
 	proporcao = 5;
 	quantidadeTile.x = 6;

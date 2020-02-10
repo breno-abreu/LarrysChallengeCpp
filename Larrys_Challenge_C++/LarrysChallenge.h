@@ -21,7 +21,10 @@ private:
 	Botao* botao;
 	Interruptor* interruptor;
 	Bau* bau;
+	Text* texto;
+	Font* fonte;
 	bool aux;
+	bool aux2;
 
 
 public:
