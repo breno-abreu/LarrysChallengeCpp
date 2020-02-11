@@ -1,15 +1,15 @@
 #pragma once
 #include "bibliotecas.h"
-#include "Obstaculo.h"
+#include "SuperficieInterativa.h"
 
-class Movimentador : public Obstaculo
+class Movimentador : public SuperficieInterativa
 {
 private:
 	int direcao;
 
 public:
 	Movimentador();
-	Movimentador(RenderWindow* _window, const float cx, const float cy, const int _codigo, const int _direcao);
+	Movimentador(RenderWindow* _window, Texture *_textura, const float cx, const float cy, const int _profundidade, const int _codigo, const int _direcao);
 	~Movimentador();
 	void existir();
 	int getDirecao()const;

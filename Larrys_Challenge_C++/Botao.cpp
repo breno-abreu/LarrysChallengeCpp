@@ -2,10 +2,10 @@
 
 Botao::Botao()
 {
-
+	ativado = false;
 }
-Botao::Botao(RenderWindow* _window, const float cx, const float cy, const int _codigo):
-	Interativo(_window, cx, cy, _codigo)
+Botao::Botao(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo):
+	SuperficieInterativa(_window, _textura, cx, cy, _profundidade, _codigo)
 {
 	textura->loadFromFile("Tiny Dungeon Pack/Misc/Switches/Switch_press.png");
 	quantidadeTile.x = 2;
@@ -19,6 +19,7 @@ Botao::Botao(RenderWindow* _window, const float cx, const float cy, const int _c
 	entidade.setTexture(textura);
 	coordenadasTile.height = 0;
 	coordenadasTile.width = 0;
+	ativado = false;
 	existe = false;
 }
 Botao::~Botao()
@@ -27,16 +28,14 @@ Botao::~Botao()
 }
 void Botao::existir()
 {
-	if (existe) {
-		if (!ativado)
-			coordenadasTile.width = 0;
+	if (!ativado)
+		coordenadasTile.width = 0;
 
-		else
-			coordenadasTile.width = dimensoes.x;
+	else
+		coordenadasTile.width = dimensoes.x;
 
-		entidade.setTextureRect(IntRect(coordenadasTile.width, coordenadasTile.height, dimensoes.x, dimensoes.y));
-		entidade.setSize(Vector2f(dimensoes.x * proporcao, dimensoes.y * proporcao));
-		window->draw(entidade);
-	}
+	entidade.setTextureRect(IntRect(coordenadasTile.width, coordenadasTile.height, dimensoes.x, dimensoes.y));
+	entidade.setSize(Vector2f(dimensoes.x * proporcao, dimensoes.y * proporcao));
+	window->draw(entidade);
 }
 

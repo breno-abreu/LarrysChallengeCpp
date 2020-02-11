@@ -15,6 +15,7 @@ protected:
 	int contFrames;
 	Vector2f dimensoesAux;
 	Vector2f hitBox;
+	int conexao;
 
 	IntRect coordenadasTile;
 	Vector2i quantidadeTile;

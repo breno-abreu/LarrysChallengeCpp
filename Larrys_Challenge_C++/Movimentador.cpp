@@ -2,24 +2,13 @@
 
 Movimentador::Movimentador()
 {
-
+	direcao = 0;
 }
-Movimentador::Movimentador(RenderWindow* _window, const float cx, const float cy, const int _codigo, const int _direcao) :
-	Obstaculo(_window, cx, cy, _codigo)
+Movimentador::Movimentador(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo, const int _direcao) :
+	SuperficieInterativa(_window, _textura, cx, cy, _profundidade, _codigo)
 {
 	direcao = _direcao;
-
-	if(direcao == BAIXO)
-		textura->loadFromFile("Tiny Dungeon Pack/Traps/Pushing_floor/Floor_push_down.png");
-	else if(direcao == CIMA)
-		textura->loadFromFile("Tiny Dungeon Pack/Traps/Pushing_floor/Floor_push_up.png");
-	else if (direcao == DIREITA)
-		textura->loadFromFile("Tiny Dungeon Pack/Traps/Pushing_floor/Floor_push_right.png");
-	else
-		textura->loadFromFile("Tiny Dungeon Pack/Traps/Pushing_floor/Floor_push_left.png");
-
-
-	quantidadeTile.x = 1;
+	quantidadeTile.x = 4;
 	quantidadeTile.y = 1;
 	dimensoes.x = (textura->getSize().x / quantidadeTile.x);
 	dimensoes.y = (textura->getSize().y / quantidadeTile.y);
@@ -28,6 +17,7 @@ Movimentador::Movimentador(RenderWindow* _window, const float cx, const float cy
 	entidade.setPosition(coordenadas.x, coordenadas.y);
 	entidade.setSize(dimensoes);
 	entidade.setTexture(textura);
+	entidade.setTextureRect(IntRect(coordenadasTile.width, coordenadasTile.height, dimensoes.x, dimensoes.y));
 }
 Movimentador::~Movimentador()
 {

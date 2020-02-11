@@ -90,6 +90,27 @@
     <ClCompile Include="Abismo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Espinhos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SuperficieInterativa.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ParedeLevadica.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Caixa.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Porta.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Escada.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PassagemSecreta.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bibliotecas.h">
@@ -165,6 +186,27 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Abismo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Espinhos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SuperficieInterativa.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ParedeLevadica.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Caixa.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Porta.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Escada.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PassagemSecreta.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

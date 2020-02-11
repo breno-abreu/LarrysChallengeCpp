@@ -11,8 +11,8 @@ Abismo::Abismo(RenderWindow* _window, Texture* _textura, const float cx, const f
 	dimensoes.y = (textura->getSize().y / quantidadeTile.y);
 	dimensoesAux.x = dimensoes.x * proporcao;
 	dimensoesAux.y = dimensoes.x * proporcao;
-	coordenadasTile.width = xTile;
-	coordenadasTile.height = yTile;
+	coordenadasTile.width = xTile * dimensoes.x;
+	coordenadasTile.height = yTile * dimensoes.y;
 	entidade.setTextureRect(IntRect(coordenadasTile.width, coordenadasTile.height, dimensoes.x, dimensoes.y));
 }
 Abismo::~Abismo()
