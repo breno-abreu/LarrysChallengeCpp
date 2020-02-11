@@ -10,7 +10,7 @@ private:
 
 public:
 	Jogador();
-	Jogador(RenderWindow* _window, const float cx, const float cy, const int _codigo);
+	Jogador(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo);
 	~Jogador();
 	void existir();
 	bool getAcao()const;

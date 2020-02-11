@@ -4,8 +4,8 @@ Jogador::Jogador()
 	acao = false;
 
 }
-Jogador::Jogador(RenderWindow* _window, const float cx, const float cy, const int _codigo):
-	Personagem(_window, cx, cy, _codigo)
+Jogador::Jogador(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo):
+	Personagem(_window, _textura, cx, cy, _profundidade, _codigo)
 {
 	acao = false;
 	acaoPressionado = false;

@@ -1,13 +1,13 @@
-#include "Zumbi.h"
+#include "Perseguidor.h"
 
-Zumbi::Zumbi()
+Perseguidor::Perseguidor()
 {
 
 }
-Zumbi::Zumbi(RenderWindow* _window, const float cx, const float cy, const int _codigo):
+Perseguidor::Perseguidor(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo, const float _velocidade):
 	Inimigo(_window, cx, cy, _codigo)
 {
-	velocidade = 3;
+	velocidade = _velocidade;
 	textura->loadFromFile("Tiny Dungeon Pack/Enemies/Zombie/Zombie.png");
 	dimensoes.x = (textura->getSize().x / quantidadeTile.x);
 	dimensoes.y = (textura->getSize().y / quantidadeTile.y);
@@ -15,11 +15,11 @@ Zumbi::Zumbi(RenderWindow* _window, const float cx, const float cy, const int _c
 	entidade.setSize(dimensoes);
 	entidade.setTexture(textura);
 }
-Zumbi::~Zumbi()
+Perseguidor::~Perseguidor()
 {
 
 }
-void Zumbi::existir()
+void Perseguidor::existir()
 {
 	double coeficienteAngular = 0;
 	//explicar essa equação
@@ -179,7 +179,7 @@ void Zumbi::existir()
 	window->draw(entidade);
 }
 
-void Zumbi::setCoodenadasJogador(const float jx, const float jy)
+void Perseguidor::setCoodenadasJogador(const float jx, const float jy)
 {
 	coordenadasJogador.x = jx;
 	coordenadasJogador.y = jy;

@@ -171,10 +171,11 @@
     <ClCompile Include="Pedra.cpp" />
     <ClCompile Include="Personagem.cpp" />
     <ClCompile Include="Porta.cpp" />
+    <ClCompile Include="Rato.cpp" />
     <ClCompile Include="Superficie.cpp" />
     <ClCompile Include="SuperficieInterativa.cpp" />
     <ClCompile Include="Tocha.cpp" />
-    <ClCompile Include="Zumbi.cpp" />
+    <ClCompile Include="Perseguidor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Abismo.h" />
@@ -205,10 +206,11 @@
     <ClInclude Include="Pedra.h" />
     <ClInclude Include="Personagem.h" />
     <ClInclude Include="Porta.h" />
+    <ClInclude Include="Rato.h" />
     <ClInclude Include="Superficie.h" />
     <ClInclude Include="SuperficieInterativa.h" />
     <ClInclude Include="Tocha.h" />
-    <ClInclude Include="Zumbi.h" />
+    <ClInclude Include="Perseguidor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

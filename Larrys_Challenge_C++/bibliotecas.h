@@ -11,7 +11,12 @@ enum {
 	DIREITA,
 	ESQUERDA,
 	CIMA,
-	BAIXO
+	BAIXO,
+	BLUEORB,
+	REDORB,
+	GREENORB,
+	CHAVE,
+	MOEDA
 };
 
 using namespace std;

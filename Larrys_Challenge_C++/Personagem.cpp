@@ -6,8 +6,8 @@ Personagem::Personagem()
 	velocidade = 5;
 }
 
-Personagem::Personagem(RenderWindow* _window, const float cx, const float cy, const int _codigo):
-	Entidade(_window, cx, cy, _codigo)
+Personagem::Personagem(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo):
+	Entidade(_window, _textura, cx, cy, _profundidade, _codigo)
 {
 	direcao = BAIXO;
 	velocidade = 7;

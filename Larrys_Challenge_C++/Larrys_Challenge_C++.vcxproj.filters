@@ -36,9 +36,6 @@
     <ClCompile Include="Inimigo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Zumbi.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Obstaculo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -111,6 +108,12 @@
     <ClCompile Include="PassagemSecreta.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Perseguidor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Rato.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bibliotecas.h">
@@ -132,9 +135,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Inimigo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Zumbi.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Obstaculo.h">
@@ -207,6 +207,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PassagemSecreta.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Perseguidor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Rato.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

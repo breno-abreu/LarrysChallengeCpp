@@ -4,8 +4,8 @@ Interativo::Interativo()
 {
 	ativado = false;
 }
-Interativo::Interativo(RenderWindow* _window, const float cx, const float cy, const int _codigo):
-	Entidade(_window, cx, cy, _codigo)
+Interativo::Interativo(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo):
+	Entidade(_window, _textura, cx, cy, _profundidade, _codigo)
 {
 	ativado = false;
 }

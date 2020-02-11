@@ -10,10 +10,9 @@ protected:
 
 public:
 	Personagem();
-	Personagem(RenderWindow* _window, const float cx, const float cy, const int _codigo);
+	Personagem(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo);
 	~Personagem();
 	virtual void existir() = 0;
 	float getVelocidade()const;
-
 };
 
