@@ -8,7 +8,7 @@ class Interruptor : public Interativo
 
 public:
 	Interruptor();
-	Interruptor(RenderWindow* _window, const float cx, const float cy, const int _codigo);
+	Interruptor(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo);
 	~Interruptor();
 	void existir();
 };

@@ -34,12 +34,12 @@ class GerenciadorEntidades
 {
 private:
 	RenderWindow* window;
-	Texture a;
+	Texture t_flecha;
 	Texture t_blueorb;
 	Texture t_redorb;
 	Texture t_greenorb;
 	Texture t_moeda;
-	Texture f;
+	Texture t_chave;
 	Texture t_paredelevadica;
 	Texture t_caixaleve;
 	Texture t_caixapesada;
@@ -54,22 +54,22 @@ private:
 	Texture t_parede;
 	Texture t_passagemsecreta;
 	Texture t_abismo;
-	Texture u;
-	Texture v;
-	Texture w;
-	Texture x;
+	Texture t_porta;
+	Texture t_umbralhorizontal;
+	Texture t_umbralverticaldireita;
+	Texture t_umbralverticalesquerda;
 	Texture t_movimentador;
 	Texture t_rato;
-	Texture aa;
-	Texture ab;
+	Texture t_pedra;
+	Texture t_atirador;
 	Texture t_esqueleto;
-	Texture ad;
-	Texture ae;
-	Texture af;
-	Texture ag;
-	Texture ah;
-	Texture ai;
-	Texture aj;
+	Texture t_espinhos;
+	Texture t_escada;
+	Texture t_interruptor;
+	Texture t_botao;
+	Texture t_topocolunadireita;
+	Texture t_topocolunaesquerda;
+	Texture t_tocha;
 	Texture t_zumbi;
 
 	/*int profundidade[37] = {3, 3, 3, 3, 3, 3, 3, 3, 3, 0,
