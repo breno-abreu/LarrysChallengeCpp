@@ -36,5 +36,6 @@ public:
 	void setExiste(const bool _existe);
 	void setxEntidade(const float x);
 	void setyEntidade(const float y);
+	int getCodigo()const;
 };
 

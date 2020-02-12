@@ -5,10 +5,11 @@ ListaEntidades::ListaEntidades()
 	codigo = 0;
 }
 
-ListaEntidades::ListaEntidades(RenderWindow* _window)
+ListaEntidades::ListaEntidades(RenderWindow* _window, GerenciadorEntidades* _gerenciador)
 {
 	codigo = 0;
 	window = _window;
+	gerenciadorEntidades = _gerenciador;
 }
 
 ListaEntidades::~ListaEntidades()
@@ -16,23 +17,19 @@ ListaEntidades::~ListaEntidades()
 	limpar();
 }
 
-void ListaEntidades::adicionar_entidade(int cx, int cy)
+void ListaEntidades::adicionar_entidade(const float cx, const float cy, const int tipo)
 {
 	codigo++;
-	Entidade* entidade;
-	Jogador* jogador = new Jogador(window, cx, cy, codigo);
-	entidade = static_cast<Jogador*>(jogador);
+	Entidade* entidade = gerenciadorEntidades->adicionar_entidade(cx, cy, tipo, codigo);
 	listaEntidades.push_back(entidade);
 	ordenar();
 }
-void ListaEntidades::excluir_entidade(int cx, int cy)
+void ListaEntidades::excluir_entidade(const int _codigo)
 {
-	list<Entidade*>::reverse_iterator itr;
-	for (itr = listaEntidades.rbegin(); itr != listaEntidades.rend(); itr++) {
-		if (cx > (*itr)->getCoordenadas().x && cx < (*itr)->getCoordenadas().x + (*itr)->getDimensoes().x
-			&& cy >(*itr)->getCoordenadas().y && cy < (*itr)->getCoordenadas().y + (*itr)->getDimensoes().y) {
-			listaEntidades.erase(next(itr).base());
-			break;
+	list<Entidade*>::iterator itr;
+	for (itr = listaEntidades.begin(); itr != listaEntidades.end(); itr++) {
+		if ((*itr)->getCodigo() == _codigo) {
+			listaEntidades.erase(itr);
 		}
 	}
 }

@@ -72,6 +72,18 @@ private:
 	Texture t_tocha;
 	Texture t_zumbi;
 
+	list<Letal*> listaLetais;
+	list<Barreira*> listaBarreiras;
+	list<Interativo*> listaInterativos;
+	list<SuperficieInterativa*> listaSuperficiesInterativas;
+	list<Caixa*> listaCaixas;
+	list<Flecha*> listaFlechas;
+	list<Inimigo*> listaInimigos;
+	list<Personagem*> listaPersonagens;
+	list<Item*> listaItens;
+
+
+
 	/*int profundidade[37] = {3, 3, 3, 3, 3, 3, 3, 3, 3, 0,
 							3, 2, 4, 4, 4, 2, 2, 1, 1, 1, 
 							2, 4, 4, 4, 1, 3, 3, 3, 3, 2,
@@ -85,8 +97,11 @@ private:
 
 public:
 	GerenciadorEntidades();
-	GerenciadorEntidades(RenderWindow *_window);
+	GerenciadorEntidades(RenderWindow *_window, list<Letal*> _listaLetais, list<Barreira*> _listaBarreiras,
+						 list<Interativo*> _listaInterativos, list<SuperficieInterativa*> _listaSuperficiesInterativas,
+						 list<Caixa*> _listaCaixas, list<Flecha*> _listaFlechas, list<Inimigo*> _listaInimigos,
+						 list<Personagem*> _listaPersonagens, list<Item*> _listaItens);
 	~GerenciadorEntidades();
-	void adicionar_entidade(const float cx, const float cy, const int tipo, const int codigo);
+	Entidade* adicionar_entidade(const float cx, const float cy, const int tipo, const int codigo);
 };
 

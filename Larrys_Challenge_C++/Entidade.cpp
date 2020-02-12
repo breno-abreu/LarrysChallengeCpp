@@ -77,3 +77,7 @@ void Entidade::setyEntidade(const float y)
 {
 	coordenadas.y = y;
 }
+int Entidade::getCodigo()const
+{
+	return codigo;
+}

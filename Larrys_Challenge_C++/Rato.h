@@ -1,8 +1,9 @@
 #pragma once
 #include "bibliotecas.h"
-#include "Personagem.h"
+#include "Inimigo.h"
 
-class Rato : public Personagem
+
+class Rato : public Inimigo
 {
 public:
 	Rato();
