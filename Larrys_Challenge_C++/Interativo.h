@@ -9,7 +9,7 @@ protected:
 
 public:
 	Interativo();
-	Interativo(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo);
+	Interativo(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo, const int _xTile, const int _yTile);
 	~Interativo();
 	virtual void existir() = 0;
 	bool getAtivado()const;

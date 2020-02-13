@@ -3,22 +3,24 @@
 LarrysChallenge::LarrysChallenge()
 {
 	window = new RenderWindow(VideoMode(1600, 900), "Larry's Challenge", Style::Close);
-	listaEntidades = new ListaEntidades(window);
+	
 	window->setFramerateLimit(60);
 	window->setMouseCursorVisible(false);
 	//listaEntidades->adicionar_entidade(100, 100);
-
-
-	movimentador = new Movimentador(window, 200, 200, 1, CIMA);
-	movimentador2 = new Movimentador(window, 200, 280, 1, CIMA);
-	movimentador3 = new Movimentador(window, 200, 120, 1, DIREITA);
-	botao = new Botao(window, 200, 200, 1);
-	interruptor = new Interruptor(window, 400, 200, 1);
 	aux = true;
-	jogador = new Jogador(window, 100, 100, 1);
-	zumbi = new Zumbi(window, 200, 200, 1);
-	bau = new Bau(window, 600, 200, 1);
-	aux2 = false;
+	
+	gerenciadorEntidades = new GerenciadorEntidades(window, listaLetais, listaBarreiras, listaInterativos,
+													listaSuperficiesInterativas, listaCaixas, listaFlechas,
+													listaInimigos, listaPersonagens, listaItens);
+
+	listaEntidades = new ListaEntidades(window, gerenciadorEntidades);
+
+	listaEntidades->adicionar_entidade(100, 100, 54);
+	listaEntidades->adicionar_entidade(200, 100, 55);
+	listaEntidades->adicionar_entidade(300, 100, 56);
+	listaEntidades->adicionar_entidade(400, 100, 57);
+	listaEntidades->adicionar_entidade(500, 100, 58);
+
 
 	texto = new Text();
 	fonte = new Font();
@@ -49,18 +51,8 @@ void LarrysChallenge::executar()
 				break;
 			}
 		}
-
-
-
-
 		window->clear(Color(50, 90, 80, 255));
-
-		if (aux2)
-			window->draw(*texto);
-		interruptor->existir();
-		botao->existir();
-		bau->existir();
-		jogador->existir();
+		listaEntidades->percorrer();
 
 		/*if (jogador->getCoordenadas().x + jogador->getDimensoes().x < movimentador->getCoordenadas().x ||
 			jogador->getCoordenadas().x > movimentador->getCoordenadas().x + movimentador->getDimensoes().x ||
@@ -96,7 +88,7 @@ void LarrysChallenge::executar()
 			jogador->setMovimentadory(-15);
 		}*/
 
-		if (jogador->getCoordenadas().x < botao->getCoordenadas().x + botao->getDimensoes().x &&
+		/*if (jogador->getCoordenadas().x < botao->getCoordenadas().x + botao->getDimensoes().x &&
 			jogador->getCoordenadas().x + jogador->getDimensoes().x > botao->getCoordenadas().x&&
 			jogador->getCoordenadas().y < botao->getCoordenadas().y + botao->getDimensoes().y &&
 			jogador->getCoordenadas().y + jogador->getDimensoes().y > botao->getCoordenadas().y) {
@@ -129,7 +121,7 @@ void LarrysChallenge::executar()
 			jogador->getCoordenadas().y < bau->getCoordenadas().y + bau->getDimensoes().y &&
 			jogador->getCoordenadas().y + jogador->getDimensoes().y > bau->getCoordenadas().y) {
 
-			/*if (jogador->getCoordenadas().x < bau->getCoordenadas().x + bau->getDimensoes().x &&
+			if (jogador->getCoordenadas().x < bau->getCoordenadas().x + bau->getDimensoes().x &&
 				jogador->getCoordenadas().x + jogador->getDimensoes().x > bau->getCoordenadas().x + bau->getDimensoes().x)
 				jogador->setxEntidade(jogador->getCoordenadas().x + jogador->getVelocidade());
 			if (jogador->getCoordenadas().x + jogador->getDimensoes().x > bau->getCoordenadas().x &&
@@ -140,7 +132,7 @@ void LarrysChallenge::executar()
 				jogador->setyEntidade(jogador->getCoordenadas().y + jogador->getVelocidade());
 			if (jogador->getCoordenadas().y + jogador->getDimensoes().y > bau->getCoordenadas().y &&
 				jogador->getCoordenadas().y < bau->getCoordenadas().y + bau->getDimensoes().y)
-				jogador->setyEntidade(jogador->getCoordenadas().y - jogador->getVelocidade());*/
+				jogador->setyEntidade(jogador->getCoordenadas().y - jogador->getVelocidade());
 
 			if (jogador->getDirecao() == DIREITA)
 				jogador->setxEntidade(jogador->getCoordenadas().x - jogador->getVelocidade());
@@ -156,7 +148,7 @@ void LarrysChallenge::executar()
 			if (jogador->getAcao() && !bau->getAtivado()) {
 				bau->setAtivado(true);
 			}
-		}
+		}*/
 
 		//cout << jogador->getCoordenadas().x << "     " << movimentador->getCoordenadas().x + movimentador->getDimensoes().x << "    " << 
 			//jogador->getCoordenadas().x + jogador->getDimensoes().x << "   " << movimentador->getCoordenadas().x << endl;

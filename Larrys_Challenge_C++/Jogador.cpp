@@ -4,20 +4,18 @@ Jogador::Jogador()
 	acao = false;
 
 }
-Jogador::Jogador(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo):
-	Personagem(_window, _textura, cx, cy, _profundidade, _codigo)
+Jogador::Jogador(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo, const int _xTile, const int _yTile):
+	Personagem(_window, _textura, cx, cy, _profundidade, _codigo, _xTile, _yTile)
 {
 	acao = false;
 	acaoPressionado = false;
-	textura->loadFromFile("Tiny Dungeon Pack/Character/Character.png");
-
+	/*quantidadeTile.x = 6;
+	quantidadeTile.y = 8;
 	dimensoes.x = (textura->getSize().x / quantidadeTile.x);
 	dimensoes.y = (textura->getSize().y / quantidadeTile.y);
 	dimensoesAux.x = dimensoes.x * proporcao;
-	dimensoesAux.y = dimensoes.x * proporcao;
-	entidade.setPosition(coordenadas.x, coordenadas.y);
-	entidade.setSize(dimensoes);
-	entidade.setTexture(textura);
+	dimensoesAux.y = dimensoes.y * proporcao;
+	entidade.setSize(dimensoesAux);*/
 
 	velocidade = 6;
 }
@@ -104,7 +102,7 @@ void Jogador::existir()
 
 	entidade.setTextureRect(IntRect(coordenadasTile.width, coordenadasTile.height, dimensoes.x, dimensoes.y));
 	entidade.setPosition(coordenadas.x, coordenadas.y);
-	entidade.setSize(Vector2f(dimensoes.x * proporcao, dimensoes.y * proporcao));
+	//entidade.setSize(Vector2f(dimensoes.x * proporcao, dimensoes.y * proporcao));
 	window->draw(entidade);
 }
 

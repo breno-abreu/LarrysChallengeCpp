@@ -18,18 +18,17 @@ Entidade::Entidade()
 	//dimensoes.height = textura->getSize().y / (float)quantidadeTile.y;
 }
 
-Entidade::Entidade(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo)
+Entidade::Entidade(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo, const int _xTile, const int _yTile)
 {
 	codigo = _codigo;
 	coordenadas.x = cx;
 	coordenadas.y = cy;
 	profundidade = _profundidade;
-
 	textura = _textura;
 	
-	proporcao = 5;
-	quantidadeTile.x = 6;
-	quantidadeTile.y = 8;
+	proporcao = 4;
+	/*quantidadeTile.x = 1;
+	quantidadeTile.y = 1;*/
 	existe = true;
 	
 	contAnimacao = 0;
@@ -38,8 +37,24 @@ Entidade::Entidade(RenderWindow* _window, Texture* _textura, const float cx, con
 	coordenadasTile.width = 0;
 	coordenadasTile.height = 0;
 	window = _window;
+	/*dimensoes.x = textura->getSize().x;
+	dimensoes.y = textura->getSize().y;
+	dimensoesAux.x = dimensoes.x * proporcao;
+	dimensoesAux.y = dimensoes.y * proporcao;
+	entidade.setSize(dimensoesAux);*/
+	entidade.setTexture(textura);
+	entidade.setPosition(coordenadas);
 
-	entidade.setPosition(coordenadas.x, coordenadas.y);
+
+	quantidadeTile.x = _xTile;
+	quantidadeTile.y = _yTile;
+	dimensoes.x = (textura->getSize().x / quantidadeTile.x);
+	dimensoes.y = (textura->getSize().y / quantidadeTile.y);
+	dimensoesAux.x = dimensoes.x * proporcao;
+	dimensoesAux.y = dimensoes.x * proporcao;
+	entidade.setSize(dimensoesAux);
+
+
 }
 Entidade::~Entidade()
 {

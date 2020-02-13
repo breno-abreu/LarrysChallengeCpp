@@ -11,7 +11,7 @@ private:
 
 public:
 	Bau();
-	Bau(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo);
+	Bau(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo, const int _xTile, const int _yTile);
 	~Bau();
 	void existir();
 	

@@ -4,16 +4,17 @@ Perseguidor::Perseguidor()
 {
 
 }
-Perseguidor::Perseguidor(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo, const float _velocidade):
-	Inimigo(_window, cx, cy, _codigo)
+Perseguidor::Perseguidor(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo, const int _xTile, const int _yTile, const float _velocidade):
+	Inimigo(_window, _textura, cx, cy, _profundidade, _codigo, _xTile, _yTile)
 {
 	velocidade = _velocidade;
-	textura->loadFromFile("Tiny Dungeon Pack/Enemies/Zombie/Zombie.png");
+	/*quantidadeTile.x = 6;
+	quantidadeTile.y = 8;
 	dimensoes.x = (textura->getSize().x / quantidadeTile.x);
 	dimensoes.y = (textura->getSize().y / quantidadeTile.y);
-	entidade.setPosition(coordenadas.x, coordenadas.y);
-	entidade.setSize(dimensoes);
-	entidade.setTexture(textura);
+	dimensoesAux.x = dimensoes.x * proporcao;
+	dimensoesAux.y = dimensoes.x * proporcao;
+	entidade.setSize(dimensoesAux);*/
 }
 Perseguidor::~Perseguidor()
 {
@@ -175,7 +176,7 @@ void Perseguidor::existir()
 
 	entidade.setTextureRect(IntRect(coordenadasTile.width, coordenadasTile.height, dimensoes.x, dimensoes.y));
 	entidade.setPosition(coordenadas.x, coordenadas.y);
-	entidade.setSize(Vector2f(dimensoes.x * proporcao, dimensoes.y * proporcao));
+	//entidade.setSize(Vector2f(dimensoes.x * proporcao, dimensoes.y * proporcao));
 	window->draw(entidade);
 }
 

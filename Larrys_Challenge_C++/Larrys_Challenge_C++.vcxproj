@@ -165,7 +165,6 @@
     <ClCompile Include="ListaEntidades.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Movimentador.cpp" />
-    <ClCompile Include="Obstaculo.cpp" />
     <ClCompile Include="ParedeLevadica.cpp" />
     <ClCompile Include="PassagemSecreta.cpp" />
     <ClCompile Include="Pedra.cpp" />
@@ -200,7 +199,6 @@
     <ClInclude Include="Letal.h" />
     <ClInclude Include="ListaEntidades.h" />
     <ClInclude Include="Movimentador.h" />
-    <ClInclude Include="Obstaculo.h" />
     <ClInclude Include="ParedeLevadica.h" />
     <ClInclude Include="PassagemSecreta.h" />
     <ClInclude Include="Pedra.h" />

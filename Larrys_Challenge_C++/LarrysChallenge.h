@@ -2,11 +2,12 @@
 #include "bibliotecas.h"
 #include "ListaEntidades.h"
 #include "Jogador.h"
-#include "Zumbi.h"
+
 #include "Movimentador.h"
 #include "Botao.h"
 #include "Interruptor.h"
 #include "Bau.h"
+#include "GerenciadorEntidades.h"
 
 class LarrysChallenge
 {
@@ -14,7 +15,7 @@ private:
 	RenderWindow* window;
 	ListaEntidades* listaEntidades;
 	Jogador* jogador;
-	Zumbi* zumbi;
+
 	Movimentador* movimentador;
 	Movimentador* movimentador2;
 	Movimentador* movimentador3;
@@ -25,6 +26,19 @@ private:
 	Font* fonte;
 	bool aux;
 	bool aux2;
+
+	GerenciadorEntidades* gerenciadorEntidades;
+
+
+	list<Letal*> listaLetais;
+	list<Barreira*> listaBarreiras;
+	list<Interativo*> listaInterativos;
+	list<SuperficieInterativa*> listaSuperficiesInterativas;
+	list<Caixa*> listaCaixas;
+	list<Flecha*> listaFlechas;
+	list<Inimigo*> listaInimigos;
+	list<Personagem*> listaPersonagens;
+	list<Item*> listaItens;
 
 
 public:
