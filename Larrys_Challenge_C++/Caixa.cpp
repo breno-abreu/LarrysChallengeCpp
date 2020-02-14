@@ -15,6 +15,7 @@ Caixa::~Caixa()
 }
 void Caixa::existir()
 {
+	entidade.setPosition(coordenadas.x, coordenadas.y);
 	window->draw(entidade);
 }
 void Caixa::setPeso(const float _peso)

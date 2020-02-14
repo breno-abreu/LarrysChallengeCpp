@@ -32,7 +32,7 @@ Entidade::Entidade(RenderWindow* _window, Texture* _textura, const float cx, con
 	existe = true;
 	
 	contAnimacao = 0;
-	velAnimacao = 6;
+	velAnimacao = 7;
 	contFrames = 0;
 	coordenadasTile.width = 0;
 	coordenadasTile.height = 0;
@@ -44,7 +44,6 @@ Entidade::Entidade(RenderWindow* _window, Texture* _textura, const float cx, con
 	entidade.setSize(dimensoesAux);*/
 	entidade.setTexture(textura);
 	entidade.setPosition(coordenadas);
-
 
 	quantidadeTile.x = _xTile;
 	quantidadeTile.y = _yTile;

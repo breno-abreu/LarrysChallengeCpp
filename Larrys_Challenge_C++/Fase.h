@@ -13,6 +13,7 @@
 #include "Item.h"
 #include "Abismo.h"
 #include "Inimigo.h"
+#include "ParedeLevadica.h"
 
 class Fase
 {
@@ -38,9 +39,15 @@ public:
 	void adicionar_entidade(const float cx, const float cy, const int tipo, const int conexao);
 	void executar();
 	void jogador_item();
-	void personagem_barreira();
+	void jogador_barreira();
 	void jogador_abismo();
 	void jogador_inimigo();
 	void jogador_movimentador();
+	void jogador_botao();
+	void jogador_parede_levadica();
+	void jogador_espinhos();
+	void jogador_interativo();
+	void jogador_caixas();
+	void jogador_portais();
 };
 

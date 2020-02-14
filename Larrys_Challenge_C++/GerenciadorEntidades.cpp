@@ -88,8 +88,7 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 	}
 	else if (tipo == 5) {
 		ParedeLevadica* paredeLevadica = new ParedeLevadica(window, &t_paredelevadica, cx, cy, 3, codigo, 6, 1);
-		SuperficieInterativa* paredeLevadicaAux = static_cast<SuperficieInterativa*>(paredeLevadica);
-		listaSuperficiesInterativas.push_back(paredeLevadicaAux);
+		listaParedesLevadicas.push_back(paredeLevadica);
 		Entidade* paredeLevadicaE = static_cast<Entidade*>(paredeLevadica);
 		return paredeLevadicaE;
 	}
@@ -100,7 +99,7 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 		return caixaLeveE;
 	}
 	else if (tipo == 7) {
-		Caixa* caixaPesada = new Caixa(window, &t_caixapesada, cx, cy, 3, codigo, 1, 1, 9);
+		Caixa* caixaPesada = new Caixa(window, &t_caixapesada, cx, cy, 3, codigo, 1, 1, 5);
 		listaCaixas.push_back(caixaPesada);
 		Entidade* caixaPesadaE = static_cast<Entidade*>(caixaPesada);
 		return caixaPesadaE;
@@ -240,8 +239,7 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 	}
 	else if (tipo == 27) {
 		PassagemSecreta* passagemSecreta = new PassagemSecreta(window, &t_passagemsecreta, cx, cy, 2, codigo, 1, 1);
-		Interativo* passagemSecretaAux = static_cast<Interativo*>(passagemSecreta);
-		listaInterativos.push_back(passagemSecretaAux);
+		listaPortais.push_back(passagemSecreta);
 		Entidade* passagemSecretaE = static_cast<Entidade*>(passagemSecreta);
 		return passagemSecretaE;
 	}
@@ -332,8 +330,7 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 	}
 	else if (tipo == 42) {
 		Porta* porta = new Porta(window, &t_porta, cx, cy, 2, codigo, 2, 1);
-		Interativo* portaAux = static_cast<Interativo*>(porta);
-		listaInterativos.push_back(portaAux);
+		listaPortais.push_back(porta);
 		Entidade* portaE = static_cast<Entidade*>(porta);
 		return portaE;
 	}
@@ -392,22 +389,19 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 	}
 	else if (tipo == 52) {
 		Espinhos* espinhos = new Espinhos(window, &t_espinhos, cx, cy, 2, codigo, 7, 1);
-		Letal* espinhosAux = static_cast<Letal*>(espinhos);
-		listaLetais.push_back(espinhosAux);
+		listaEspinhos.push_back(espinhos);
 		Entidade* espinhosE = static_cast<Entidade*>(espinhos);
 		return espinhosE;
 	}
 	else if (tipo == 53) {
 		Escada* escadaBaixo = new Escada(window, &t_escada, cx, cy, 2, codigo, 2, 1, BAIXO);
-		Interativo* escadaBaixoAux = static_cast<Interativo*>(escadaBaixo);
-		listaInterativos.push_back(escadaBaixoAux);
+		listaPortais.push_back(escadaBaixo);
 		Entidade* escadaBaixoE = static_cast<Entidade*>(escadaBaixo);
 		return escadaBaixoE;
 	}
 	else if (tipo == 54) {
 		Escada* escadaCima = new Escada(window, &t_escada, cx, cy, 2, codigo, 2, 1, CIMA);
-		Interativo* escadaCimaAux = static_cast<Interativo*>(escadaCima);
-		listaInterativos.push_back(escadaCimaAux);
+		listaPortais.push_back(escadaCima);
 		Entidade* escadaCimaE = static_cast<Entidade*>(escadaCima);
 		return escadaCimaE;
 	}
@@ -434,9 +428,8 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 		return tochaE;
 	}
 	else if (tipo == 59) {
-		Botao* botao = new Botao(window, &t_botao, cx, cy, 2, codigo, 1, 1);
-		SuperficieInterativa* auxBotao = static_cast<SuperficieInterativa*>(botao);
-		listaSuperficiesInterativas.push_back(botao);
+		Botao* botao = new Botao(window, &t_botao, cx, cy, 2, codigo, 2, 1);
+		listaBotoes.push_back(botao);
 		Entidade* botaoE = static_cast<Entidade*>(botao);
 		return botaoE;
 	}
@@ -458,7 +451,7 @@ list<SuperficieInterativa*> GerenciadorEntidades::getListaSuperficiesInterativas
 {
 	return listaSuperficiesInterativas;
 }
-list<Caixa*> GerenciadorEntidades::getListaCaixa()const
+list<Caixa*> GerenciadorEntidades::getListaCaixas()const
 {
 	return listaCaixas;
 }
@@ -491,4 +484,24 @@ list<Abismo*> GerenciadorEntidades::getListaAbismo()const
 list<Movimentador*> GerenciadorEntidades::getListaMovimentadores()const
 {
 	return listaMovimentadores;
+}
+
+list<Botao*> GerenciadorEntidades::getListaBotoes()const
+{
+	return listaBotoes;
+}
+
+list<ParedeLevadica*> GerenciadorEntidades::getListaParedesLevadicas()const
+{
+	return listaParedesLevadicas;
+}
+
+list<Espinhos*> GerenciadorEntidades::getListaEspinhos()const
+{
+	return listaEspinhos;
+}
+
+list<Interativo*> GerenciadorEntidades::getListaPortais()const
+{
+	return listaPortais;
 }

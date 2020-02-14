@@ -12,6 +12,7 @@ ParedeLevadica::ParedeLevadica(RenderWindow* _window, Texture* _textura, const f
 	ativado = false;
 	fimAnimacao = false;
 	emCima = false;
+	barreira = false;
 	coordenadasTile.height = 0;
 	/*quantidadeTile.x = 6;
 	quantidadeTile.y = 1;
@@ -31,19 +32,17 @@ void ParedeLevadica::existir()
 		coordenadasTile.width = 0;
 
 	else if (ativado && !emCima && !fimAnimacao) {
+		barreira = true;
 		if (contAnimacao >= velAnimacao) {
 			contAnimacao = 0;
 			contFrames++;
 			coordenadasTile.width = contFrames * dimensoes.x;
 
-			if (contFrames >= 6)
+			if (contFrames >= 5)
 				fimAnimacao = true;
 		}
 		contAnimacao++;
 	}
-
-	else if (fimAnimacao) 
-		coordenadasTile.width = 5 * dimensoes.x;
 
 	entidade.setTextureRect(IntRect(coordenadasTile.width, coordenadasTile.height, dimensoes.x, dimensoes.y));
 	window->draw(entidade);
@@ -55,4 +54,19 @@ void ParedeLevadica::setAtivado(const bool _ativado)
 bool ParedeLevadica::getAtivado()const
 {
 	return ativado;
+}
+
+void ParedeLevadica::setEmCima(const bool _emCima)
+{
+	emCima = _emCima;
+}
+
+bool ParedeLevadica::getEmCima()const
+{
+	return emCima;
+}
+
+bool ParedeLevadica::getBarreira()const
+{
+	return barreira;
 }

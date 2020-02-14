@@ -32,7 +32,7 @@ void Botao::existir()
 		coordenadasTile.width = dimensoes.x;
 
 	entidade.setTextureRect(IntRect(coordenadasTile.width, coordenadasTile.height, dimensoes.x, dimensoes.y));
-	entidade.setSize(Vector2f(dimensoes.x * proporcao, dimensoes.y * proporcao));
+	//entidade.setSize(Vector2f(dimensoes.x * proporcao, dimensoes.y * proporcao));
 	window->draw(entidade);
 }
 

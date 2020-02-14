@@ -5,7 +5,6 @@
 class Botao : public SuperficieInterativa
 {
 private:
-	bool ativado;
 
 public:
 	Botao();

@@ -8,6 +8,7 @@ private:
 	bool ativado;
 	bool fimAnimacao;
 	bool emCima;
+	bool barreira;
 
 public:
 	ParedeLevadica();
@@ -16,5 +17,8 @@ public:
 	void existir();
 	void setAtivado(const bool _ativado);
 	bool getAtivado()const;
+	void setEmCima(const bool _emCima);
+	bool getEmCima()const;
+	bool getBarreira()const;
 };
 

@@ -13,6 +13,7 @@ Espinhos::Espinhos(RenderWindow* _window, Texture* _textura, const float cx, con
 	dimensoesAux.x = dimensoes.x * proporcao;
 	dimensoesAux.y = dimensoes.y * proporcao;
 	entidade.setSize(dimensoesAux);*/
+	desativado = true;
 }
 Espinhos::~Espinhos()
 {
@@ -30,6 +31,16 @@ void Espinhos::existir()
 	}
 	contAnimacao++;
 
+	if (contFrames == 0)
+		desativado = true;
+	else
+		desativado = false;
+
 	entidade.setTextureRect(IntRect(coordenadasTile.width, coordenadasTile.height, dimensoes.x, dimensoes.y));
 	window->draw(entidade);
+}
+
+bool Espinhos::getDesativado()const
+{
+	return desativado;
 }

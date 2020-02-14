@@ -83,7 +83,12 @@ private:
 	list<Item*> listaItens;
 	list<Abismo*> listaAbismo;
 	list<Movimentador*> listaMovimentadores;
+	list<Botao*> listaBotoes;
+	list<ParedeLevadica*> listaParedesLevadicas;
+	list<Espinhos*> listaEspinhos;
+	list<Interativo*> listaPortais;
 	Jogador* jogadorJ;
+
 
 
 
@@ -107,13 +112,17 @@ public:
 	list<Barreira*> getListaBarreiras()const;
 	list<Interativo*> getListaInterativos()const;
 	list<SuperficieInterativa*> getListaSuperficiesInterativas()const;
-	list<Caixa*> getListaCaixa()const;
+	list<Caixa*> getListaCaixas()const;
 	list<Flecha*> getListaFlechas()const;
 	list<Inimigo*> getListaInimigos()const;
 	list<Personagem*> getListaPersonagens()const;
 	list<Item*> getListaItens()const;
 	list<Abismo*> getListaAbismo()const;
 	list<Movimentador*> getListaMovimentadores()const;
+	list<Botao*> getListaBotoes()const;
+	list<ParedeLevadica*> getListaParedesLevadicas()const;
+	list<Espinhos*> getListaEspinhos()const;
+	list<Interativo*> getListaPortais()const;
 	Jogador* getJogador()const;
 };
 

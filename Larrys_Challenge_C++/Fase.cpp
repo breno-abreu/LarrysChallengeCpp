@@ -30,9 +30,15 @@ void Fase::executar()
 	
 	listaEntidades->percorrer();
 	jogador_item();
-	//personagem_barreira();
+	jogador_barreira();
 	jogador_abismo();
 	jogador_movimentador();
+	jogador_botao();
+	jogador_parede_levadica();
+	jogador_espinhos();
+	jogador_interativo();
+	jogador_caixas();
+	jogador_portais();
 }
 
 void Fase::jogador_item()
@@ -63,7 +69,7 @@ void Fase::jogador_item()
 		}
 	}
 }
-void Fase::personagem_barreira()
+void Fase::jogador_barreira()
 {
 	list<Barreira*>::iterator itr;
 	list<Barreira*> listaBarreiras = gerenciadorEntidades->getListaBarreiras();
@@ -144,6 +150,162 @@ void Fase::jogador_movimentador()
 				jogador->setMovimentadory(-velocidade);
 			else if ((*itr)->getDirecao() == BAIXO)
 				jogador->setMovimentadory(velocidade);
+		}
+	}
+}
+
+void Fase::jogador_botao()
+{
+	list<Botao*>::iterator itr;
+	list<Botao*> listaBotoes = gerenciadorEntidades->getListaBotoes();
+	Jogador* jogador = gerenciadorEntidades->getJogador();
+
+	for (itr = listaBotoes.begin(); itr != listaBotoes.end(); itr++) {
+		if (jogador->getCoordenadas().x < (*itr)->getCoordenadas().x + (*itr)->getDimensoes().x &&
+			jogador->getCoordenadas().x + jogador->getDimensoes().x >(*itr)->getCoordenadas().x&&
+			jogador->getCoordenadas().y < (*itr)->getCoordenadas().y + (*itr)->getDimensoes().y &&
+			jogador->getCoordenadas().y + jogador->getDimensoes().y >(*itr)->getCoordenadas().y) {
+
+			(*itr)->setAtivado(true);
+		}
+		else
+			(*itr)->setAtivado(false);
+	}
+}
+
+void Fase::jogador_parede_levadica()
+{
+	list<ParedeLevadica*>::iterator itr;
+	list<ParedeLevadica*> listaParedesLevadicas = gerenciadorEntidades->getListaParedesLevadicas();
+	Jogador* jogador = gerenciadorEntidades->getJogador();
+
+	for (itr = listaParedesLevadicas.begin(); itr != listaParedesLevadicas.end(); itr++) {
+		if (jogador->getCoordenadas().x < (*itr)->getCoordenadas().x + (*itr)->getDimensoes().x &&
+			jogador->getCoordenadas().x + jogador->getDimensoes().x >(*itr)->getCoordenadas().x &&
+			jogador->getCoordenadas().y < (*itr)->getCoordenadas().y + (*itr)->getDimensoes().y &&
+			jogador->getCoordenadas().y + jogador->getDimensoes().y >(*itr)->getCoordenadas().y) {
+
+			(*itr)->setEmCima(true);
+
+			if (!(*itr)->getAtivado()) {
+				(*itr)->setAtivado(true);
+			}
+			else if((*itr)->getAtivado() && (*itr)->getBarreira()){
+				if (jogador->getDirecao() == DIREITA)
+					jogador->setxEntidade(jogador->getCoordenadas().x - jogador->getVelocidade());
+				else if (jogador->getDirecao() == ESQUERDA)
+					jogador->setxEntidade(jogador->getCoordenadas().x + jogador->getVelocidade());
+				else if (jogador->getDirecao() == CIMA)
+					jogador->setyEntidade(jogador->getCoordenadas().y + jogador->getVelocidade());
+				else if (jogador->getDirecao() == BAIXO)
+					jogador->setyEntidade(jogador->getCoordenadas().y - jogador->getVelocidade());
+			}
+		}
+		else
+			(*itr)->setEmCima(false);
+	}
+}
+
+void Fase::jogador_espinhos()
+{
+	list<Espinhos*>::iterator itr;
+	list<Espinhos*> listaEspinhos = gerenciadorEntidades->getListaEspinhos();
+	Jogador* jogador = gerenciadorEntidades->getJogador();
+
+	for (itr = listaEspinhos.begin(); itr != listaEspinhos.end(); itr++) {
+		if (jogador->getCoordenadas().x < (*itr)->getCoordenadas().x + (*itr)->getDimensoes().x &&
+			jogador->getCoordenadas().x + jogador->getDimensoes().x >(*itr)->getCoordenadas().x&&
+			jogador->getCoordenadas().y < (*itr)->getCoordenadas().y + (*itr)->getDimensoes().y &&
+			jogador->getCoordenadas().y + jogador->getDimensoes().y >(*itr)->getCoordenadas().y) {
+
+			if (!(*itr)->getDesativado()){
+				//jogador morre
+			}
+		}
+	}
+}
+
+void Fase::jogador_interativo()
+{
+	list<Interativo*>::iterator itr;
+	list<Interativo*> listaInterativos = gerenciadorEntidades->getListaInterativos();
+	Jogador* jogador = gerenciadorEntidades->getJogador();
+
+	for (itr = listaInterativos.begin(); itr != listaInterativos.end(); itr++) {
+		if (jogador->getCoordenadas().x < (*itr)->getCoordenadas().x + (*itr)->getDimensoes().x &&
+			jogador->getCoordenadas().x + jogador->getDimensoes().x >(*itr)->getCoordenadas().x&&
+			jogador->getCoordenadas().y < (*itr)->getCoordenadas().y + (*itr)->getDimensoes().y &&
+			jogador->getCoordenadas().y + jogador->getDimensoes().y >(*itr)->getCoordenadas().y) {
+
+			if (jogador->getAcao() && (*itr)->getAtivado())
+				(*itr)->setAtivado(false);
+
+			else if (jogador->getAcao() && !(*itr)->getAtivado())
+				(*itr)->setAtivado(true);
+
+			if (jogador->getDirecao() == DIREITA)
+				jogador->setxEntidade(jogador->getCoordenadas().x - jogador->getVelocidade());
+			else if (jogador->getDirecao() == ESQUERDA)
+				jogador->setxEntidade(jogador->getCoordenadas().x + jogador->getVelocidade());
+			else if (jogador->getDirecao() == CIMA)
+				jogador->setyEntidade(jogador->getCoordenadas().y + jogador->getVelocidade());
+			else if (jogador->getDirecao() == BAIXO)
+				jogador->setyEntidade(jogador->getCoordenadas().y - jogador->getVelocidade());
+		}
+	}
+}
+
+void Fase::jogador_caixas()
+{
+	list<Caixa*>::iterator itr;
+	list<Caixa*> listaCaixas = gerenciadorEntidades->getListaCaixas();
+	Jogador* jogador = gerenciadorEntidades->getJogador();
+
+	for (itr = listaCaixas.begin(); itr != listaCaixas.end(); itr++) {
+		if (jogador->getCoordenadas().x < (*itr)->getCoordenadas().x + (*itr)->getDimensoes().x &&
+			jogador->getCoordenadas().x + jogador->getDimensoes().x >(*itr)->getCoordenadas().x &&
+			jogador->getCoordenadas().y < (*itr)->getCoordenadas().y + (*itr)->getDimensoes().y &&
+			jogador->getCoordenadas().y + jogador->getDimensoes().y >(*itr)->getCoordenadas().y) {
+
+			if (jogador->getDirecao() == DIREITA) {
+				jogador->setxEntidade(jogador->getCoordenadas().x - (*itr)->getPeso());
+				(*itr)->setxEntidade(jogador->getCoordenadas().x + jogador->getDimensoes().x);
+			}
+
+			else if (jogador->getDirecao() == ESQUERDA) {
+				jogador->setxEntidade(jogador->getCoordenadas().x + (*itr)->getPeso());
+				(*itr)->setxEntidade(jogador->getCoordenadas().x - (*itr)->getDimensoes().x);
+			}
+				
+			else if (jogador->getDirecao() == CIMA) {
+				jogador->setyEntidade(jogador->getCoordenadas().y + (*itr)->getPeso());
+				(*itr)->setyEntidade(jogador->getCoordenadas().y - (*itr)->getDimensoes().y);
+			}
+				
+			else if (jogador->getDirecao() == BAIXO) {
+				jogador->setyEntidade(jogador->getCoordenadas().y - (*itr)->getPeso());
+				(*itr)->setyEntidade(jogador->getCoordenadas().y + jogador->getDimensoes().y);
+			}
+		}
+	}
+}
+
+void Fase::jogador_portais()
+{
+	list<Interativo*>::iterator itr;
+	list<Interativo*> listaPortais = gerenciadorEntidades->getListaPortais();
+	Jogador* jogador = gerenciadorEntidades->getJogador();
+
+	for (itr = listaPortais.begin(); itr != listaPortais.end(); itr++) {
+		if (jogador->getCoordenadas().x < (*itr)->getCoordenadas().x + (*itr)->getDimensoes().x &&
+			jogador->getCoordenadas().x + jogador->getDimensoes().x >(*itr)->getCoordenadas().x&&
+			jogador->getCoordenadas().y < (*itr)->getCoordenadas().y + (*itr)->getDimensoes().y &&
+			jogador->getCoordenadas().y + jogador->getDimensoes().y >(*itr)->getCoordenadas().y) {
+
+			if (jogador->getAcao()) {
+
+			}
+
 		}
 	}
 }
