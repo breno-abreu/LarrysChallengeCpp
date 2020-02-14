@@ -81,6 +81,9 @@ private:
 	list<Inimigo*> listaInimigos;
 	list<Personagem*> listaPersonagens;
 	list<Item*> listaItens;
+	list<Abismo*> listaAbismo;
+	list<Movimentador*> listaMovimentadores;
+	Jogador* jogadorJ;
 
 
 
@@ -97,11 +100,20 @@ private:
 
 public:
 	GerenciadorEntidades();
-	GerenciadorEntidades(RenderWindow *_window, list<Letal*> _listaLetais, list<Barreira*> _listaBarreiras,
-						 list<Interativo*> _listaInterativos, list<SuperficieInterativa*> _listaSuperficiesInterativas,
-						 list<Caixa*> _listaCaixas, list<Flecha*> _listaFlechas, list<Inimigo*> _listaInimigos,
-						 list<Personagem*> _listaPersonagens, list<Item*> _listaItens);
+	GerenciadorEntidades(RenderWindow *_window);
 	~GerenciadorEntidades();
 	Entidade* adicionar_entidade(const float cx, const float cy, const int tipo, const int codigo);
+	list<Letal*> getListaLetais()const;
+	list<Barreira*> getListaBarreiras()const;
+	list<Interativo*> getListaInterativos()const;
+	list<SuperficieInterativa*> getListaSuperficiesInterativas()const;
+	list<Caixa*> getListaCaixa()const;
+	list<Flecha*> getListaFlechas()const;
+	list<Inimigo*> getListaInimigos()const;
+	list<Personagem*> getListaPersonagens()const;
+	list<Item*> getListaItens()const;
+	list<Abismo*> getListaAbismo()const;
+	list<Movimentador*> getListaMovimentadores()const;
+	Jogador* getJogador()const;
 };
 

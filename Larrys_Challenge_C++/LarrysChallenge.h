@@ -7,7 +7,9 @@
 #include "Botao.h"
 #include "Interruptor.h"
 #include "Bau.h"
+#include "Fase.h"
 #include "GerenciadorEntidades.h"
+#include "GerenciadorPersistencia.h"
 
 class LarrysChallenge
 {
@@ -26,6 +28,8 @@ private:
 	Font* fonte;
 	bool aux;
 	bool aux2;
+	Fase* fase;
+	GerenciadorPersistencia* gerenciadorPersistencia;
 
 	GerenciadorEntidades* gerenciadorEntidades;
 

@@ -26,13 +26,13 @@ Entidade::Entidade(RenderWindow* _window, Texture* _textura, const float cx, con
 	profundidade = _profundidade;
 	textura = _textura;
 	
-	proporcao = 4;
+	proporcao = 3;
 	/*quantidadeTile.x = 1;
 	quantidadeTile.y = 1;*/
 	existe = true;
 	
 	contAnimacao = 0;
-	velAnimacao = 7;
+	velAnimacao = 6;
 	contFrames = 0;
 	coordenadasTile.width = 0;
 	coordenadasTile.height = 0;
@@ -51,9 +51,9 @@ Entidade::Entidade(RenderWindow* _window, Texture* _textura, const float cx, con
 	dimensoes.x = (textura->getSize().x / quantidadeTile.x);
 	dimensoes.y = (textura->getSize().y / quantidadeTile.y);
 	dimensoesAux.x = dimensoes.x * proporcao;
-	dimensoesAux.y = dimensoes.x * proporcao;
+	dimensoesAux.y = dimensoes.y * proporcao;
 	entidade.setSize(dimensoesAux);
-
+	entidade.setOrigin(Vector2f(dimensoesAux.x / 2, dimensoesAux.y / 2));
 
 }
 Entidade::~Entidade()
@@ -74,7 +74,7 @@ int Entidade::getProfundidade() const
 {
 	return profundidade;
 }
-bool Entidade::getExistir() const
+bool Entidade::getExiste() const
 {
 	return existe;
 }

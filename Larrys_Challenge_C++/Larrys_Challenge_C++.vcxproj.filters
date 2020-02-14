@@ -111,6 +111,12 @@
     <ClCompile Include="Rato.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GerenciadorPersistencia.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Fase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bibliotecas.h">
@@ -207,6 +213,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Rato.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GerenciadorPersistencia.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Fase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -6,6 +6,8 @@
 #include <list>
 #include <fstream>
 #include <math.h>
+#include <filesystem>
+#include <cstdio>
 
 enum {
 	DIREITA,

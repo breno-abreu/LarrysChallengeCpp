@@ -6,7 +6,7 @@ Atirador::Atirador()
 	velAtivar = 0;
 	ativo = false;
 }
-Atirador::Atirador(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo, const int _direcao, const int _xTile, const int _yTile):
+Atirador::Atirador(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo, const int _xTile, const int _yTile, const int _direcao):
 	Barreira(_window, _textura, cx, cy, _profundidade, _codigo, _xTile, _yTile)
 {
 	direcao = _direcao;
@@ -30,6 +30,9 @@ Atirador::Atirador(RenderWindow* _window, Texture* _textura, const float cx, con
 		coordenadasTile.width = 2 * dimensoes.x;
 	else if (direcao == CIMA)
 		coordenadasTile.width = 3 * dimensoes.x;
+
+	entidade.setTextureRect(IntRect(coordenadasTile.width, coordenadasTile.height, dimensoes.x, dimensoes.y));
+
 }
 Atirador::~Atirador()
 {
@@ -45,8 +48,6 @@ void Atirador::existir()
 		ativo = true;
 	}
 	contAtivar++;
-
-	entidade.setTextureRect(IntRect(coordenadasTile.width, coordenadasTile.height, dimensoes.x, dimensoes.y));
 	window->draw(entidade);
 }
 

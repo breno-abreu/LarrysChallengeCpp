@@ -88,6 +88,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\Users\Breno Abreu\Downloads\Projeto Larry%27s Challenge\Larry%27s Challenge C++\Larrys_Challenge_C++\sfml\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -153,8 +154,10 @@
     <ClCompile Include="Entidade.cpp" />
     <ClCompile Include="Escada.cpp" />
     <ClCompile Include="Espinhos.cpp" />
+    <ClCompile Include="Fase.cpp" />
     <ClCompile Include="Flecha.cpp" />
     <ClCompile Include="GerenciadorEntidades.cpp" />
+    <ClCompile Include="GerenciadorPersistencia.cpp" />
     <ClCompile Include="Inimigo.cpp" />
     <ClCompile Include="Interativo.cpp" />
     <ClCompile Include="Interruptor.cpp" />
@@ -188,8 +191,10 @@
     <ClInclude Include="Entidade.h" />
     <ClInclude Include="Escada.h" />
     <ClInclude Include="Espinhos.h" />
+    <ClInclude Include="Fase.h" />
     <ClInclude Include="Flecha.h" />
     <ClInclude Include="GerenciadorEntidades.h" />
+    <ClInclude Include="GerenciadorPersistencia.h" />
     <ClInclude Include="Inimigo.h" />
     <ClInclude Include="Interativo.h" />
     <ClInclude Include="Interruptor.h" />

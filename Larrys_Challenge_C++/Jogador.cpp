@@ -17,6 +17,12 @@ Jogador::Jogador(RenderWindow* _window, Texture* _textura, const float cx, const
 	dimensoesAux.y = dimensoes.y * proporcao;
 	entidade.setSize(dimensoesAux);*/
 
+	chaves = 0;
+	moedas = 0;
+	blueOrb = false;
+	redOrb = false;
+	greenOrb = false;
+
 	velocidade = 6;
 }
 Jogador::~Jogador()
@@ -124,7 +130,56 @@ bool Jogador::getAcaoPressionado() const
 {
 	return acaoPressionado;
 }
-int Jogador::getDirecao()const
+/*int Jogador::getDirecao()const
 {
 	return direcao;
+}*/
+
+void Jogador::setBlueOrb(const bool _blueOrb)
+{
+	blueOrb = _blueOrb;
+}
+void Jogador::setRedOrb(const bool _redOrb)
+{
+	redOrb = _redOrb;
+}
+void Jogador::setGreenOrb(const bool _greenOrb)
+{
+	greenOrb = _greenOrb;
+}
+void Jogador::adicionarMoeda()
+{
+	moedas++;
+}
+void Jogador::adicionarChave()
+{
+	chaves++;
+}
+void Jogador::retirarMoeda()
+{
+	moedas--;
+}
+void Jogador::retirarChave()
+{
+	chaves--;
+}
+bool Jogador::getBlueOrb()const
+{
+	return blueOrb;
+}
+bool Jogador::getRedOrb()const
+{
+	return redOrb;
+}
+bool Jogador::getGreenOrb()const
+{
+	return greenOrb;
+}
+int Jogador::getChaves()const
+{
+	return chaves;
+}
+int Jogador::getMoedas()const
+{
+	return moedas;
 }

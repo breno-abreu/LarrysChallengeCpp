@@ -31,7 +31,7 @@ public:
 	virtual void existir() = 0;
 	int getProfundidade() const;
 	Vector2f getDimensoes() const;
-	bool getExistir() const;
+	bool getExiste() const;
 	Vector2f getCoordenadas() const;
 	void setExiste(const bool _existe);
 	void setxEntidade(const float x);

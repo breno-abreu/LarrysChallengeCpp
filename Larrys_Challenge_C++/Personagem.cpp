@@ -21,3 +21,8 @@ float Personagem::getVelocidade()const
 {
 	return velocidade;
 }
+
+int Personagem::getDirecao()const
+{
+	return direcao;
+}

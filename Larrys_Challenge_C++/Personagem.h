@@ -14,5 +14,6 @@ public:
 	~Personagem();
 	virtual void existir() = 0;
 	float getVelocidade()const;
+	int getDirecao()const;
 };
 

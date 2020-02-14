@@ -4,20 +4,9 @@ GerenciadorEntidades::GerenciadorEntidades()
 {
 	window = NULL;
 }
-GerenciadorEntidades::GerenciadorEntidades(RenderWindow* _window, list<Letal*> _listaLetais, list<Barreira*> _listaBarreiras,
-										   list<Interativo*> _listaInterativos, list<SuperficieInterativa*> _listaSuperficiesInterativas,
-										   list<Caixa*> _listaCaixas, list<Flecha*> _listaFlechas, list<Inimigo*> _listaInimigos,
-										   list<Personagem*> _listaPersonagens, list<Item*> _listaItens)
+GerenciadorEntidades::GerenciadorEntidades(RenderWindow* _window)
 {
-	listaLetais = _listaLetais;
-	listaBarreiras = _listaBarreiras;
-	listaInterativos = _listaInterativos;
-	listaSuperficiesInterativas = _listaSuperficiesInterativas;
-	listaCaixas = _listaCaixas;
-	listaFlechas = _listaFlechas;
-	listaInimigos = _listaInimigos;
-	listaPersonagens = _listaPersonagens;
-	listaItens = _listaItens;
+	jogadorJ = NULL;
 	
 	window = _window;
 	t_flecha.loadFromFile("Textures/Arrow.png");
@@ -161,6 +150,7 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 	else if (tipo == 15) {
 		Jogador* jogador = new Jogador(window, &t_jogador, cx, cy, 3, codigo, 6, 8);
 		Personagem* jogadorP = static_cast<Personagem*>(jogador);
+		jogadorJ = jogador;
 		listaPersonagens.push_back(jogadorP);
 		Entidade* jogadorE = static_cast<Entidade*>(jogador);
 		return jogadorE;
@@ -185,29 +175,25 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 	}
 	else if (tipo == 18) {
 		Movimentador* movimentadorBaixo = new Movimentador(window, &t_movimentador, cx, cy, 1, codigo, 4, 1, BAIXO);
-		SuperficieInterativa* movimentadorBaixoS = static_cast<SuperficieInterativa*>(movimentadorBaixo);
-		listaSuperficiesInterativas.push_back(movimentadorBaixoS);
+		listaMovimentadores.push_back(movimentadorBaixo);
 		Entidade* movimentadorBaixoE = static_cast<Entidade*>(movimentadorBaixo);
 		return movimentadorBaixoE;
 	}
 	else if (tipo == 19) {
 		Movimentador* movimentadorEsquerda = new Movimentador(window, &t_movimentador, cx, cy, 1, codigo, 4, 1, ESQUERDA);
-		SuperficieInterativa* movimentadorEsquerdaS = static_cast<SuperficieInterativa*>(movimentadorEsquerda);
-		listaSuperficiesInterativas.push_back(movimentadorEsquerdaS);
+		listaMovimentadores.push_back(movimentadorEsquerda);
 		Entidade* movimentadorEsquerdaE = static_cast<Entidade*>(movimentadorEsquerda);
 		return movimentadorEsquerdaE;
 	}
 	else if (tipo == 20) {
 		Movimentador* movimentadorDireita = new Movimentador(window, &t_movimentador, cx, cy, 1, codigo, 4, 1, DIREITA);
-		SuperficieInterativa* movimentadorDireitaS = static_cast<SuperficieInterativa*>(movimentadorDireita);
-		listaSuperficiesInterativas.push_back(movimentadorDireitaS);
+		listaMovimentadores.push_back(movimentadorDireita);
 		Entidade* movimentadorDireitaE = static_cast<Entidade*>(movimentadorDireita);
 		return movimentadorDireitaE;
 	}
 	else if (tipo == 21) {
 		Movimentador* movimentadorCima = new Movimentador(window, &t_movimentador, cx, cy, 1, codigo, 4, 1, CIMA);
-		SuperficieInterativa* movimentadorCimaS = static_cast<SuperficieInterativa*>(movimentadorCima);
-		listaSuperficiesInterativas.push_back(movimentadorCimaS);
+		listaMovimentadores.push_back(movimentadorCima);
 		Entidade* movimentadorCimaE = static_cast<Entidade*>(movimentadorCima);
 		return movimentadorCimaE;
 	}
@@ -261,100 +247,86 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 	}
 	else if (tipo == 28) {
 		Abismo* abismo0 = new Abismo(window, &t_abismo, cx, cy, 1, codigo, 6, 3, 0, 2);
-		Letal* abismo0Aux = static_cast<Letal*>(abismo0);
-		listaLetais.push_back(abismo0Aux);
+		listaAbismo.push_back(abismo0);
 		Entidade* abismo0E = static_cast<Entidade*>(abismo0);
 		return abismo0E;
 	}
 	else if (tipo == 29) {
 		Abismo* abismo1 = new Abismo(window, &t_abismo, cx, cy, 1, codigo, 6, 3, 1, 0);
-		Letal* abismo1Aux = static_cast<Letal*>(abismo1);
-		listaLetais.push_back(abismo1Aux);
+		listaAbismo.push_back(abismo1);
 		Entidade* abismo1E = static_cast<Entidade*>(abismo1);
 		return abismo1E;
 	}
 	else if (tipo == 30) {
 		Abismo* abismo2 = new Abismo(window, &t_abismo, cx, cy, 1, codigo, 6, 3, 2, 0);
-		Letal* abismo2Aux = static_cast<Letal*>(abismo2);
-		listaLetais.push_back(abismo2Aux);
+		listaAbismo.push_back(abismo2);
 		Entidade* abismo2E = static_cast<Entidade*>(abismo2);
 		return abismo2E;
 	}
 	else if (tipo == 31) {
 		Abismo* abismo3 = new Abismo(window, &t_abismo, cx, cy, 1, codigo, 6, 3, 1, 2);
-		Letal* abismo3Aux = static_cast<Letal*>(abismo3);
-		listaLetais.push_back(abismo3Aux);
+		listaAbismo.push_back(abismo3);
 		Entidade* abismo3E = static_cast<Entidade*>(abismo3);
 		return abismo3E;
 	}
 	else if (tipo == 32) {
 		Abismo* abismo4 = new Abismo(window, &t_abismo, cx, cy, 1, codigo, 6, 3, 3, 0);
-		Letal* abismo4Aux = static_cast<Letal*>(abismo4);
-		listaLetais.push_back(abismo4Aux);
+		listaAbismo.push_back(abismo4);
 		Entidade* abismo4E = static_cast<Entidade*>(abismo4);
 		return abismo4E;
 	}
 	else if (tipo == 33) {
 		Abismo* abismo5 = new Abismo(window, &t_abismo, cx, cy, 1, codigo, 6, 3, 1, 1);
-		Letal* abismo5Aux = static_cast<Letal*>(abismo5);
-		listaLetais.push_back(abismo5Aux);
+		listaAbismo.push_back(abismo5);
 		Entidade* abismo5E = static_cast<Entidade*>(abismo5);
 		return abismo5E;
 	}
 	else if (tipo == 34) {
 		Abismo* abismo6 = new Abismo(window, &t_abismo, cx, cy, 1, codigo, 6, 3, 3, 1);
-		Letal* abismo6Aux = static_cast<Letal*>(abismo6);
-		listaLetais.push_back(abismo6Aux);
+		listaAbismo.push_back(abismo6);
 		Entidade* abismo6E = static_cast<Entidade*>(abismo6);
 		return abismo6E;
 	}
 	else if (tipo == 35) {
 		Abismo* abismo7 = new Abismo(window, &t_abismo, cx, cy, 1, codigo, 6, 3, 2, 2);
-		Letal* abismo7Aux = static_cast<Letal*>(abismo7);
-		listaLetais.push_back(abismo7Aux);
+		listaAbismo.push_back(abismo7);
 		Entidade* abismo7E = static_cast<Entidade*>(abismo7);
 		return abismo7E;
 	}
 
 	else if (tipo == 36) {
 		Abismo* abismo8 = new Abismo(window, &t_abismo, cx, cy, 1, codigo, 6, 3, 3, 2);
-		Letal* abismo8Aux = static_cast<Letal*>(abismo8);
-		listaLetais.push_back(abismo8Aux);
+		listaAbismo.push_back(abismo8);
 		Entidade* abismo8E = static_cast<Entidade*>(abismo8);
 		return abismo8E;
 	}
 	else if (tipo == 37) {
 		Abismo* abismo9 = new Abismo(window, &t_abismo, cx, cy, 1, codigo, 6, 3, 2, 1);
-		Letal* abismo9Aux = static_cast<Letal*>(abismo9);
-		listaLetais.push_back(abismo9Aux);
+		listaAbismo.push_back(abismo9);
 		Entidade* abismo9E = static_cast<Entidade*>(abismo9);
 		return abismo9E;
 	}
 	else if (tipo == 38) {
 		Abismo* abismo10 = new Abismo(window, &t_abismo, cx, cy, 1, codigo, 6, 3, 4, 0);
-		Letal* abismo10Aux = static_cast<Letal*>(abismo10);
-		listaLetais.push_back(abismo10Aux);
+		listaAbismo.push_back(abismo10);
 		Entidade* abismo10E = static_cast<Entidade*>(abismo10);
 		return abismo10E;
 	}
 	else if (tipo == 39) {
 		Abismo* abismo11 = new Abismo(window, &t_abismo, cx, cy, 1, codigo, 6, 3, 4, 1);
-		Letal* abismo11Aux = static_cast<Letal*>(abismo11);
-		listaLetais.push_back(abismo11Aux);
+		listaAbismo.push_back(abismo11);
 		Entidade* abismo11E = static_cast<Entidade*>(abismo11);
 		return abismo11E;
 	}
 	else if (tipo == 40) {
 		Abismo* abismo12 = new Abismo(window, &t_abismo, cx, cy, 1, codigo, 6, 3, 5, 0);
-		Letal* abismo12Aux = static_cast<Letal*>(abismo12);
-		listaLetais.push_back(abismo12Aux);
+		listaAbismo.push_back(abismo12);
 		Entidade* abismo12E = static_cast<Entidade*>(abismo12);
 		return abismo12E;
 	}
 	else if (tipo == 41) {
 		Abismo* abismo13 = new Abismo(window, &t_abismo, cx, cy, 1, codigo, 6, 3, 5, 1);
-		Letal* abismo13Aux = static_cast<Letal*>(abismo13);
-		listaLetais.push_back(abismo13Aux);
+		listaAbismo.push_back(abismo13);
 		Entidade* abismo13E = static_cast<Entidade*>(abismo13);
 		return abismo13E;
 	}
@@ -468,191 +440,55 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 		Entidade* botaoE = static_cast<Entidade*>(botao);
 		return botaoE;
 	}
+}
 
+list<Letal*> GerenciadorEntidades::getListaLetais()const
+{
+	return listaLetais;
+}
+list<Barreira*> GerenciadorEntidades::getListaBarreiras()const
+{
+	return listaBarreiras;
+}
+list<Interativo*> GerenciadorEntidades::getListaInterativos()const
+{
+	return listaInterativos;
+}
+list<SuperficieInterativa*> GerenciadorEntidades::getListaSuperficiesInterativas()const
+{
+	return listaSuperficiesInterativas;
+}
+list<Caixa*> GerenciadorEntidades::getListaCaixa()const
+{
+	return listaCaixas;
+}
+list<Flecha*> GerenciadorEntidades::getListaFlechas()const
+{
+	return listaFlechas;
+}
+list<Inimigo*> GerenciadorEntidades::getListaInimigos()const
+{
+	return listaInimigos;
+}
+list<Personagem*> GerenciadorEntidades::getListaPersonagens()const
+{
+	return listaPersonagens;
+}
+list<Item*> GerenciadorEntidades::getListaItens()const
+{
+	return listaItens;
+}
+Jogador* GerenciadorEntidades::getJogador()const
+{
+	return jogadorJ;
+}
 
-	/*case 0://
-		
-		
-		break;
-	case 1://
-		
-		break;
-	case 2://
-		
-		break;
-	case 3://
-		
-		break;
-	case 4://
-		
-		break;
-	case 5://
-		
-		break;
-	case 6://
-		
-		break;
-	case 7://
-		
-		break;
-	case 8://
-		
-		break;
-	case 9://
-		
-		break;
-	case 10://
-		
-		break;
-	case 11://
-		
-		break;
-	case 12://
-		
-		break;
-	case 13://
-		
-		break;
-	case 14://
-		
-		break;
-	case 15://
-		
-		break;
-	case 16://
-		
-		break;
-	case 17://
-		
-		break;
-	case 18://
-		
-		break;
-	case 19://
-		
-		break;
-	case 20://
-		
-		break;
-	case 21://
-		
-		break;
-	case 22://
-		
-		break;
-	case 23://
-		
-		break;
-	case 24://
-		
-		break;
-	case 25://
-		
-		break;
-	case 26://
-		
-		break;
-	case 27://
-		
-		break;
-	case 28://
-		
-		break;
-	case 29://
-		
-		break;
-	case 30://
-		
-		break;
-	case 31://
-		
-		break;
-	case 32://
-		
-		break;
-	case 33://
-		
-		break;
-	case 34://
-		
-		break;
-	case 35://
-		
-		break;
-	case 36://
-		
-		break;
-	case 37://
-		
-		break;
-	case 38://
-		
-		break;
-	case 39://
-		
-		break;
-	case 40://
-		
-		break;
-	case 41://
-		
-		break;
-	case 42://
-		
-		break;
-	case 43://
-		Porta * portaA = new Porta(window, &t_porta, cx, cy, 2, codigo);
-		Interativo* portaAAux = static_cast<Interativo*>(portaA);
-		listaInterativos.push_back(portaAAux);
-		Entidade* portaAE = static_cast<Entidade*>(portaA);
-		return portaAE;
-		break;
-	case 44://
-		
-		break;
-	case 45://
-		
-		break;
-	case 46://
-		
-		break;
-	case 47://
-		
-		break;
-	case 48://
-		
-		break;
-	case 49://
-		
-		break;
-	case 50://
-		
-		break;
-	case 51://
-		
-		break;
-	case 52://
-		
-		break;
-	case 53://
-		
-		break;
-	case 54://
-		
-		break;
-	case 55: //
-		
-		break;
-	case 56: //
-		
-		break;
-	case 57: //
-		
-		break;
-	case 58: //
-		
-		break;
-	case 59://
-		
-		break;*/
+list<Abismo*> GerenciadorEntidades::getListaAbismo()const
+{
+	return listaAbismo;
+}
+
+list<Movimentador*> GerenciadorEntidades::getListaMovimentadores()const
+{
+	return listaMovimentadores;
 }

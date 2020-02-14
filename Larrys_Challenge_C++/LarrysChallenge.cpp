@@ -9,29 +9,22 @@ LarrysChallenge::LarrysChallenge()
 	//listaEntidades->adicionar_entidade(100, 100);
 	aux = true;
 	
-	gerenciadorEntidades = new GerenciadorEntidades(window, listaLetais, listaBarreiras, listaInterativos,
+	/*gerenciadorEntidades = new GerenciadorEntidades(window, listaLetais, listaBarreiras, listaInterativos,
 													listaSuperficiesInterativas, listaCaixas, listaFlechas,
-													listaInimigos, listaPersonagens, listaItens);
+													listaInimigos, listaPersonagens, listaItens);*/
 
-	listaEntidades = new ListaEntidades(window, gerenciadorEntidades);
 
-	listaEntidades->adicionar_entidade(100, 100, 54);
+	fase = new Fase(window);
+	gerenciadorPersistencia = new GerenciadorPersistencia();
+	//listaEntidades = new ListaEntidades(window, gerenciadorEntidades);
+
+	/*listaEntidades->adicionar_entidade(100, 100, 54);
 	listaEntidades->adicionar_entidade(200, 100, 55);
 	listaEntidades->adicionar_entidade(300, 100, 56);
 	listaEntidades->adicionar_entidade(400, 100, 57);
-	listaEntidades->adicionar_entidade(500, 100, 58);
+	listaEntidades->adicionar_entidade(500, 100, 58);*/
 
 
-	texto = new Text();
-	fonte = new Font();
-	if (!fonte->loadFromFile("Arial.ttf")) {
-		cout << "Erro ao carregar a fonte!" << endl;
-	}
-	texto->setFont(*fonte);
-	texto->setString("Teste");
-	texto->setCharacterSize(70);
-	texto->setFillColor(Color::Blue);
-	texto->setPosition(400, 400);
 	executar();
 
 }
@@ -42,6 +35,17 @@ LarrysChallenge::~LarrysChallenge()
 }
 void LarrysChallenge::executar()
 {
+	string arquivo;
+	gerenciadorPersistencia->listar_arquivos();
+	cout << endl;
+	cin >> arquivo;
+	if (gerenciadorPersistencia->pesquisar_lista_arquivos(arquivo))
+		fase = gerenciadorPersistencia->carregar(arquivo, window);
+	else
+		cout << "Arquivo não existente!" << endl;
+
+
+
 	while (window->isOpen()) {
 		Event evnt;
 		while (window->pollEvent(evnt)) {
@@ -52,7 +56,7 @@ void LarrysChallenge::executar()
 			}
 		}
 		window->clear(Color(50, 90, 80, 255));
-		listaEntidades->percorrer();
+		fase->executar();
 
 		/*if (jogador->getCoordenadas().x + jogador->getDimensoes().x < movimentador->getCoordenadas().x ||
 			jogador->getCoordenadas().x > movimentador->getCoordenadas().x + movimentador->getDimensoes().x ||

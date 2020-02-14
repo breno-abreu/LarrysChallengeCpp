@@ -17,7 +17,8 @@ Item::~Item()
 
 void Item::existir()
 {
-	window->draw(entidade);
+	if(existe)
+		window->draw(entidade);
 }
 void Item::setTipo(const int _tipo)
 {

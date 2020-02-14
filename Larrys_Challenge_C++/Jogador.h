@@ -7,6 +7,11 @@ class Jogador : public Personagem
 private:
 	bool acao;
 	bool acaoPressionado;
+	int chaves;
+	int moedas;
+	bool blueOrb;
+	bool redOrb;
+	bool greenOrb;
 
 public:
 	Jogador();
@@ -17,7 +22,19 @@ public:
 	void setMovimentadorx(const float _velocidade);
 	void setMovimentadory(const float _velocidade);
 	bool getAcaoPressionado() const;
-	int getDirecao()const;
+	//int getDirecao()const;
+	void setBlueOrb(const bool _blueOrb);
+	void setRedOrb(const bool _redOrb);
+	void setGreenOrb(const bool _greenOrb);
+	void adicionarMoeda();
+	void adicionarChave();
+	void retirarMoeda();
+	void retirarChave();
+	bool getBlueOrb()const;
+	bool getRedOrb()const;
+	bool getGreenOrb()const;
+	int getChaves()const;
+	int getMoedas()const;
 
 };
 
