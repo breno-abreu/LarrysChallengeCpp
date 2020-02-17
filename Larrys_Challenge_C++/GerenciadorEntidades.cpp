@@ -116,21 +116,21 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 		return chaveE;
 	}
 	else if (tipo == 10) {
-		Coluna* colunaHorizontal = new Coluna(window, &t_colunahorizontal, cx, cy, 4, codigo, 1, 1);
+		Coluna* colunaHorizontal = new Coluna(window, &t_colunahorizontal, cx, cy, 4, codigo, 1, 1, HORIZONTAL);
 		Barreira* colunaHorizontalB = static_cast<Barreira*>(colunaHorizontal);
 		listaBarreiras.push_back(colunaHorizontal);
 		Entidade* colunaHorizontalE = static_cast<Entidade*>(colunaHorizontal);
 		return colunaHorizontalE;
 	}
 	else if (tipo == 11) {
-		Coluna* colunaVerticalDireita = new Coluna(window, &t_colunaverticaldireita, cx, cy, 4, codigo, 1, 1);
+		Coluna* colunaVerticalDireita = new Coluna(window, &t_colunaverticaldireita, cx, cy, 4, codigo, 1, 1, VERTICALDIREITA);
 		Barreira* colunaVerticalDireitaB = static_cast<Barreira*>(colunaVerticalDireita);
 		listaBarreiras.push_back(colunaVerticalDireita);
 		Entidade* colunaVerticalDireitaE = static_cast<Entidade*>(colunaVerticalDireita);
 		return colunaVerticalDireitaE;
 	}
 	else if (tipo == 12) {
-		Coluna* colunaVerticalEsquerda = new Coluna(window, &t_colunaverticalesquerda, cx, cy, 4, codigo, 1, 1);
+		Coluna* colunaVerticalEsquerda = new Coluna(window, &t_colunaverticalesquerda, cx, cy, 4, codigo, 1, 1, VERTICALESQUERDA);
 		Barreira* colunaVerticalEsquerdaB = static_cast<Barreira*>(colunaVerticalEsquerda);
 		listaBarreiras.push_back(colunaVerticalEsquerdaB);
 		Entidade* colunaVerticalEsquerdaE = static_cast<Entidade*>(colunaVerticalEsquerda);

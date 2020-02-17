@@ -18,7 +18,10 @@ enum {
 	REDORB,
 	GREENORB,
 	CHAVE,
-	MOEDA
+	MOEDA,
+	HORIZONTAL,
+	VERTICALDIREITA,
+	VERTICALESQUERDA
 };
 
 using namespace std;

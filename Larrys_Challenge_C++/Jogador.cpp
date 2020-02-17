@@ -22,8 +22,10 @@ Jogador::Jogador(RenderWindow* _window, Texture* _textura, const float cx, const
 	blueOrb = false;
 	redOrb = false;
 	greenOrb = false;
-
 	velocidade = 6;
+
+	dimensoesAux.x -= 6;
+
 }
 Jogador::~Jogador()
 {
@@ -105,7 +107,6 @@ void Jogador::existir()
 			contFrames = 0;
 		}
 	}
-
 	entidade.setTextureRect(IntRect(coordenadasTile.width, coordenadasTile.height, dimensoes.x, dimensoes.y));
 	entidade.setPosition(coordenadas.x, coordenadas.y);
 	//entidade.setSize(Vector2f(dimensoes.x * proporcao, dimensoes.y * proporcao));
@@ -182,4 +183,9 @@ int Jogador::getChaves()const
 int Jogador::getMoedas()const
 {
 	return moedas;
+}
+
+float Jogador::getHitBoxAux()const
+{
+	return hitBoxAux;
 }

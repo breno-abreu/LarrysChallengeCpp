@@ -12,6 +12,7 @@ private:
 	bool blueOrb;
 	bool redOrb;
 	bool greenOrb;
+	float hitBoxAux;
 
 public:
 	Jogador();
@@ -35,6 +36,7 @@ public:
 	bool getGreenOrb()const;
 	int getChaves()const;
 	int getMoedas()const;
+	float getHitBoxAux()const;
 
 };
 

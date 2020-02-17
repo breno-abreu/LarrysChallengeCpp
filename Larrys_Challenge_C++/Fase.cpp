@@ -76,9 +76,9 @@ void Fase::jogador_barreira()
 	Jogador* jogador = gerenciadorEntidades->getJogador();
 
 	for (itr = listaBarreiras.begin(); itr != listaBarreiras.end(); itr++) {
-		if (jogador->getCoordenadas().x < (*itr)->getCoordenadas().x + (*itr)->getDimensoes().x &&
-			jogador->getCoordenadas().x + jogador->getDimensoes().x >(*itr)->getCoordenadas().x&&
-			jogador->getCoordenadas().y < (*itr)->getCoordenadas().y + (*itr)->getDimensoes().y &&
+		if (jogador->getCoordenadas().x  + 6 < (*itr)->getCoordenadas().x + (*itr)->getDimensoes().x &&
+			jogador->getCoordenadas().x + jogador->getDimensoes().x > (*itr)->getCoordenadas().x &&
+			jogador->getCoordenadas().y - 6 < (*itr)->getCoordenadas().y + (*itr)->getDimensoes().y &&
 			jogador->getCoordenadas().y + jogador->getDimensoes().y >(*itr)->getCoordenadas().y) {
 
 			if (jogador->getDirecao() == DIREITA)
@@ -160,11 +160,13 @@ void Fase::jogador_botao()
 	list<Botao*> listaBotoes = gerenciadorEntidades->getListaBotoes();
 	Jogador* jogador = gerenciadorEntidades->getJogador();
 
+	float hitBox = 20;
+
 	for (itr = listaBotoes.begin(); itr != listaBotoes.end(); itr++) {
-		if (jogador->getCoordenadas().x < (*itr)->getCoordenadas().x + (*itr)->getDimensoes().x &&
-			jogador->getCoordenadas().x + jogador->getDimensoes().x >(*itr)->getCoordenadas().x&&
-			jogador->getCoordenadas().y < (*itr)->getCoordenadas().y + (*itr)->getDimensoes().y &&
-			jogador->getCoordenadas().y + jogador->getDimensoes().y >(*itr)->getCoordenadas().y) {
+		if (jogador->getCoordenadas().x < (*itr)->getCoordenadas().x + (*itr)->getDimensoes().x - hitBox &&
+			jogador->getCoordenadas().x + jogador->getDimensoes().x >(*itr)->getCoordenadas().x + hitBox &&
+			jogador->getCoordenadas().y < (*itr)->getCoordenadas().y + (*itr)->getDimensoes().y - hitBox * 2 &&
+			jogador->getCoordenadas().y + jogador->getDimensoes().y >(*itr)->getCoordenadas().y + hitBox) {
 
 			(*itr)->setAtivado(true);
 		}
