@@ -1,11 +1,13 @@
 #include "LarrysChallenge.h"
 
-LarrysChallenge::LarrysChallenge()
+LarrysChallenge::LarrysChallenge():
+	comprimentoTela(1600),
+	alturaTela(900)
 {
-	window = new RenderWindow(VideoMode(1600, 900), "Larry's Challenge", Style::Close);
+	window = new RenderWindow(VideoMode(1600, 900), "Larry's Challenge", Style::Close | Style::Resize);
 	
 	window->setFramerateLimit(60);
-	window->setMouseCursorVisible(false);
+	//window->setMouseCursorVisible(false);
 	//listaEntidades->adicionar_entidade(100, 100);
 	aux = true;
 	
@@ -24,6 +26,8 @@ LarrysChallenge::LarrysChallenge()
 	listaEntidades->adicionar_entidade(400, 100, 57);
 	listaEntidades->adicionar_entidade(500, 100, 58);*/
 
+	view = new View(Vector2f(0, 0), Vector2f(1600, 900));
+
 
 	executar();
 
@@ -36,13 +40,20 @@ LarrysChallenge::~LarrysChallenge()
 void LarrysChallenge::executar()
 {
 	string arquivo;
-	gerenciadorPersistencia->listar_arquivos();
-	cout << endl;
-	cin >> arquivo;
-	if (gerenciadorPersistencia->pesquisar_lista_arquivos(arquivo))
-		fase = gerenciadorPersistencia->carregar(arquivo, window);
-	else
-		cout << "Arquivo não existente!" << endl;
+	bool done = false;
+	while (!done) {
+		system("cls");
+		gerenciadorPersistencia->listar_arquivos();
+		cout << endl;
+		cin >> arquivo;
+		if (gerenciadorPersistencia->pesquisar_lista_arquivos(arquivo)) {
+			fase = gerenciadorPersistencia->carregar(arquivo, window);
+			done = true;
+		}
+		else
+			cout << "Arquivo não existente!\nEscolha outro arquivo:" << endl;
+	}
+	
 
 
 
@@ -53,10 +64,49 @@ void LarrysChallenge::executar()
 			case Event::Closed:
 				window->close();
 				break;
+			case Event::Resized:
+				view->setSize((float)evnt.size.width, (float)evnt.size.height);
+				break;
 			}
 		}
+
+		view->setCenter(fase->getCoordenadasJogador());
 		window->clear(Color(50, 90, 80, 255));
+		window->setView(*view);
 		fase->executar();
+
+		if (!fase->getJogadorVivo()) {
+
+			
+			system("cls");
+			string opcao;
+			cout << "Voce perdeu!\nO Que deseja fazer?" << endl;
+			cin >> opcao;
+
+			done = false;
+
+			if (opcao == "Recomecar" || opcao == "recomecar")
+				fase = gerenciadorPersistencia->carregar(arquivo, window);
+
+			
+			else if (opcao == "mudarfase") {
+
+				while (!done) {
+					system("cls");
+					gerenciadorPersistencia->listar_arquivos();
+					cout << endl;
+					cin >> arquivo;
+					if (gerenciadorPersistencia->pesquisar_lista_arquivos(arquivo)) {
+						fase = gerenciadorPersistencia->carregar(arquivo, window);
+						done = true;
+					}
+					else
+						cout << "Arquivo não existente!" << endl;
+				}
+			}
+			
+		}
+		
 
 		/*if (jogador->getCoordenadas().x + jogador->getDimensoes().x < movimentador->getCoordenadas().x ||
 			jogador->getCoordenadas().x > movimentador->getCoordenadas().x + movimentador->getDimensoes().x ||

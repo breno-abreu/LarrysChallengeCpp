@@ -49,5 +49,7 @@ public:
 	void jogador_interativo();
 	void jogador_caixas();
 	void jogador_portais();
+	Vector2f getCoordenadasJogador()const;
+	bool getJogadorVivo()const;
 };
 

@@ -33,6 +33,10 @@ private:
 
 	GerenciadorEntidades* gerenciadorEntidades;
 
+	View* view;
+	const float comprimentoTela;
+	const float alturaTela;
+
 
 	list<Letal*> listaLetais;
 	list<Barreira*> listaBarreiras;

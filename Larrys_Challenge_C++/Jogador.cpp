@@ -24,6 +24,8 @@ Jogador::Jogador(RenderWindow* _window, Texture* _textura, const float cx, const
 	greenOrb = false;
 	velocidade = 6;
 
+	existe = true;
+
 	dimensoesAux.x -= 6;
 
 }

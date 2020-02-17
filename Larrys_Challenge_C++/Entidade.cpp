@@ -9,7 +9,7 @@ Entidade::Entidade()
 	profundidade = 0;
 	dimensoes.x = 0;
 	dimensoes.y = 0;
-	existe = false;
+	existe = true;
 	proporcao = 0;
 	window = NULL;
 	textura = NULL;

@@ -22,6 +22,8 @@ Escada::Escada(RenderWindow* _window, Texture* _textura, const float cx, const f
 	else if(tipo == BAIXO)
 		coordenadasTile.width = dimensoes.x;
 
+
+
 	entidade.setTextureRect(IntRect(coordenadasTile.width, coordenadasTile.height, dimensoes.x, dimensoes.y));
 }
 Escada::~Escada()

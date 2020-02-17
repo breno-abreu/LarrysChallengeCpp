@@ -41,6 +41,20 @@ void Fase::executar()
 	jogador_portais();
 }
 
+Vector2f Fase::getCoordenadasJogador()const
+{
+	Jogador* jogador = gerenciadorEntidades->getJogador();
+	Vector2f coordenadas =  jogador->getCoordenadas();
+	coordenadas.y += 100;
+	return coordenadas;
+}
+
+bool Fase::getJogadorVivo()const
+{
+	Jogador* jogador = gerenciadorEntidades->getJogador();
+	return jogador->getExiste();
+}
+
 void Fase::jogador_item()
 {
 	list<Item*>::iterator itr;
