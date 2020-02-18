@@ -86,6 +86,7 @@ private:
 	list<Botao*> listaBotoes;
 	list<ParedeLevadica*> listaParedesLevadicas;
 	list<Espinhos*> listaEspinhos;
+	list<Atirador*> listaAtiradores;
 	list<Interativo*> listaPortais;
 	Jogador* jogadorJ;
 
@@ -108,6 +109,8 @@ public:
 	GerenciadorEntidades(RenderWindow *_window);
 	~GerenciadorEntidades();
 	Entidade* adicionar_entidade(const float cx, const float cy, const int tipo, const int codigo);
+	void excluir_itens();
+	void excluir_flechas();
 	list<Letal*> getListaLetais()const;
 	list<Barreira*> getListaBarreiras()const;
 	list<Interativo*> getListaInterativos()const;
@@ -123,6 +126,7 @@ public:
 	list<ParedeLevadica*> getListaParedesLevadicas()const;
 	list<Espinhos*> getListaEspinhos()const;
 	list<Interativo*> getListaPortais()const;
+	list<Atirador*> getListaAtiradores()const;
 	Jogador* getJogador()const;
 };
 

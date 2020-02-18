@@ -14,6 +14,7 @@
 #include "Abismo.h"
 #include "Inimigo.h"
 #include "ParedeLevadica.h"
+#include "Atirador.h"
 
 class Fase
 {
@@ -51,5 +52,9 @@ public:
 	void jogador_portais();
 	Vector2f getCoordenadasJogador()const;
 	bool getJogadorVivo()const;
+	void excluir_entidades();
+	void atiradores();
+	void flecha_barreira();
+	void jogador_flecha();
 };
 

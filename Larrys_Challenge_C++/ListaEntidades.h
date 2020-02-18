@@ -17,7 +17,7 @@ public:
 	ListaEntidades(RenderWindow* _window, GerenciadorEntidades* _gerenciador);
 	~ListaEntidades();
 	void adicionar_entidade(const float cx, const float cy, const int tipo);
-	void excluir_entidade(const int _codigo);
+	void excluir_entidades();
 	void percorrer();
 	void limpar();
 	void ordenar();

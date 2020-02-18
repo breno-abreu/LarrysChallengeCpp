@@ -54,9 +54,6 @@ void LarrysChallenge::executar()
 			cout << "Arquivo não existente!\nEscolha outro arquivo:" << endl;
 	}
 	
-
-
-
 	while (window->isOpen()) {
 		Event evnt;
 		while (window->pollEvent(evnt)) {
@@ -85,7 +82,7 @@ void LarrysChallenge::executar()
 
 			done = false;
 
-			if (opcao == "Recomecar" || opcao == "recomecar")
+			if (opcao == "Recomecar" || opcao == "recomecar" || opcao == "r")
 				fase = gerenciadorPersistencia->carregar(arquivo, window);
 
 			

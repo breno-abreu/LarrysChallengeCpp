@@ -15,5 +15,6 @@ public:
 	virtual void existir() = 0;
 	float getVelocidade()const;
 	int getDirecao()const;
+	void setVelocidade(const float _velocidade);
 };
 

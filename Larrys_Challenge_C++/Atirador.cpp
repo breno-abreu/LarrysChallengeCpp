@@ -11,9 +11,10 @@ Atirador::Atirador(RenderWindow* _window, Texture* _textura, const float cx, con
 {
 	direcao = _direcao;
 	contAtivar = 0;
-	velAtivar = 10;
+	velAtivar = 100;
 	ativo = false;
 	coordenadasTile.height = 0;
+	classe = 1;
 	/*quantidadeTile.x = 4;
 	quantidadeTile.y = 1;
 	dimensoes.x = (textura->getSize().x / quantidadeTile.x);

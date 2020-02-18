@@ -30,7 +30,7 @@ Entidade::Entidade(RenderWindow* _window, Texture* _textura, const float cx, con
 	/*quantidadeTile.x = 1;
 	quantidadeTile.y = 1;*/
 	existe = true;
-	
+	classe = 0;
 	contAnimacao = 0;
 	velAnimacao = 7;
 	contFrames = 0;
@@ -58,6 +58,11 @@ Entidade::Entidade(RenderWindow* _window, Texture* _textura, const float cx, con
 Entidade::~Entidade()
 {
 	delete textura;
+}
+
+int Entidade::getClasse()const
+{
+	return classe;
 }
 
 Vector2f Entidade::getCoordenadas() const

@@ -16,7 +16,7 @@ protected:
 	Vector2f dimensoesAux;
 	Vector2f hitBox;
 	int conexao;
-
+	int classe;
 	IntRect coordenadasTile;
 	Vector2i quantidadeTile;
 	RenderWindow* window;
@@ -37,5 +37,6 @@ public:
 	void setxEntidade(const float x);
 	void setyEntidade(const float y);
 	int getCodigo()const;
+	int getClasse()const;
 };
 

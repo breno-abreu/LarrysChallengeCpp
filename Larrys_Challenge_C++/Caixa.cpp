@@ -4,10 +4,15 @@ Caixa::Caixa()
 {
 	peso = 0;
 }
-Caixa::Caixa(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo, const int _xTile, const int _yTile, const float _peso):
+Caixa::Caixa(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo, const int _xTile, const int _yTile, const int _tipo):
 	Entidade(_window, _textura, cx, cy, _profundidade, _codigo, _xTile, _yTile)
 {
-	peso = _peso;
+	tipo = _tipo;
+
+	if (tipo == LEVE)
+		peso = 3;
+	else
+		peso = 5;
 }
 Caixa::~Caixa()
 {
@@ -25,4 +30,8 @@ void Caixa::setPeso(const float _peso)
 float Caixa::getPeso()const
 {
 	return peso;
+}
+int Caixa::getTipo()const
+{
+	return tipo;
 }

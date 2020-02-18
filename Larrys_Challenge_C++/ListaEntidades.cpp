@@ -24,12 +24,13 @@ void ListaEntidades::adicionar_entidade(const float cx, const float cy, const in
 	listaEntidades.push_back(entidade);
 	ordenar();
 }
-void ListaEntidades::excluir_entidade(const int _codigo)
+void ListaEntidades::excluir_entidades()
 {
 	list<Entidade*>::iterator itr;
 	for (itr = listaEntidades.begin(); itr != listaEntidades.end(); itr++) {
-		if ((*itr)->getCodigo() == _codigo) {
+		if (!(*itr)->getExiste()) {
 			listaEntidades.erase(itr);
+			break;
 		}
 	}
 }

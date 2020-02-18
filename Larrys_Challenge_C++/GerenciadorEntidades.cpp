@@ -52,6 +52,28 @@ GerenciadorEntidades::~GerenciadorEntidades()
 
 }
 
+void GerenciadorEntidades::excluir_itens()
+{
+	list<Item*>::iterator itr;
+	for (itr = listaItens.begin(); itr != listaItens.end(); itr++) {
+		if (!(*itr)->getExiste()) {
+			listaItens.erase(itr);
+			break;
+		}
+	}
+}
+
+void GerenciadorEntidades::excluir_flechas()
+{
+	list<Flecha*>::iterator itr;
+	for (itr = listaFlechas.begin(); itr != listaFlechas.end(); itr++) {
+		if (!(*itr)->getExiste()) {
+			listaFlechas.erase(itr);
+			break;
+		}
+	}
+}
+
 Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float cy, const int tipo, const int codigo)
 {
 	if (tipo == 0) {
@@ -63,25 +85,25 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 	}
 
 	else if (tipo == 1) {
-		Item* blueOrb = new Item(window, &t_blueorb, cx, cy, 3, codigo, 1, 1, BLUEORB);
+		Item* blueOrb = new Item(window, &t_blueorb, cx, cy, 2, codigo, 1, 1, BLUEORB);
 		listaItens.push_back(blueOrb);
 		Entidade* blueOrbE = static_cast<Entidade*>(blueOrb);
 		return blueOrbE;
 	}
 	else if (tipo == 2) {
-		Item* redOrb = new Item(window, &t_redorb, cx, cy, 3, codigo, 1, 1, REDORB);
+		Item* redOrb = new Item(window, &t_redorb, cx, cy, 2, codigo, 1, 1, REDORB);
 		listaItens.push_back(redOrb);
 		Entidade* redOrbE = static_cast<Entidade*>(redOrb);
 		return redOrbE;
 	}
 	else if (tipo == 3) {
-		Item* greenOrb = new Item(window, &t_greenorb, cx, cy, 3, codigo, 1, 1, GREENORB);
+		Item* greenOrb = new Item(window, &t_greenorb, cx, cy, 2, codigo, 1, 1, GREENORB);
 		listaItens.push_back(greenOrb);
 		Entidade* greenOrbE = static_cast<Entidade*>(greenOrb);
 		return greenOrbE;
 	}
 	else if (tipo == 4) {
-		Item* moeda = new Item(window, &t_moeda, cx, cy, 3, codigo, 1, 1, MOEDA);
+		Item* moeda = new Item(window, &t_moeda, cx, cy, 2, codigo, 1, 1, MOEDA);
 		listaItens.push_back(moeda);
 		Entidade* moedaE = static_cast<Entidade*>(moeda);
 		return moedaE;
@@ -93,13 +115,13 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 		return paredeLevadicaE;
 	}
 	else if (tipo == 6) {
-		Caixa* caixaLeve = new Caixa(window, &t_caixaleve, cx, cy, 3, codigo, 1, 1, 3);
+		Caixa* caixaLeve = new Caixa(window, &t_caixaleve, cx, cy, 3, codigo, 1, 1, LEVE);
 		listaCaixas.push_back(caixaLeve);
 		Entidade* caixaLeveE = static_cast<Entidade*>(caixaLeve);
 		return caixaLeveE;
 	}
 	else if (tipo == 7) {
-		Caixa* caixaPesada = new Caixa(window, &t_caixapesada, cx, cy, 3, codigo, 1, 1, 5);
+		Caixa* caixaPesada = new Caixa(window, &t_caixapesada, cx, cy, 3, codigo, 1, 1, PESADA);	
 		listaCaixas.push_back(caixaPesada);
 		Entidade* caixaPesadaE = static_cast<Entidade*>(caixaPesada);
 		return caixaPesadaE;
@@ -110,7 +132,7 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 		return chaoE;
 	}
 	else if (tipo == 9) {
-		Item* chave = new Item(window, &t_chave, cx, cy, 3, codigo, 1, 1, CHAVE);
+		Item* chave = new Item(window, &t_chave, cx, cy, 2, codigo, 1, 1, CHAVE);
 		listaItens.push_back(chave);
 		Entidade* chaveE = static_cast<Entidade*>(chave);
 		return chaveE;
@@ -361,6 +383,7 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 	}
 	else if (tipo == 48) {
 		Atirador* atiradorBaixo = new Atirador(window, &t_atirador, cx, cy, 3, codigo, 4, 1, BAIXO);
+		listaAtiradores.push_back(atiradorBaixo);
 		Barreira* atiradorBaixoAux = static_cast<Barreira*>(atiradorBaixo);
 		listaBarreiras.push_back(atiradorBaixo);
 		Entidade* atiradorBaixoE = static_cast<Entidade*>(atiradorBaixo);
@@ -368,6 +391,7 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 	}
 	else if (tipo == 49) {
 		Atirador* atiradorEsquerda = new Atirador(window, &t_atirador, cx, cy, 3, codigo, 4, 1, ESQUERDA);
+		listaAtiradores.push_back(atiradorEsquerda);
 		Barreira* atiradorEsquerdaAux = static_cast<Barreira*>(atiradorEsquerda);
 		listaBarreiras.push_back(atiradorEsquerda);
 		Entidade* atiradorEsquerdaE = static_cast<Entidade*>(atiradorEsquerda);
@@ -375,6 +399,7 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 	}
 	else if (tipo == 50) {
 		Atirador* atiradorDireita = new Atirador(window, &t_atirador, cx, cy, 3, codigo, 4, 1, DIREITA);
+		listaAtiradores.push_back(atiradorDireita);
 		Barreira* atiradorDireitaAux = static_cast<Barreira*>(atiradorDireita);
 		listaBarreiras.push_back(atiradorDireita);
 		Entidade* atiradorDireitaE = static_cast<Entidade*>(atiradorDireita);
@@ -382,6 +407,7 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 	}
 	else if (tipo == 51) {
 		Atirador* atiradorCima = new Atirador(window, &t_atirador, cx, cy, 3, codigo, 4, 1, CIMA);
+		listaAtiradores.push_back(atiradorCima);
 		Barreira* atiradorCimaAux = static_cast<Barreira*>(atiradorCima);
 		listaBarreiras.push_back(atiradorCima);
 		Entidade* atiradorCimaE = static_cast<Entidade*>(atiradorCima);
@@ -432,6 +458,30 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 		listaBotoes.push_back(botao);
 		Entidade* botaoE = static_cast<Entidade*>(botao);
 		return botaoE;
+	}
+	else if (tipo == 100) {
+		Flecha* flechaCima = new Flecha(window, &t_flecha, cx, cy, 2, codigo, 1, 1, CIMA);
+		listaFlechas.push_back(flechaCima);
+		Entidade* flechaCimaE = static_cast<Entidade*>(flechaCima);
+		return flechaCimaE;
+	}
+	else if (tipo == 101) {
+		Flecha* flechaBaixo = new Flecha(window, &t_flecha, cx, cy, 2, codigo, 1, 1, BAIXO);
+		listaFlechas.push_back(flechaBaixo);
+		Entidade* flechaBaixoE = static_cast<Entidade*>(flechaBaixo);
+		return flechaBaixoE;
+	}
+	else if (tipo == 102) {
+		Flecha* flechaDireita = new Flecha(window, &t_flecha, cx, cy, 2, codigo, 1, 1, DIREITA);
+		listaFlechas.push_back(flechaDireita);
+		Entidade* flechaDireitaE = static_cast<Entidade*>(flechaDireita);
+		return flechaDireitaE;
+	}
+	else if (tipo == 103) {
+		Flecha* flechaEsquerda = new Flecha(window, &t_flecha, cx, cy, 2, codigo, 1, 1, ESQUERDA);
+		listaFlechas.push_back(flechaEsquerda);
+		Entidade* flechaEsquerdaE = static_cast<Entidade*>(flechaEsquerda);
+		return flechaEsquerdaE;
 	}
 }
 
@@ -504,4 +554,8 @@ list<Espinhos*> GerenciadorEntidades::getListaEspinhos()const
 list<Interativo*> GerenciadorEntidades::getListaPortais()const
 {
 	return listaPortais;
+}
+list<Atirador*> GerenciadorEntidades::getListaAtiradores()const
+{
+	return listaAtiradores;
 }

@@ -9,7 +9,15 @@ Flecha::Flecha(RenderWindow* _window, Texture* _textura, const float cx, const f
 	Letal(_window, _textura, cx, cy, _profundidade, _codigo, _xTile, _yTile)
 {
 	direcao = _direcao;
-	velocidade = 6.0;
+	velocidade = 10;
+	if (direcao == BAIXO)
+		entidade.rotate(270);
+	/*else if (direcao == ESQUERDA)
+		entidade.rotate(180);*/	
+	else if (direcao == DIREITA)
+		entidade.rotate(180);
+	else if (direcao == CIMA)
+		entidade.rotate(90);
 }
 Flecha::~Flecha()
 {

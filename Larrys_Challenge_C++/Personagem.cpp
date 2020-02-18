@@ -26,3 +26,8 @@ int Personagem::getDirecao()const
 {
 	return direcao;
 }
+
+void Personagem::setVelocidade(const float _velocidade)
+{
+	velocidade = _velocidade;
+}
