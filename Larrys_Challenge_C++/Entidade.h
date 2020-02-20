@@ -14,7 +14,7 @@ protected:
 	int velAnimacao;
 	int contFrames;
 	Vector2f dimensoesAux;
-	Vector2f hitBox;
+	FloatRect hitBox;
 	int conexao;
 	int classe;
 	IntRect coordenadasTile;
@@ -22,6 +22,8 @@ protected:
 	RenderWindow* window;
 	RectangleShape entidade;
 	Texture* textura;
+
+	
 
 
 public:
@@ -38,5 +40,6 @@ public:
 	void setyEntidade(const float y);
 	int getCodigo()const;
 	int getClasse()const;
+	FloatRect getHitBox();
 };
 

@@ -7,6 +7,7 @@ class Caixa : public Entidade
 private:
 	float peso;
 	int tipo;
+	bool bloqueado;
 
 public:
 	Caixa();

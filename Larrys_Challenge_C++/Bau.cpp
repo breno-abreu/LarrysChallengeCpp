@@ -16,6 +16,7 @@ Bau::Bau(RenderWindow* _window, Texture* _textura, const float cx, const float c
 	coordenadasTile.height = 0;
 	coordenadasTile.width = 0;
 	velAnimacao = 7;
+	classe = 3;
 	fim = false;
 	//entidade.setSize(dimensoesAux);
 }
@@ -38,6 +39,9 @@ void Bau::existir()
 		contAnimacao++;
 	}
 
+	
 	entidade.setTextureRect(IntRect(coordenadasTile.width, coordenadasTile.height, dimensoes.x, dimensoes.y));
+	
 	window->draw(entidade);
+	
 }

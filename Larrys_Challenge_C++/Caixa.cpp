@@ -13,6 +13,13 @@ Caixa::Caixa(RenderWindow* _window, Texture* _textura, const float cx, const flo
 		peso = 3;
 	else
 		peso = 5;
+
+	bloqueado = false;
+
+	hitBox.height = int(dimensoesAux.y);
+	hitBox.width = int(dimensoesAux.x);
+	hitBox.left = int(coordenadas.x);
+	hitBox.top = int(coordenadas.y);
 }
 Caixa::~Caixa()
 {
@@ -20,6 +27,13 @@ Caixa::~Caixa()
 }
 void Caixa::existir()
 {
+	hitBox.width = dimensoesAux.x;
+	hitBox.height = dimensoesAux.y;
+	hitBox.left = coordenadas.x;
+	hitBox.top = coordenadas.y;
+
+	
+
 	entidade.setPosition(coordenadas.x, coordenadas.y);
 	window->draw(entidade);
 }

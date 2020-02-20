@@ -46,13 +46,36 @@ void Fase::executar()
 	atiradores();
 	flecha_barreira();
 	jogador_flecha();
+	flecha_caixa();
+	caixa_botao();
+	
+	
+}
+
+bool Fase::verificar_colisao(Entidade* a, Entidade* b)
+{
+	if (a->getHitBox().left < b->getHitBox().left + b->getHitBox().width &&
+		a->getHitBox().left + a->getHitBox().width > b->getHitBox().left &&
+		a->getHitBox().top < b->getHitBox().top + b->getHitBox().height &&
+		a->getHitBox().top + a->getHitBox().height > b->getHitBox().top) {
+		return true;
+	}
+	return false;
+
+	/*if (a->getCoordenadas().x < b->getCoordenadas().x + b->getDimensoes().x &&
+		a->getCoordenadas().x + a->getDimensoes().x > b->getCoordenadas().x &&
+		a->getCoordenadas().y < b->getCoordenadas().y + b->getDimensoes().y &&
+		a->getCoordenadas().y + a->getDimensoes().y > b->getCoordenadas().y) {
+		return true;
+	}
+	return false;*/
 }
 
 
 Vector2f Fase::getCoordenadasJogador()const
 {
 	Jogador* jogador = gerenciadorEntidades->getJogador();
-	Vector2f coordenadas =  jogador->getCoordenadas();
+	Vector2f coordenadas = jogador->getCoordenadas();
 	coordenadas.y += 100;
 	return coordenadas;
 }
@@ -71,11 +94,7 @@ void Fase::jogador_item()
 	bool excluir = false;
 
 	for (itr = listaItens.begin(); itr != listaItens.end(); itr++) {
-		if (jogador->getCoordenadas().x < (*itr)->getCoordenadas().x + (*itr)->getDimensoes().x &&
-			jogador->getCoordenadas().x + jogador->getDimensoes().x >(*itr)->getCoordenadas().x &&
-			jogador->getCoordenadas().y < (*itr)->getCoordenadas().y + (*itr)->getDimensoes().y &&
-			jogador->getCoordenadas().y + jogador->getDimensoes().y > (*itr)->getCoordenadas().y) {
-
+		if (verificar_colisao(jogador, (*itr))) {
 			if ((*itr)->getExiste())
 				(*itr)->setExiste(false);
 
@@ -106,10 +125,7 @@ void Fase::jogador_barreira()
 	Jogador* jogador = gerenciadorEntidades->getJogador();
 
 	for (itr = listaBarreiras.begin(); itr != listaBarreiras.end(); itr++) {
-		if (jogador->getCoordenadas().x  + 6 < (*itr)->getCoordenadas().x + (*itr)->getDimensoes().x &&
-			jogador->getCoordenadas().x + jogador->getDimensoes().x > (*itr)->getCoordenadas().x &&
-			jogador->getCoordenadas().y - 6 < (*itr)->getCoordenadas().y + (*itr)->getDimensoes().y &&
-			jogador->getCoordenadas().y + jogador->getDimensoes().y >(*itr)->getCoordenadas().y) {
+		if (verificar_colisao(jogador, (*itr))) {
 
 			if (jogador->getDirecao() == DIREITA)
 				jogador->setxEntidade(jogador->getCoordenadas().x - jogador->getVelocidade());
@@ -120,6 +136,7 @@ void Fase::jogador_barreira()
 			else if (jogador->getDirecao() == BAIXO)
 				jogador->setyEntidade(jogador->getCoordenadas().y - jogador->getVelocidade());
 				
+			break;
 		}
 	}
 }
@@ -132,11 +149,7 @@ void Fase::jogador_abismo()
 	float aux = 20;
 
 	for (itr = listaAbismo.begin(); itr != listaAbismo.end(); itr++) {
-		if (jogador->getCoordenadas().x < (*itr)->getCoordenadas().x + (*itr)->getDimensoes().x - aux &&
-			jogador->getCoordenadas().x + jogador->getDimensoes().x >(*itr)->getCoordenadas().x + aux &&
-			jogador->getCoordenadas().y < (*itr)->getCoordenadas().y + (*itr)->getDimensoes().y - aux * 2 &&
-			jogador->getCoordenadas().y + jogador->getDimensoes().y >(*itr)->getCoordenadas().y + aux) {
-
+		if (verificar_colisao(jogador, (*itr))) {
 			jogador->setExiste(false);
 		}
 	}
@@ -149,10 +162,7 @@ void Fase::jogador_inimigo()
 	Jogador* jogador = gerenciadorEntidades->getJogador();
 
 	for (itr = listaInimigos.begin(); itr != listaInimigos.end(); itr++) {
-		if (jogador->getCoordenadas().x < (*itr)->getCoordenadas().x + (*itr)->getDimensoes().x &&
-			jogador->getCoordenadas().x + jogador->getDimensoes().x >(*itr)->getCoordenadas().x&&
-			jogador->getCoordenadas().y < (*itr)->getCoordenadas().y + (*itr)->getDimensoes().y &&
-			jogador->getCoordenadas().y + jogador->getDimensoes().y >(*itr)->getCoordenadas().y) {
+		if (verificar_colisao(jogador, (*itr))) {
 
 			jogador->setExiste(false);
 		}
@@ -170,10 +180,7 @@ void Fase::jogador_movimentador()
 	for (itr = listaMovimentadores.begin(); itr != listaMovimentadores.end(); itr++) {
 
 		if (!jogador->getGreenOrb()) {
-			if (jogador->getCoordenadas().x < (*itr)->getCoordenadas().x + (*itr)->getDimensoes().x &&
-				jogador->getCoordenadas().x + jogador->getDimensoes().x >(*itr)->getCoordenadas().x&&
-				jogador->getCoordenadas().y < (*itr)->getCoordenadas().y + (*itr)->getDimensoes().y &&
-				jogador->getCoordenadas().y + jogador->getDimensoes().y >(*itr)->getCoordenadas().y) {
+			if (verificar_colisao(jogador, (*itr))) {
 
 				if ((*itr)->getDirecao() == DIREITA)
 					jogador->setMovimentadorx(velocidade);
@@ -197,10 +204,7 @@ void Fase::jogador_botao()
 	float hitBox = 20;
 
 	for (itr = listaBotoes.begin(); itr != listaBotoes.end(); itr++) {
-		if (jogador->getCoordenadas().x < (*itr)->getCoordenadas().x + (*itr)->getDimensoes().x - hitBox &&
-			jogador->getCoordenadas().x + jogador->getDimensoes().x >(*itr)->getCoordenadas().x + hitBox &&
-			jogador->getCoordenadas().y < (*itr)->getCoordenadas().y + (*itr)->getDimensoes().y - hitBox * 2 &&
-			jogador->getCoordenadas().y + jogador->getDimensoes().y >(*itr)->getCoordenadas().y + hitBox) {
+		if (verificar_colisao(jogador, (*itr))) {
 
 			(*itr)->setAtivado(true);
 		}
@@ -216,10 +220,7 @@ void Fase::jogador_parede_levadica()
 	Jogador* jogador = gerenciadorEntidades->getJogador();
 
 	for (itr = listaParedesLevadicas.begin(); itr != listaParedesLevadicas.end(); itr++) {
-		if (jogador->getCoordenadas().x < (*itr)->getCoordenadas().x + (*itr)->getDimensoes().x &&
-			jogador->getCoordenadas().x + jogador->getDimensoes().x >(*itr)->getCoordenadas().x &&
-			jogador->getCoordenadas().y < (*itr)->getCoordenadas().y + (*itr)->getDimensoes().y &&
-			jogador->getCoordenadas().y + jogador->getDimensoes().y >(*itr)->getCoordenadas().y) {
+		if (verificar_colisao(jogador, (*itr))) {
 
 			(*itr)->setEmCima(true);
 
@@ -249,10 +250,7 @@ void Fase::jogador_espinhos()
 	Jogador* jogador = gerenciadorEntidades->getJogador();
 
 	for (itr = listaEspinhos.begin(); itr != listaEspinhos.end(); itr++) {
-		if (jogador->getCoordenadas().x < (*itr)->getCoordenadas().x + (*itr)->getDimensoes().x &&
-			jogador->getCoordenadas().x + jogador->getDimensoes().x >(*itr)->getCoordenadas().x&&
-			jogador->getCoordenadas().y < (*itr)->getCoordenadas().y + (*itr)->getDimensoes().y &&
-			jogador->getCoordenadas().y + jogador->getDimensoes().y >(*itr)->getCoordenadas().y) {
+		if (verificar_colisao(jogador, (*itr))) {
 
 			if (!(*itr)->getDesativado()){
 				jogador->setExiste(false);
@@ -268,25 +266,46 @@ void Fase::jogador_interativo()
 	Jogador* jogador = gerenciadorEntidades->getJogador();
 
 	for (itr = listaInterativos.begin(); itr != listaInterativos.end(); itr++) {
-		if (jogador->getCoordenadas().x < (*itr)->getCoordenadas().x + (*itr)->getDimensoes().x &&
-			jogador->getCoordenadas().x + jogador->getDimensoes().x >(*itr)->getCoordenadas().x&&
-			jogador->getCoordenadas().y < (*itr)->getCoordenadas().y + (*itr)->getDimensoes().y &&
-			jogador->getCoordenadas().y + jogador->getDimensoes().y >(*itr)->getCoordenadas().y) {
+		if (verificar_colisao(jogador, (*itr))) {
 
-			if (jogador->getAcao() && (*itr)->getAtivado())
-				(*itr)->setAtivado(false);
+			if ((*itr)->getClasse() != 2) {
+				if (jogador->getDirecao() == DIREITA)
+					jogador->setxEntidade(jogador->getCoordenadas().x - jogador->getVelocidade());
+				else if (jogador->getDirecao() == ESQUERDA)
+					jogador->setxEntidade(jogador->getCoordenadas().x + jogador->getVelocidade());
+				else if (jogador->getDirecao() == CIMA)
+					jogador->setyEntidade(jogador->getCoordenadas().y + jogador->getVelocidade());
+				else if (jogador->getDirecao() == BAIXO)
+					jogador->setyEntidade(jogador->getCoordenadas().y - jogador->getVelocidade());
 
-			else if (jogador->getAcao() && !(*itr)->getAtivado())
-				(*itr)->setAtivado(true);
+				if ((*itr)->getClasse() == 3) {
+					if(jogador->getMoedas() >= gerenciadorEntidades->getQuantidadeMoedas() && (jogador->getAcao() && !(*itr)->getAtivado()))
+						(*itr)->setAtivado(true);
+				}
+				else {
+					if (jogador->getAcao() && (*itr)->getAtivado())
+						(*itr)->setAtivado(false);
 
-			if (jogador->getDirecao() == DIREITA)
-				jogador->setxEntidade(jogador->getCoordenadas().x - jogador->getVelocidade());
-			else if (jogador->getDirecao() == ESQUERDA)
-				jogador->setxEntidade(jogador->getCoordenadas().x + jogador->getVelocidade());
-			else if (jogador->getDirecao() == CIMA)
-				jogador->setyEntidade(jogador->getCoordenadas().y + jogador->getVelocidade());
-			else if (jogador->getDirecao() == BAIXO)
-				jogador->setyEntidade(jogador->getCoordenadas().y - jogador->getVelocidade());
+					else if (jogador->getAcao() && !(*itr)->getAtivado())
+						(*itr)->setAtivado(true);
+				}
+			}
+			else {
+				if (!(*itr)->getAtivado()) {
+					if (verificar_colisao(jogador, (*itr))) {
+
+						if (jogador->getDirecao() == CIMA)
+							jogador->setyEntidade(jogador->getCoordenadas().y + jogador->getVelocidade());
+						else if (jogador->getDirecao() == BAIXO)
+							jogador->setyEntidade(jogador->getCoordenadas().y - jogador->getVelocidade());
+					}
+
+					if (jogador->getAcao() && !(*itr)->getAtivado() && jogador->getChaves() > 0) {
+						(*itr)->setAtivado(true);
+						jogador->retirarChave();
+					}
+				}
+			}
 		}
 	}
 }
@@ -298,10 +317,7 @@ void Fase::jogador_caixas()
 	Jogador* jogador = gerenciadorEntidades->getJogador();
 
 	for (itr = listaCaixas.begin(); itr != listaCaixas.end(); itr++) {
-		if (jogador->getCoordenadas().x < (*itr)->getCoordenadas().x + (*itr)->getDimensoes().x &&
-			jogador->getCoordenadas().x + jogador->getDimensoes().x >(*itr)->getCoordenadas().x&&
-			jogador->getCoordenadas().y < (*itr)->getCoordenadas().y + (*itr)->getDimensoes().y &&
-			jogador->getCoordenadas().y + jogador->getDimensoes().y >(*itr)->getCoordenadas().y) {
+		if (verificar_colisao(jogador, (*itr))) {
 
 			if ((*itr)->getTipo() == LEVE || ((*itr)->getTipo() == PESADA && jogador->getRedOrb())) {
 				if (jogador->getDirecao() == DIREITA) {
@@ -335,6 +351,7 @@ void Fase::jogador_caixas()
 				else if (jogador->getDirecao() == BAIXO)
 					jogador->setyEntidade(jogador->getCoordenadas().y - jogador->getVelocidade());
 			}
+			break;
 		}
 	}
 }
@@ -346,10 +363,7 @@ void Fase::jogador_portais()
 	Jogador* jogador = gerenciadorEntidades->getJogador();
 
 	for (itr = listaPortais.begin(); itr != listaPortais.end(); itr++) {
-		if (jogador->getCoordenadas().x < (*itr)->getCoordenadas().x + (*itr)->getDimensoes().x &&
-			jogador->getCoordenadas().x + jogador->getDimensoes().x >(*itr)->getCoordenadas().x&&
-			jogador->getCoordenadas().y < (*itr)->getCoordenadas().y + (*itr)->getDimensoes().y &&
-			jogador->getCoordenadas().y + jogador->getDimensoes().y >(*itr)->getCoordenadas().y) {
+		if (verificar_colisao(jogador, (*itr))) {
 
 			if (jogador->getAcao()) {
 
@@ -386,15 +400,10 @@ void Fase::flecha_barreira()
 	list<Barreira*> listaBarreiras = gerenciadorEntidades->getListaBarreiras();
 	bool excluir = false;
 
-
 	for (itrF = listaFlechas.begin(); itrF != listaFlechas.end(); itrF++) {
 		for (itrB = listaBarreiras.begin(); itrB != listaBarreiras.end(); itrB++) {
 			if ((*itrB)->getClasse() != 1) {
-				if ((*itrF)->getCoordenadas().x < (*itrB)->getCoordenadas().x + (*itrB)->getDimensoes().x &&
-					(*itrF)->getCoordenadas().x + (*itrF)->getDimensoes().x >(*itrB)->getCoordenadas().x &&
-					(*itrF)->getCoordenadas().y < (*itrB)->getCoordenadas().y + (*itrB)->getDimensoes().y &&
-					(*itrF)->getCoordenadas().y + (*itrF)->getDimensoes().y >(*itrB)->getCoordenadas().y - 10) {
-
+				if (verificar_colisao((*itrF), (*itrB))) {
 					(*itrF)->setExiste(false);
 					excluir = true;
 				}
@@ -414,13 +423,50 @@ void Fase::jogador_flecha()
 	Jogador* jogador = gerenciadorEntidades->getJogador();
 
 	for (itr = listaFlechas.begin(); itr != listaFlechas.end(); itr++) {
-		if (jogador->getCoordenadas().x < (*itr)->getCoordenadas().x + (*itr)->getDimensoes().x &&
-			jogador->getCoordenadas().x + jogador->getDimensoes().x >(*itr)->getCoordenadas().x&&
-			jogador->getCoordenadas().y < (*itr)->getCoordenadas().y + (*itr)->getDimensoes().y &&
-			jogador->getCoordenadas().y + jogador->getDimensoes().y >(*itr)->getCoordenadas().y) {
-
+		if (verificar_colisao(jogador, (*itr))) {
 			jogador->setExiste(false);
 		}
 	}
+}
 
+void Fase::flecha_caixa()
+{
+	list<Flecha*>::iterator itrF;
+	list<Flecha*> listaFlechas = gerenciadorEntidades->getListaFlechas();
+	list<Caixa*>::iterator itrC;
+	list<Caixa*> listaCaixas = gerenciadorEntidades->getListaCaixas();
+	bool excluir = false;
+
+	for (itrF = listaFlechas.begin(); itrF != listaFlechas.end(); itrF++) {
+		for (itrC = listaCaixas.begin(); itrC != listaCaixas.end(); itrC++) {
+			if (verificar_colisao((*itrF), (*itrC))) {
+				(*itrF)->setExiste(false);
+				excluir = true;
+			}
+		}
+	}
+	if (excluir == true) {
+		listaEntidades->excluir_entidades();
+		gerenciadorEntidades->excluir_flechas();
+	}
+}
+
+void Fase::caixa_botao()
+{
+	list<Botao*>::iterator itrB;
+	list<Botao*> listaBotoes = gerenciadorEntidades->getListaBotoes();
+	list<Caixa*>::iterator itrC;
+	list<Caixa*> listaCaixas = gerenciadorEntidades->getListaCaixas();
+	bool excluir = false;
+
+	for (itrB = listaBotoes.begin(); itrB != listaBotoes.end(); itrB++) {
+		for (itrC = listaCaixas.begin(); itrC != listaCaixas.end(); itrC++) {
+			if (verificar_colisao((*itrB), (*itrC))) {
+				(*itrB)->setAtivado(true);
+			}
+			else{
+				(*itrB)->setAtivado(false);
+			}
+		}
+	}
 }

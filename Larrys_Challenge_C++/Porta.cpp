@@ -14,7 +14,13 @@ Porta::Porta(RenderWindow* _window, Texture* _textura, const float cx, const flo
 	dimensoesAux.y = dimensoes.y * proporcao;
 	entidade.setSize(dimensoesAux);*/
 	coordenadasTile.height = 0;
+	classe = 2;
 	ativado = false;
+
+	hitBox.width = int(dimensoesAux.x);
+	hitBox.height = int(dimensoesAux.y - 36);
+	hitBox.left = int(coordenadas.x - (dimensoesAux.x / 2));
+	hitBox.top = int(coordenadas.y - (dimensoesAux.y / 2));
 }
 Porta::~Porta()
 {

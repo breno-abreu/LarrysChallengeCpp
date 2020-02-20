@@ -56,5 +56,8 @@ public:
 	void atiradores();
 	void flecha_barreira();
 	void jogador_flecha();
+	bool verificar_colisao(Entidade* a, Entidade* b);
+	void flecha_caixa();
+	void caixa_botao();
 };
 

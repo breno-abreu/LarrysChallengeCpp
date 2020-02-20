@@ -7,12 +7,12 @@ Coluna::Coluna(RenderWindow* _window, Texture* _textura, const float cx, const f
 	Barreira(_window, _textura, cx, cy, _profundidade, _codigo, _xTile, _yTile)
 {
 	if (_tipo == HORIZONTAL)
-		dimensoesAux.y /= 2;
+		hitBox.height /= 2;
 	else if (_tipo == VERTICALDIREITA)
-		dimensoesAux.x /= 2;
+		hitBox.width /= 2;
 	else if (_tipo == VERTICALESQUERDA) {
-		dimensoesAux.x /= 2;
-		coordenadas.x += dimensoesAux.x;
+		hitBox.width /= 2;
+		hitBox.left += hitBox.width;
 	}
 }
 Coluna::~Coluna()

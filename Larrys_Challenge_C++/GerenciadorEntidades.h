@@ -90,6 +90,8 @@ private:
 	list<Interativo*> listaPortais;
 	Jogador* jogadorJ;
 
+	int quantidadeMoedas;
+
 
 
 
@@ -128,5 +130,7 @@ public:
 	list<Interativo*> getListaPortais()const;
 	list<Atirador*> getListaAtiradores()const;
 	Jogador* getJogador()const;
+	void setQuantidadeMoedas(const int _quantidadeMoedas);
+	int getQuantidadeMoedas()const;
 };
 

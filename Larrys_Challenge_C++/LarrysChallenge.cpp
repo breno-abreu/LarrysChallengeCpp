@@ -36,6 +36,7 @@ LarrysChallenge::~LarrysChallenge()
 {
 	delete window;
 	delete listaEntidades;
+	delete view;
 }
 void LarrysChallenge::executar()
 {
@@ -67,10 +68,12 @@ void LarrysChallenge::executar()
 			}
 		}
 
-		view->setCenter(fase->getCoordenadasJogador());
+		
 		window->clear(Color(50, 90, 80, 255));
 		window->setView(*view);
 		fase->executar();
+		view->setCenter(fase->getCoordenadasJogador());
+		window->display();
 
 		if (!fase->getJogadorVivo()) {
 
@@ -209,7 +212,7 @@ void LarrysChallenge::executar()
 
 		//zumbi->setCoodenadasJogador(jogador->getCoordenadas().x, jogador->getCoordenadas().y);
 		//zumbi->existir();
-		window->display();
+		
 
 	}
 }

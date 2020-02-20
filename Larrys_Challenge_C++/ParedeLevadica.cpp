@@ -21,6 +21,11 @@ ParedeLevadica::ParedeLevadica(RenderWindow* _window, Texture* _textura, const f
 	dimensoesAux.x = dimensoes.x * proporcao;
 	dimensoesAux.y = dimensoes.y * proporcao;
 	entidade.setSize(dimensoesAux);*/
+
+	hitBox.width = dimensoesAux.x - 10;
+	hitBox.height = dimensoesAux.y - 6;
+	hitBox.left = coordenadas.x - (dimensoesAux.x / 2) + 5;
+	hitBox.top = coordenadas.y - (dimensoesAux.y / 2) + 2;
 }
 ParedeLevadica::~ParedeLevadica()
 {

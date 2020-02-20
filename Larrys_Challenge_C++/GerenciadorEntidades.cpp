@@ -46,6 +46,8 @@ GerenciadorEntidades::GerenciadorEntidades(RenderWindow* _window)
 	t_topocolunaesquerda.loadFromFile("Textures/Topo_Coluna_Esquerda.png");
 	t_tocha.loadFromFile("Textures/Torch.png");
 	t_zumbi.loadFromFile("Textures/Zombie.png");
+
+	quantidadeMoedas = 0;
 }
 GerenciadorEntidades::~GerenciadorEntidades()
 {
@@ -72,6 +74,15 @@ void GerenciadorEntidades::excluir_flechas()
 			break;
 		}
 	}
+}
+
+void GerenciadorEntidades::setQuantidadeMoedas(const int _quantidadeMoedas)
+{
+	quantidadeMoedas = _quantidadeMoedas;
+}
+int GerenciadorEntidades::getQuantidadeMoedas()const
+{
+	return quantidadeMoedas;
 }
 
 Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float cy, const int tipo, const int codigo)
@@ -103,6 +114,7 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 		return greenOrbE;
 	}
 	else if (tipo == 4) {
+		quantidadeMoedas++;
 		Item* moeda = new Item(window, &t_moeda, cx, cy, 2, codigo, 1, 1, MOEDA);
 		listaItens.push_back(moeda);
 		Entidade* moedaE = static_cast<Entidade*>(moeda);
@@ -352,7 +364,7 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 	}
 	else if (tipo == 42) {
 		Porta* porta = new Porta(window, &t_porta, cx, cy, 2, codigo, 2, 1);
-		listaPortais.push_back(porta);
+		listaInterativos.push_back(porta);
 		Entidade* portaE = static_cast<Entidade*>(porta);
 		return portaE;
 	}

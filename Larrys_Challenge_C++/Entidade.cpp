@@ -21,8 +21,8 @@ Entidade::Entidade()
 Entidade::Entidade(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo, const int _xTile, const int _yTile)
 {
 	codigo = _codigo;
-	coordenadas.x = cx;
-	coordenadas.y = cy;
+	/*coordenadas.x = cx;
+	coordenadas.y = cy;*/
 	profundidade = _profundidade;
 	textura = _textura;
 	
@@ -43,6 +43,8 @@ Entidade::Entidade(RenderWindow* _window, Texture* _textura, const float cx, con
 	dimensoesAux.y = dimensoes.y * proporcao;
 	entidade.setSize(dimensoesAux);*/
 	entidade.setTexture(textura);
+	coordenadas.x = cx;
+	coordenadas.y = cy;
 	entidade.setPosition(coordenadas);
 
 	quantidadeTile.x = _xTile;
@@ -54,6 +56,13 @@ Entidade::Entidade(RenderWindow* _window, Texture* _textura, const float cx, con
 	entidade.setSize(dimensoesAux);
 	entidade.setOrigin(Vector2f(dimensoesAux.x / 2, dimensoesAux.y / 2));
 
+	
+
+
+	hitBox.width = dimensoesAux.x;
+	hitBox.height = dimensoesAux.y;
+	hitBox.left = coordenadas.x - dimensoesAux.x / 2;
+	hitBox.top = coordenadas.y - dimensoesAux.y / 2;
 }
 Entidade::~Entidade()
 {
@@ -99,4 +108,9 @@ void Entidade::setyEntidade(const float y)
 int Entidade::getCodigo()const
 {
 	return codigo;
+}
+
+FloatRect Entidade::getHitBox()
+{
+	return hitBox;
 }
