@@ -1,5 +1,5 @@
-﻿  ParedeLevadica.cpp
-C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\ParedeLevadica.cpp(44,39): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
+﻿  Botao.cpp
+C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\Botao.cpp(37,36): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=float
@@ -8,7 +8,7 @@ C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\L
           [
               T=int
           ]
-C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\ParedeLevadica.cpp(60,103): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\Botao.cpp(39,103): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=float
@@ -17,7 +17,7 @@ C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\L
           [
               T=int
           ]
-C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\ParedeLevadica.cpp(60,90): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\Botao.cpp(39,90): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=float

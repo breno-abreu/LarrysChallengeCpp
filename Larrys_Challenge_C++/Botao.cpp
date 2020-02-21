@@ -19,10 +19,10 @@ Botao::Botao(RenderWindow* _window, Texture* _textura, const float cx, const flo
 	ativado = false;
 	existe = false;
 
-	hitBox.width = int(dimensoesAux.x - 24);
-	hitBox.height = int(dimensoesAux.y - 36);
-	hitBox.left = int(coordenadas.x - (dimensoesAux.x / 2) + 10);
-	hitBox.top = int(coordenadas.y - (dimensoesAux.y / 2));
+	hitBox.width = 0;
+	hitBox.height = 0;
+	hitBox.left = 0;
+	hitBox.top = 0;
 }
 Botao::~Botao()
 {

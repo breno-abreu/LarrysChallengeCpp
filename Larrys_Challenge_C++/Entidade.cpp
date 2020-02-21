@@ -59,10 +59,12 @@ Entidade::Entidade(RenderWindow* _window, Texture* _textura, const float cx, con
 	
 
 
-	hitBox.width = dimensoesAux.x;
-	hitBox.height = dimensoesAux.y;
-	hitBox.left = coordenadas.x - dimensoesAux.x / 2;
-	hitBox.top = coordenadas.y - dimensoesAux.y / 2;
+	hitBox.width = 0;
+	hitBox.height = 0;
+	hitBox.left = 0;
+	hitBox.top = 0;
+
+
 }
 Entidade::~Entidade()
 {
@@ -110,7 +112,7 @@ int Entidade::getCodigo()const
 	return codigo;
 }
 
-FloatRect Entidade::getHitBox()
+FloatRect Entidade::getHitBox() const
 {
 	return hitBox;
 }

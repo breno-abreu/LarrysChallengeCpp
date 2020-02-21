@@ -2,6 +2,8 @@
 
 Caixa::Caixa()
 {
+	tipo = 0;
+	bloqueado = false;
 	peso = 0;
 }
 Caixa::Caixa(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo, const int _xTile, const int _yTile, const int _tipo):
@@ -10,16 +12,16 @@ Caixa::Caixa(RenderWindow* _window, Texture* _textura, const float cx, const flo
 	tipo = _tipo;
 
 	if (tipo == LEVE)
-		peso = 3;
+		peso = 2;
 	else
-		peso = 5;
+		peso = 4;
 
 	bloqueado = false;
 
-	hitBox.height = int(dimensoesAux.y);
-	hitBox.width = int(dimensoesAux.x);
-	hitBox.left = int(coordenadas.x);
-	hitBox.top = int(coordenadas.y);
+	hitBox.width = 5;
+	hitBox.height = 0;
+	hitBox.left = 5;
+	hitBox.top = 0;
 }
 Caixa::~Caixa()
 {
@@ -27,14 +29,15 @@ Caixa::~Caixa()
 }
 void Caixa::existir()
 {
-	hitBox.width = dimensoesAux.x;
-	hitBox.height = dimensoesAux.y;
-	hitBox.left = coordenadas.x;
-	hitBox.top = coordenadas.y;
+	entidade.setPosition(coordenadas);
+	/*RectangleShape aux;
+	aux.setFillColor(Color::Transparent);
+	aux.setPosition(Vector2f(hitBox.left, hitBox.top));
+	aux.setSize(Vector2f(hitBox.width, hitBox.height));
+	aux.setOutlineColor(Color::Red);
+	aux.setOutlineThickness(2);*/
 
-	
-
-	entidade.setPosition(coordenadas.x, coordenadas.y);
+	//window->draw(aux);
 	window->draw(entidade);
 }
 void Caixa::setPeso(const float _peso)

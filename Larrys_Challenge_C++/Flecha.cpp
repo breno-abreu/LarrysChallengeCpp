@@ -18,6 +18,11 @@ Flecha::Flecha(RenderWindow* _window, Texture* _textura, const float cx, const f
 		entidade.rotate(180);
 	else if (direcao == CIMA)
 		entidade.rotate(90);
+
+	hitBox.width = -5;
+	hitBox.height = 10;
+	hitBox.left = 15;
+	hitBox.top = 5;
 }
 Flecha::~Flecha()
 {
@@ -33,11 +38,6 @@ void Flecha::existir()
 		coordenadas.y -= velocidade;
 	else if (direcao == BAIXO)
 		coordenadas.y += velocidade;
-
-	hitBox.width = int(dimensoesAux.x);
-	hitBox.height = int(dimensoesAux.y);
-	hitBox.left = int(coordenadas.x - dimensoesAux.x / 2);
-	hitBox.top = int(coordenadas.y - dimensoesAux.y / 2);
 	
 	entidade.setPosition(coordenadas);
 	window->draw(entidade);

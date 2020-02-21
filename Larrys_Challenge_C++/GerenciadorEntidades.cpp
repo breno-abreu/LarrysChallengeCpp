@@ -454,7 +454,7 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 		return topoColunaEsquerdaE;
 	}
 	else if (tipo == 57) {
-		Interruptor* interruptor = new Interruptor(window, &t_interruptor, cx, cy, 3, codigo, 2, 1);
+		Interruptor* interruptor = new Interruptor(window, &t_interruptor, cx, cy, 2, codigo, 2, 1);
 		Interativo* interruptorAux = static_cast<Interativo*>(interruptor);
 		listaInterativos.push_back(interruptorAux);
 		Entidade* interruptorE = static_cast<Entidade*>(interruptor);

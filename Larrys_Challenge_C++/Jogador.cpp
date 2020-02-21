@@ -27,6 +27,11 @@ Jogador::Jogador(RenderWindow* _window, Texture* _textura, const float cx, const
 	existe = true;
 
 	//dimensoesAux.x -= 6;
+
+	hitBox.width = -6;
+	hitBox.height = -5;
+	hitBox.left = 8;
+	hitBox.top = -2;
 }
 Jogador::~Jogador()
 {
@@ -34,9 +39,9 @@ Jogador::~Jogador()
 }
 void Jogador::existir()
 {
+	entidade.setPosition(coordenadas);
 
 	
-	entidade.setPosition(coordenadas);
 
 	
 
@@ -46,6 +51,8 @@ void Jogador::existir()
 	aux2.setSize(Vector2f(dimensoesAux.x, dimensoesAux.y));
 	aux2.setOutlineColor(Color::Blue);
 	aux2.setOutlineThickness(2);*/
+
+
 
 	if (Keyboard::isKeyPressed(Keyboard::Key::Right) ||
 		Keyboard::isKeyPressed(Keyboard::Key::Left) ||
@@ -123,27 +130,25 @@ void Jogador::existir()
 	
 	entidade.setTextureRect(IntRect(coordenadasTile.width, coordenadasTile.height, dimensoes.x, dimensoes.y));
 	//entidade.setSize(Vector2f(dimensoes.x * proporcao, dimensoes.y * proporcao));
+	//entidade.setPosition(coordenadas);
 
-	
-	RectangleShape aux;
+	/*RectangleShape aux;
 	aux.setFillColor(Color::Transparent);
-	aux.setPosition(Vector2f(hitBox.left, hitBox.top));
 	aux.setSize(Vector2f(hitBox.width, hitBox.height));
 	aux.setOutlineColor(Color::Red);
 	aux.setOutlineThickness(2);
+	aux.setPosition(Vector2f(hitBox.left, hitBox.top));*/
 	
-
-	hitBox.width = dimensoesAux.x - 14;
-	hitBox.height = dimensoesAux.y - 10;
-	hitBox.left = coordenadas.x - (dimensoesAux.x / 2) + 7;
-	hitBox.top = coordenadas.y - (dimensoesAux.y / 2) + 5;
-
-	
-
 	//window->draw(aux);
 	//window->draw(aux2);
 	window->draw(entidade);
+
+	
+	
+	
 }
+
+
 
 bool Jogador::getAcao()const
 {

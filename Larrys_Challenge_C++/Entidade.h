@@ -40,6 +40,6 @@ public:
 	void setyEntidade(const float y);
 	int getCodigo()const;
 	int getClasse()const;
-	FloatRect getHitBox();
+	FloatRect getHitBox() const;
 };
 

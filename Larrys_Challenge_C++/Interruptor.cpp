@@ -16,6 +16,11 @@ Interruptor::Interruptor(RenderWindow* _window, Texture* _textura, const float c
 	entidade.setSize(dimensoesAux);*/
 	coordenadasTile.height = 0;
 	coordenadasTile.width = 0;
+
+	hitBox.width = 11;
+	hitBox.height = -24;
+	hitBox.left = 9;
+	hitBox.top = 0;
 }
 Interruptor::~Interruptor()
 {
