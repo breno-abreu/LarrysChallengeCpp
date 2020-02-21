@@ -56,15 +56,10 @@ Entidade::Entidade(RenderWindow* _window, Texture* _textura, const float cx, con
 	entidade.setSize(dimensoesAux);
 	entidade.setOrigin(Vector2f(dimensoesAux.x / 2, dimensoesAux.y / 2));
 
-	
-
-
 	hitBox.width = 0;
 	hitBox.height = 0;
 	hitBox.left = 0;
 	hitBox.top = 0;
-
-
 }
 Entidade::~Entidade()
 {

@@ -38,7 +38,6 @@ void Fase::executar()
 	jogador_barreira();
 	jogador_abismo();
 	jogador_movimentador();
-	jogador_botao();
 	jogador_parede_levadica();
 	jogador_espinhos();
 	jogador_interativo();
@@ -47,7 +46,7 @@ void Fase::executar()
 	flecha_barreira();
 	jogador_flecha();
 	flecha_caixa();
-	caixa_botao();
+	objetos_botao();
 }
 
 bool Fase::verificar_colisao(Entidade* a, Entidade* b)
@@ -203,19 +202,25 @@ void Fase::jogador_movimentador()
 	}
 }
 
-void Fase::jogador_botao()
+void Fase::objetos_botao()
 {
-	list<Botao*>::iterator itr;
+	list<Botao*>::iterator itrB;
 	list<Botao*> listaBotoes = gerenciadorEntidades->getListaBotoes();
-	Jogador* jogador = gerenciadorEntidades->getJogador();
+	list<Entidade*>::iterator itrO;
+	list<Entidade*> listaObjetos = gerenciadorEntidades->getListaObjetos();
+	bool pressionado = false;
 
-	for (itr = listaBotoes.begin(); itr != listaBotoes.end(); itr++) {
-		if (verificar_colisao(jogador, (*itr))) {
-
-			(*itr)->setAtivado(true);
+	for (itrB = listaBotoes.begin(); itrB != listaBotoes.end(); itrB++) {
+		bool pressionado = false;
+		for (itrO = listaObjetos.begin(); itrO != listaObjetos.end(); itrO++) {
+			if (verificar_colisao((*itrB), (*itrO))) {
+				pressionado = true;
+			}
 		}
+		if (pressionado)
+			(*itrB)->setAtivado(true);
 		else
-			(*itr)->setAtivado(false);
+			(*itrB)->setAtivado(false);
 	}
 }
 
@@ -453,25 +458,5 @@ void Fase::flecha_caixa()
 	if (excluir == true) {
 		listaEntidades->excluir_entidades();
 		gerenciadorEntidades->excluir_flechas();
-	}
-}
-
-void Fase::caixa_botao()
-{
-	list<Botao*>::iterator itrB;
-	list<Botao*> listaBotoes = gerenciadorEntidades->getListaBotoes();
-	list<Caixa*>::iterator itrC;
-	list<Caixa*> listaCaixas = gerenciadorEntidades->getListaCaixas();
-	bool excluir = false;
-
-	for (itrB = listaBotoes.begin(); itrB != listaBotoes.end(); itrB++) {
-		for (itrC = listaCaixas.begin(); itrC != listaCaixas.end(); itrC++) {
-			if (verificar_colisao((*itrB), (*itrC))) {
-				(*itrB)->setAtivado(true);
-			}
-			else{
-				(*itrB)->setAtivado(false);
-			}
-		}
 	}
 }

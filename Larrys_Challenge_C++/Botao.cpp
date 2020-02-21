@@ -19,10 +19,12 @@ Botao::Botao(RenderWindow* _window, Texture* _textura, const float cx, const flo
 	ativado = false;
 	existe = false;
 
-	hitBox.width = 0;
-	hitBox.height = 0;
-	hitBox.left = 0;
-	hitBox.top = 0;
+	hitBox.width = -10;
+	hitBox.height = -10;
+	hitBox.left = 10;
+	hitBox.top = 10;
+
+	emCima = false;
 }
 Botao::~Botao()
 {
@@ -30,6 +32,8 @@ Botao::~Botao()
 }
 void Botao::existir()
 {
+
+
 	if (!ativado)
 		coordenadasTile.width = 0;
 
@@ -40,4 +44,13 @@ void Botao::existir()
 	//entidade.setSize(Vector2f(dimensoes.x * proporcao, dimensoes.y * proporcao));
 	window->draw(entidade);
 }
+void Botao::setEmCima(const bool _emCima)
+{
+	emCima = _emCima;
+}
+bool Botao::getEmCima()const
+{
+	return emCima;
+}
+
 

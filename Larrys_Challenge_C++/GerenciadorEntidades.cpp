@@ -130,12 +130,14 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 		Caixa* caixaLeve = new Caixa(window, &t_caixaleve, cx, cy, 3, codigo, 1, 1, LEVE);
 		listaCaixas.push_back(caixaLeve);
 		Entidade* caixaLeveE = static_cast<Entidade*>(caixaLeve);
+		listaObjetos.push_back(caixaLeveE);
 		return caixaLeveE;
 	}
 	else if (tipo == 7) {
 		Caixa* caixaPesada = new Caixa(window, &t_caixapesada, cx, cy, 3, codigo, 1, 1, PESADA);	
 		listaCaixas.push_back(caixaPesada);
 		Entidade* caixaPesadaE = static_cast<Entidade*>(caixaPesada);
+		listaObjetos.push_back(caixaPesadaE);
 		return caixaPesadaE;
 	}
 	else if (tipo == 8) {
@@ -186,6 +188,7 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 		jogadorJ = jogador;
 		listaPersonagens.push_back(jogadorP);
 		Entidade* jogadorE = static_cast<Entidade*>(jogador);
+		listaObjetos.push_back(jogadorE);
 		return jogadorE;
 	}
 	else if (tipo == 16) {
@@ -520,6 +523,11 @@ list<Caixa*> GerenciadorEntidades::getListaCaixas()const
 list<Flecha*> GerenciadorEntidades::getListaFlechas()const
 {
 	return listaFlechas;
+}
+
+list<Entidade*> GerenciadorEntidades::getListaObjetos()const
+{
+	return listaObjetos;
 }
 list<Inimigo*> GerenciadorEntidades::getListaInimigos()const
 {

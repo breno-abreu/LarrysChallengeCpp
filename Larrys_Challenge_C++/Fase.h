@@ -44,7 +44,6 @@ public:
 	void jogador_abismo();
 	void jogador_inimigo();
 	void jogador_movimentador();
-	void jogador_botao();
 	void jogador_parede_levadica();
 	void jogador_espinhos();
 	void jogador_interativo();
@@ -58,6 +57,6 @@ public:
 	void jogador_flecha();
 	bool verificar_colisao(Entidade* a, Entidade* b);
 	void flecha_caixa();
-	void caixa_botao();
+	void objetos_botao();
 };
 
