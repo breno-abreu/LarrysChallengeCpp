@@ -17,10 +17,10 @@ Abismo::Abismo(RenderWindow* _window, Texture* _textura, const float cx, const f
 	//entidade.setSize(dimensoesAux);
 	entidade.setTextureRect(IntRect(coordenadasTile.width, coordenadasTile.height, dimensoes.x, dimensoes.y));
 
-	hitBox.width = int(dimensoesAux.x - 25);
-	hitBox.height = int(dimensoesAux.y - 40);
-	hitBox.left = int(coordenadas.x - (dimensoesAux.x / 2) + 15);
-	hitBox.top = int(coordenadas.y - (dimensoesAux.y / 2) + 5);
+	hitBox.width = -16;
+	hitBox.height = -36;
+	hitBox.left = 16;
+	hitBox.top = 8;
 }
 Abismo::~Abismo()
 {

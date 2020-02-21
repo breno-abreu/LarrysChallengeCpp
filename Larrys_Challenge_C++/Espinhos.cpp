@@ -14,6 +14,7 @@ Espinhos::Espinhos(RenderWindow* _window, Texture* _textura, const float cx, con
 	dimensoesAux.y = dimensoes.y * proporcao;
 	entidade.setSize(dimensoesAux);*/
 	desativado = true;
+	hitBox.height = -44;
 }
 Espinhos::~Espinhos()
 {

@@ -17,10 +17,10 @@ Porta::Porta(RenderWindow* _window, Texture* _textura, const float cx, const flo
 	classe = 2;
 	ativado = false;
 
-	hitBox.width = int(dimensoesAux.x);
-	hitBox.height = int(dimensoesAux.y - 36);
-	hitBox.left = int(coordenadas.x - (dimensoesAux.x / 2));
-	hitBox.top = int(coordenadas.y - (dimensoesAux.y / 2));
+	hitBox.width = 0;
+	hitBox.height = -44;
+	hitBox.left = 0;
+	hitBox.top = 0;
 }
 Porta::~Porta()
 {
@@ -28,6 +28,17 @@ Porta::~Porta()
 }
 void Porta::existir()
 {
+
+	/*RectangleShape aux;
+	aux.setFillColor(Color::Transparent);
+	aux.setSize(Vector2f(dimensoesAux.x + hitBox.width, dimensoesAux.y + hitBox.height));
+	aux.setOutlineColor(Color::Red);
+	aux.setOutlineThickness(2);
+	aux.setPosition(Vector2f(coordenadas.x + hitBox.left, coordenadas.y + hitBox.top));
+
+	window->draw(aux);*/
+
+
 	if(!ativado)
 		coordenadasTile.width = 0;
 	else

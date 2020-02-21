@@ -132,14 +132,7 @@ void Jogador::existir()
 	//entidade.setSize(Vector2f(dimensoes.x * proporcao, dimensoes.y * proporcao));
 	//entidade.setPosition(coordenadas);
 
-	/*RectangleShape aux;
-	aux.setFillColor(Color::Transparent);
-	aux.setSize(Vector2f(hitBox.width, hitBox.height));
-	aux.setOutlineColor(Color::Red);
-	aux.setOutlineThickness(2);
-	aux.setPosition(Vector2f(hitBox.left, hitBox.top));*/
 	
-	//window->draw(aux);
 	//window->draw(aux2);
 	window->draw(entidade);
 
