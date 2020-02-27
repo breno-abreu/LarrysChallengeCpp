@@ -7,7 +7,10 @@ class Caixa : public Entidade
 private:
 	float peso;
 	int tipo;
-	bool bloqueado;
+	bool bloqueadoDireita;
+	bool bloqueadoEsquerda;
+	bool bloqueadoCima;
+	bool bloqueadoBaixo;
 
 public:
 	Caixa();
@@ -17,6 +20,13 @@ public:
 	void setPeso(const float _peso);
 	float getPeso()const;
 	int getTipo()const;
-
+	bool getBloqueadoDireita()const;
+	void setBloqueadoDireita(const bool _bloqueado);
+	bool getBloqueadoEsquerda()const;
+	void setBloqueadoEsquerda(const bool _bloqueado);
+	bool getBloqueadoCima()const;
+	void setBloqueadoCima(const bool _bloqueado);
+	bool getBloqueadoBaixo()const;
+	void setBloqueadoBaixo(const bool _bloqueado);
 };
 

@@ -111,7 +111,7 @@ public:
 	GerenciadorEntidades();
 	GerenciadorEntidades(RenderWindow *_window);
 	~GerenciadorEntidades();
-	Entidade* adicionar_entidade(const float cx, const float cy, const int tipo, const int codigo);
+	Entidade* adicionar_entidade(const float cx, const float cy, const int tipo, const int codigo, const int conexao);
 	void excluir_itens();
 	void excluir_flechas();
 	list<Letal*> getListaLetais()const;

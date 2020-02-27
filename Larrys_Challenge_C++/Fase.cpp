@@ -22,7 +22,7 @@ Fase::~Fase()
 
 void Fase::adicionar_entidade(const float cx, const float cy, const int tipo, const int conexao)
 {
-	listaEntidades->adicionar_entidade(cx, cy, tipo);
+	listaEntidades->adicionar_entidade(cx, cy, tipo, conexao);
 }
 
 void Fase::excluir_entidades()
@@ -47,6 +47,7 @@ void Fase::executar()
 	jogador_flecha();
 	flecha_caixa();
 	objetos_botao();
+	caixa_barreira();
 }
 
 bool Fase::verificar_colisao(Entidade* a, Entidade* b)
@@ -329,30 +330,49 @@ void Fase::jogador_caixas()
 
 	for (itr = listaCaixas.begin(); itr != listaCaixas.end(); itr++) {
 		if (verificar_colisao(jogador, (*itr))) {
-
 			if ((*itr)->getTipo() == LEVE || ((*itr)->getTipo() == PESADA && jogador->getRedOrb())) {
 				if (jogador->getDirecao() == DIREITA) {
-					jogador->setxEntidade(jogador->getCoordenadas().x - (*itr)->getPeso());
-					(*itr)->setxEntidade(jogador->getCoordenadas().x + jogador->getDimensoes().x + jogador->getHitBox().width - (*itr)->getHitBox().left);
+					if (!(*itr)->getBloqueadoDireita()) {
+						jogador->setxEntidade(jogador->getCoordenadas().x - (*itr)->getPeso());
+						(*itr)->setxEntidade(jogador->getCoordenadas().x + jogador->getDimensoes().x + jogador->getHitBox().width - (*itr)->getHitBox().left);
+					}
+					else {
+						jogador->setxEntidade(jogador->getCoordenadas().x - jogador->getVelocidade());
+					}
 				}
 
 				else if (jogador->getDirecao() == ESQUERDA) {
-					jogador->setxEntidade(jogador->getCoordenadas().x + (*itr)->getPeso());
-					(*itr)->setxEntidade(jogador->getCoordenadas().x - (*itr)->getDimensoes().x + jogador->getHitBox().left - (*itr)->getHitBox().width);
+					if (!(*itr)->getBloqueadoEsquerda()) {
+						jogador->setxEntidade(jogador->getCoordenadas().x + (*itr)->getPeso());
+						(*itr)->setxEntidade(jogador->getCoordenadas().x - (*itr)->getDimensoes().x + jogador->getHitBox().left - (*itr)->getHitBox().width);
+					}
+					else {
+						jogador->setxEntidade(jogador->getCoordenadas().x + jogador->getVelocidade());
+					}
 				}
 
 				else if (jogador->getDirecao() == CIMA) {
-					jogador->setyEntidade(jogador->getCoordenadas().y + (*itr)->getPeso());
-					(*itr)->setyEntidade(jogador->getCoordenadas().y - (*itr)->getDimensoes().y + jogador->getHitBox().top - (*itr)->getHitBox().height);
+					if (!(*itr)->getBloqueadoCima()) {
+						jogador->setyEntidade(jogador->getCoordenadas().y + (*itr)->getPeso());
+						(*itr)->setyEntidade(jogador->getCoordenadas().y - (*itr)->getDimensoes().y + jogador->getHitBox().top - (*itr)->getHitBox().height);
+					}
+					else {
+						jogador->setyEntidade(jogador->getCoordenadas().y + jogador->getVelocidade());
+					}
 				}
 
 				else if (jogador->getDirecao() == BAIXO) {
-					jogador->setyEntidade(jogador->getCoordenadas().y - (*itr)->getPeso());
-					(*itr)->setyEntidade(jogador->getCoordenadas().y + jogador->getDimensoes().y + jogador->getHitBox().height - (*itr)->getHitBox().top);
+					if (!(*itr)->getBloqueadoBaixo()) {
+						jogador->setyEntidade(jogador->getCoordenadas().y - (*itr)->getPeso());
+						(*itr)->setyEntidade(jogador->getCoordenadas().y + jogador->getDimensoes().y + jogador->getHitBox().height - (*itr)->getHitBox().top);
+					}
+					else {
+						jogador->setyEntidade(jogador->getCoordenadas().y - jogador->getVelocidade());
+					}
 				}
 			}
 
-			else if ((*itr)->getTipo() == PESADA && !jogador->getRedOrb()) {
+			else if (((*itr)->getTipo() == PESADA && !jogador->getRedOrb())) {
 				if (jogador->getDirecao() == DIREITA)
 					jogador->setxEntidade(jogador->getCoordenadas().x - jogador->getVelocidade());
 				else if (jogador->getDirecao() == ESQUERDA)
@@ -366,21 +386,61 @@ void Fase::jogador_caixas()
 	}
 }
 
+void Fase::caixa_barreira()
+{
+	list<Caixa*>::iterator itr;
+	list<Caixa*> listaCaixas = gerenciadorEntidades->getListaCaixas();
+	list<Caixa*>::iterator itr2;
+	list<Caixa*> listaCaixas2 = gerenciadorEntidades->getListaCaixas();
+	Jogador* jogador = gerenciadorEntidades->getJogador();
+
+	for (itr = listaCaixas.begin(); itr != listaCaixas.end(); itr++) {
+		for (itr2 = listaCaixas2.begin(); itr2 != listaCaixas2.end(); itr2++) {
+			if (verificar_colisao((*itr), (*itr2))) {
+				if ((*itr)->getCodigo() != (*itr2)->getCodigo()) {
+					if (jogador->getDirecao() == DIREITA)
+						(*itr2)->setBloqueadoDireita(true);
+					else if (jogador->getDirecao() == ESQUERDA)
+						(*itr2)->setBloqueadoEsquerda(true);
+					else if (jogador->getDirecao() == CIMA)
+						(*itr2)->setBloqueadoCima(true);
+					else if (jogador->getDirecao() == BAIXO)
+						(*itr2)->setBloqueadoBaixo(true);
+				}
+			}
+			else {
+				(*itr2)->setBloqueadoDireita(false);
+				(*itr2)->setBloqueadoEsquerda(false);
+				(*itr2)->setBloqueadoCima(false);
+				(*itr2)->setBloqueadoBaixo(false);
+			}
+		}
+	}
+}
+
 void Fase::jogador_portais()
 {
 	list<Interativo*>::iterator itr;
 	list<Interativo*> listaPortais = gerenciadorEntidades->getListaPortais();
+	list<Interativo*>::iterator itr2;
+	list<Interativo*> listaPortais2 = gerenciadorEntidades->getListaPortais();
 	Jogador* jogador = gerenciadorEntidades->getJogador();
+	bool fim = false;
 
 	for (itr = listaPortais.begin(); itr != listaPortais.end(); itr++) {
-		if (verificar_colisao(jogador, (*itr))) {
-
-			if (jogador->getAcao()) {
-
+		if (verificar_colisao(jogador, (*itr)) && jogador->getAcao()) {
+			for (itr2 = listaPortais2.begin(); itr2 != listaPortais2.end(); itr2++) {
+				if ((*itr)->getCodigo() != (*itr2)->getCodigo() && (*itr)->getConexao() == (*itr2)->getConexao()) {
+					jogador->setxEntidade((*itr2)->getCoordenadas().x);
+					jogador->setyEntidade((*itr2)->getCoordenadas().y);
+					fim = true;
+				}
 			}
-
 		}
+		if (fim)
+			break;
 	}
+
 }
 
 void Fase::atiradores()
@@ -391,13 +451,13 @@ void Fase::atiradores()
 	for (itr = listaPortais.begin(); itr != listaPortais.end(); itr++) {
 		if ((*itr)->getAtivo()) {
 			if((*itr)->getDirecao() == CIMA)
-				listaEntidades->adicionar_entidade((*itr)->getCoordenadas().x, (*itr)->getCoordenadas().y, 100);
+				listaEntidades->adicionar_entidade((*itr)->getCoordenadas().x, (*itr)->getCoordenadas().y, 100, 0);
 			else if ((*itr)->getDirecao() == BAIXO)
-				listaEntidades->adicionar_entidade((*itr)->getCoordenadas().x, (*itr)->getCoordenadas().y, 101);
+				listaEntidades->adicionar_entidade((*itr)->getCoordenadas().x, (*itr)->getCoordenadas().y, 101, 0);
 			else if ((*itr)->getDirecao() == DIREITA)
-				listaEntidades->adicionar_entidade((*itr)->getCoordenadas().x, (*itr)->getCoordenadas().y, 102);
+				listaEntidades->adicionar_entidade((*itr)->getCoordenadas().x, (*itr)->getCoordenadas().y, 102, 0);
 			else if ((*itr)->getDirecao() == ESQUERDA)
-				listaEntidades->adicionar_entidade((*itr)->getCoordenadas().x, (*itr)->getCoordenadas().y, 103);
+				listaEntidades->adicionar_entidade((*itr)->getCoordenadas().x, (*itr)->getCoordenadas().y, 103, 0);
 		}
 	}
 }
@@ -460,3 +520,4 @@ void Fase::flecha_caixa()
 		gerenciadorEntidades->excluir_flechas();
 	}
 }
+

@@ -85,7 +85,7 @@ int GerenciadorEntidades::getQuantidadeMoedas()const
 	return quantidadeMoedas;
 }
 
-Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float cy, const int tipo, const int codigo)
+Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float cy, const int tipo, const int codigo, const int conexao)
 {
 	if (tipo == 0) {
 		Bau* bau = new Bau(window, &t_bau, cx, cy, 3, codigo, 6, 1);
@@ -435,13 +435,13 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 		return espinhosE;
 	}
 	else if (tipo == 53) {
-		Escada* escadaBaixo = new Escada(window, &t_escada, cx, cy, 2, codigo, 2, 1, BAIXO);
+		Escada* escadaBaixo = new Escada(window, &t_escada, cx, cy, 2, codigo, 2, 1, BAIXO, conexao);
 		listaPortais.push_back(escadaBaixo);
 		Entidade* escadaBaixoE = static_cast<Entidade*>(escadaBaixo);
 		return escadaBaixoE;
 	}
 	else if (tipo == 54) {
-		Escada* escadaCima = new Escada(window, &t_escada, cx, cy, 2, codigo, 2, 1, CIMA);
+		Escada* escadaCima = new Escada(window, &t_escada, cx, cy, 2, codigo, 2, 1, CIMA, conexao);
 		listaPortais.push_back(escadaCima);
 		Entidade* escadaCimaE = static_cast<Entidade*>(escadaCima);
 		return escadaCimaE;

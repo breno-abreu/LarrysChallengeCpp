@@ -3,12 +3,12 @@ Escada::Escada()
 {
 	tipo = 0;
 }
-Escada::Escada(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo, const int _xTile, const int _yTile, const int _tipo):
+Escada::Escada(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo, const int _xTile, const int _yTile, const int _tipo, const int _conexao):
 	Interativo(_window, _textura, cx, cy, _profundidade, _codigo, _xTile, _yTile)
 {
 	tipo = _tipo;
 	coordenadasTile.height = 0;
-
+	conexao = _conexao;
 	/*quantidadeTile.x = 2;
 	quantidadeTile.y = 1;
 	dimensoes.x = textura->getSize().x / quantidadeTile.x;
@@ -38,3 +38,4 @@ int Escada::getTipo()const
 {
 	return tipo;
 }
+

@@ -17,10 +17,10 @@ ListaEntidades::~ListaEntidades()
 	limpar();
 }
 
-void ListaEntidades::adicionar_entidade(const float cx, const float cy, const int tipo)
+void ListaEntidades::adicionar_entidade(const float cx, const float cy, const int tipo, const int conexao)
 {
 	codigo++;
-	Entidade* entidade = gerenciadorEntidades->adicionar_entidade(cx, cy, tipo, codigo);
+	Entidade* entidade = gerenciadorEntidades->adicionar_entidade(cx, cy, tipo, codigo, conexao);
 	listaEntidades.push_back(entidade);
 	ordenar();
 }

@@ -58,5 +58,6 @@ public:
 	bool verificar_colisao(Entidade* a, Entidade* b);
 	void flecha_caixa();
 	void objetos_botao();
+	void caixa_barreira();
 };
 

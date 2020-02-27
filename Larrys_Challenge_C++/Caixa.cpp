@@ -3,7 +3,10 @@
 Caixa::Caixa()
 {
 	tipo = 0;
-	bloqueado = false;
+	bloqueadoDireita = false;
+	bloqueadoEsquerda = false;
+	bloqueadoCima = false;
+	bloqueadoBaixo = false;
 	peso = 0;
 }
 Caixa::Caixa(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo, const int _xTile, const int _yTile, const int _tipo):
@@ -16,11 +19,14 @@ Caixa::Caixa(RenderWindow* _window, Texture* _textura, const float cx, const flo
 	else
 		peso = 4;
 
-	bloqueado = false;
+	bloqueadoDireita = false;
+	bloqueadoEsquerda = false;
+	bloqueadoCima = false;
+	bloqueadoBaixo = false;
 
-	hitBox.width = 5;
+	hitBox.width = 0;
 	hitBox.height = 0;
-	hitBox.left = 5;
+	hitBox.left = 0;
 	hitBox.top = 0;
 }
 Caixa::~Caixa()
@@ -51,4 +57,40 @@ float Caixa::getPeso()const
 int Caixa::getTipo()const
 {
 	return tipo;
+}
+
+bool Caixa::getBloqueadoDireita()const
+{
+	return bloqueadoDireita;
+}
+void Caixa::setBloqueadoDireita(const bool _bloqueado)
+{
+	bloqueadoDireita = _bloqueado;
+}
+
+bool Caixa::getBloqueadoEsquerda()const
+{
+	return bloqueadoEsquerda;
+}
+void Caixa::setBloqueadoEsquerda(const bool _bloqueado)
+{
+	bloqueadoEsquerda = _bloqueado;
+}
+
+bool Caixa::getBloqueadoCima()const
+{
+	return bloqueadoCima;
+}
+void Caixa::setBloqueadoCima(const bool _bloqueado)
+{
+	bloqueadoCima = _bloqueado;
+}
+
+bool Caixa::getBloqueadoBaixo()const
+{
+	return bloqueadoBaixo;
+}
+void Caixa::setBloqueadoBaixo(const bool _bloqueado)
+{
+	bloqueadoBaixo = _bloqueado;
 }

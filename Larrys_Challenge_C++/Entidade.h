@@ -41,5 +41,6 @@ public:
 	int getCodigo()const;
 	int getClasse()const;
 	FloatRect getHitBox() const;
+	int getConexao()const;
 };
 

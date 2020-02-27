@@ -111,3 +111,8 @@ FloatRect Entidade::getHitBox() const
 {
 	return hitBox;
 }
+
+int Entidade::getConexao()const
+{
+	return conexao;
+}
