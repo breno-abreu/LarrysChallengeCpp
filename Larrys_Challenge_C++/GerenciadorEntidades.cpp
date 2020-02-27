@@ -366,8 +366,9 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 		return abismo13E;
 	}
 	else if (tipo == 42) {
-		Porta* porta = new Porta(window, &t_porta, cx, cy, 2, codigo, 2, 1);
+		Porta* porta = new Porta(window, &t_porta, cx, cy, 2, codigo, 2, 1, conexao);
 		listaInterativos.push_back(porta);
+		listaPortas.push_back(porta);
 		Entidade* portaE = static_cast<Entidade*>(porta);
 		return portaE;
 	}
@@ -397,7 +398,7 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 		return pedraE;
 	}
 	else if (tipo == 48) {
-		Atirador* atiradorBaixo = new Atirador(window, &t_atirador, cx, cy, 3, codigo, 4, 1, BAIXO);
+		Atirador* atiradorBaixo = new Atirador(window, &t_atirador, cx, cy, 3, codigo, 4, 1, BAIXO, conexao);
 		listaAtiradores.push_back(atiradorBaixo);
 		Barreira* atiradorBaixoAux = static_cast<Barreira*>(atiradorBaixo);
 		listaBarreiras.push_back(atiradorBaixo);
@@ -405,7 +406,7 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 		return atiradorBaixoE;
 	}
 	else if (tipo == 49) {
-		Atirador* atiradorEsquerda = new Atirador(window, &t_atirador, cx, cy, 3, codigo, 4, 1, ESQUERDA);
+		Atirador* atiradorEsquerda = new Atirador(window, &t_atirador, cx, cy, 3, codigo, 4, 1, ESQUERDA, conexao);
 		listaAtiradores.push_back(atiradorEsquerda);
 		Barreira* atiradorEsquerdaAux = static_cast<Barreira*>(atiradorEsquerda);
 		listaBarreiras.push_back(atiradorEsquerda);
@@ -413,7 +414,7 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 		return atiradorEsquerda;
 	}
 	else if (tipo == 50) {
-		Atirador* atiradorDireita = new Atirador(window, &t_atirador, cx, cy, 3, codigo, 4, 1, DIREITA);
+		Atirador* atiradorDireita = new Atirador(window, &t_atirador, cx, cy, 3, codigo, 4, 1, DIREITA, conexao);
 		listaAtiradores.push_back(atiradorDireita);
 		Barreira* atiradorDireitaAux = static_cast<Barreira*>(atiradorDireita);
 		listaBarreiras.push_back(atiradorDireita);
@@ -421,7 +422,7 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 		return atiradorDireitaE;
 	}
 	else if (tipo == 51) {
-		Atirador* atiradorCima = new Atirador(window, &t_atirador, cx, cy, 3, codigo, 4, 1, CIMA);
+		Atirador* atiradorCima = new Atirador(window, &t_atirador, cx, cy, 3, codigo, 4, 1, CIMA, conexao);
 		listaAtiradores.push_back(atiradorCima);
 		Barreira* atiradorCimaAux = static_cast<Barreira*>(atiradorCima);
 		listaBarreiras.push_back(atiradorCima);
@@ -429,7 +430,7 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 		return atiradorCimaE;
 	}
 	else if (tipo == 52) {
-		Espinhos* espinhos = new Espinhos(window, &t_espinhos, cx, cy, 2, codigo, 7, 1);
+		Espinhos* espinhos = new Espinhos(window, &t_espinhos, cx, cy, 2, codigo, 7, 1, conexao);
 		listaEspinhos.push_back(espinhos);
 		Entidade* espinhosE = static_cast<Entidade*>(espinhos);
 		return espinhosE;
@@ -457,9 +458,10 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 		return topoColunaEsquerdaE;
 	}
 	else if (tipo == 57) {
-		Interruptor* interruptor = new Interruptor(window, &t_interruptor, cx, cy, 2, codigo, 2, 1);
+		Interruptor* interruptor = new Interruptor(window, &t_interruptor, cx, cy, 2, codigo, 2, 1, conexao);
 		Interativo* interruptorAux = static_cast<Interativo*>(interruptor);
 		listaInterativos.push_back(interruptorAux);
+		listaInterruptores.push_back(interruptor);
 		Entidade* interruptorE = static_cast<Entidade*>(interruptor);
 		return  interruptorE;
 	}
@@ -469,7 +471,7 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 		return tochaE;
 	}
 	else if (tipo == 59) {
-		Botao* botao = new Botao(window, &t_botao, cx, cy, 2, codigo, 2, 1);
+		Botao* botao = new Botao(window, &t_botao, cx, cy, 2, codigo, 2, 1, conexao);
 		listaBotoes.push_back(botao);
 		Entidade* botaoE = static_cast<Entidade*>(botao);
 		return botaoE;
@@ -515,6 +517,15 @@ list<Interativo*> GerenciadorEntidades::getListaInterativos()const
 list<SuperficieInterativa*> GerenciadorEntidades::getListaSuperficiesInterativas()const
 {
 	return listaSuperficiesInterativas;
+}
+
+list<Porta*> GerenciadorEntidades::getListaPortas()const
+{
+	return listaPortas;
+}
+list<Interruptor*> GerenciadorEntidades::getListaInterruptores()const
+{
+	return listaInterruptores;
 }
 list<Caixa*> GerenciadorEntidades::getListaCaixas()const
 {

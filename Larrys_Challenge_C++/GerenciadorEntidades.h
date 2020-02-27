@@ -89,6 +89,8 @@ private:
 	list<Atirador*> listaAtiradores;
 	list<Interativo*> listaPortais;
 	list<Entidade*> listaObjetos;
+	list<Interruptor*> listaInterruptores;
+	list<Porta*> listaPortas;
 	Jogador* jogadorJ;
 
 	int quantidadeMoedas;
@@ -131,6 +133,8 @@ public:
 	list<Interativo*> getListaPortais()const;
 	list<Atirador*> getListaAtiradores()const;
 	list<Entidade*> getListaObjetos()const;
+	list<Interruptor*> getListaInterruptores()const;
+	list<Porta*> getListaPortas()const;
 	Jogador* getJogador()const;
 	void setQuantidadeMoedas(const int _quantidadeMoedas);
 	int getQuantidadeMoedas()const;

@@ -4,7 +4,7 @@ Botao::Botao()
 {
 	ativado = false;
 }
-Botao::Botao(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo, const int _xTile, const int _yTile):
+Botao::Botao(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo, const int _xTile, const int _yTile, const int _conexao):
 	SuperficieInterativa(_window, _textura, cx, cy, _profundidade, _codigo, _xTile, _yTile)
 {
 	/*quantidadeTile.x = 2;
@@ -18,7 +18,7 @@ Botao::Botao(RenderWindow* _window, Texture* _textura, const float cx, const flo
 	coordenadasTile.width = 0;
 	ativado = false;
 	existe = false;
-
+	conexao = _conexao;
 	hitBox.width = -10;
 	hitBox.height = -10;
 	hitBox.left = 10;
@@ -32,8 +32,6 @@ Botao::~Botao()
 }
 void Botao::existir()
 {
-
-
 	if (!ativado)
 		coordenadasTile.width = 0;
 

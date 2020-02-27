@@ -3,9 +3,10 @@ Espinhos::Espinhos()
 {
 
 }
-Espinhos::Espinhos(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo, const int _xTile, const int _yTile):
+Espinhos::Espinhos(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo, const int _xTile, const int _yTile, const int _conexao):
 	Letal(_window, _textura, cx, cy, _profundidade, _codigo, _xTile, _yTile)
 {
+	conexao = _conexao;
 	/*quantidadeTile.x = 7;
 	quantidadeTile.y = 1;
 	dimensoes.x = (textura->getSize().x / quantidadeTile.x);
@@ -15,6 +16,7 @@ Espinhos::Espinhos(RenderWindow* _window, Texture* _textura, const float cx, con
 	entidade.setSize(dimensoesAux);*/
 	desativado = true;
 	hitBox.height = -44;
+	ativado = true;
 }
 Espinhos::~Espinhos()
 {
@@ -22,20 +24,25 @@ Espinhos::~Espinhos()
 }
 void Espinhos::existir()
 {
-	if (contAnimacao >= velAnimacao) {
-		coordenadasTile.width = contFrames * dimensoes.x;
-		contFrames++;
-		if (contFrames >= 7)
-			contFrames = 0;
+	if (ativado) {
+		if (contAnimacao >= velAnimacao) {
+			coordenadasTile.width = contFrames * dimensoes.x;
+			contFrames++;
+			if (contFrames >= 7)
+				contFrames = 0;
 
-		contAnimacao = 0;
+			contAnimacao = 0;
+		}
+		contAnimacao++;
+
+		if (contFrames == 0)
+			desativado = true;
+		else
+			desativado = false;
 	}
-	contAnimacao++;
-
-	if (contFrames == 0)
-		desativado = true;
 	else
-		desativado = false;
+		coordenadasTile.width = 0;
+	
 
 	entidade.setTextureRect(IntRect(coordenadasTile.width, coordenadasTile.height, dimensoes.x, dimensoes.y));
 	window->draw(entidade);
@@ -44,4 +51,13 @@ void Espinhos::existir()
 bool Espinhos::getDesativado()const
 {
 	return desativado;
+}
+
+void Espinhos::setAtivado(const bool _ativado)
+{
+	ativado = _ativado;
+}
+bool Espinhos::getAtivado()const
+{
+	return ativado;
 }

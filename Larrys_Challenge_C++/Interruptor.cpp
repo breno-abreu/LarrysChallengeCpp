@@ -4,7 +4,7 @@ Interruptor::Interruptor()
 {
 
 }
-Interruptor::Interruptor(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo, const int _xTile, const int _yTile):
+Interruptor::Interruptor(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo, const int _xTile, const int _yTile, const int _conexao):
 	Interativo(_window, _textura, cx, cy, _profundidade, _codigo, _xTile, _yTile)
 {
 	/*quantidadeTile.x = 2;
@@ -14,6 +14,7 @@ Interruptor::Interruptor(RenderWindow* _window, Texture* _textura, const float c
 	dimensoesAux.x = dimensoes.x * proporcao;
 	dimensoesAux.y = dimensoes.x * proporcao;
 	entidade.setSize(dimensoesAux);*/
+	conexao = _conexao;
 	coordenadasTile.height = 0;
 	coordenadasTile.width = 0;
 

@@ -48,6 +48,9 @@ void Fase::executar()
 	flecha_caixa();
 	objetos_botao();
 	caixa_barreira();
+	ativador_espinhos();
+	ativador_atirador(); 
+	ativador_porta();
 }
 
 bool Fase::verificar_colisao(Entidade* a, Entidade* b)
@@ -440,7 +443,6 @@ void Fase::jogador_portais()
 		if (fim)
 			break;
 	}
-
 }
 
 void Fase::atiradores()
@@ -449,7 +451,7 @@ void Fase::atiradores()
 	list<Atirador*> listaPortais = gerenciadorEntidades->getListaAtiradores();
 
 	for (itr = listaPortais.begin(); itr != listaPortais.end(); itr++) {
-		if ((*itr)->getAtivo()) {
+		if ((*itr)->getAtirar()) {
 			if((*itr)->getDirecao() == CIMA)
 				listaEntidades->adicionar_entidade((*itr)->getCoordenadas().x, (*itr)->getCoordenadas().y, 100, 0);
 			else if ((*itr)->getDirecao() == BAIXO)
@@ -518,6 +520,91 @@ void Fase::flecha_caixa()
 	if (excluir == true) {
 		listaEntidades->excluir_entidades();
 		gerenciadorEntidades->excluir_flechas();
+	}
+}
+
+void Fase::ativador_espinhos()
+{
+	list<Espinhos*>::iterator itrE;
+	list<Espinhos*> listaEspinhos = gerenciadorEntidades->getListaEspinhos();
+	list<Interruptor*>::iterator itrI;
+	list<Interruptor*> listaInterruptores = gerenciadorEntidades->getListaInterruptores();
+	list<Botao*>::iterator itrB;
+	list<Botao*> listaBotoes = gerenciadorEntidades->getListaBotoes();
+
+
+	for (itrI = listaInterruptores.begin(); itrI != listaInterruptores.end(); itrI++) {
+		for (itrE = listaEspinhos.begin(); itrE != listaEspinhos.end(); itrE++) {
+			if ((*itrI)->getAtivado() && (*itrI)->getConexao() == (*itrE)->getConexao()) 
+				(*itrE)->setAtivado(false);
+			else if (!(*itrI)->getAtivado() && (*itrI)->getConexao() == (*itrE)->getConexao()) 
+				(*itrE)->setAtivado(true);
+		}
+	}
+
+	for (itrB = listaBotoes.begin(); itrB != listaBotoes.end(); itrB++) {
+		for (itrE = listaEspinhos.begin(); itrE != listaEspinhos.end(); itrE++) {
+			if ((*itrB)->getAtivado() && (*itrB)->getConexao() == (*itrE)->getConexao())
+				(*itrE)->setAtivado(false);
+			else if (!(*itrB)->getAtivado() && (*itrB)->getConexao() == (*itrE)->getConexao())
+				(*itrE)->setAtivado(true);
+		}
+	}
+}
+void Fase::ativador_atirador()
+{
+	list<Atirador*>::iterator itrA;
+	list<Atirador*> listaAtiradores = gerenciadorEntidades->getListaAtiradores();
+	list<Interruptor*>::iterator itrI;
+	list<Interruptor*> listaInterruptores = gerenciadorEntidades->getListaInterruptores();
+	list<Botao*>::iterator itrB;
+	list<Botao*> listaBotoes = gerenciadorEntidades->getListaBotoes();
+
+
+	for (itrI = listaInterruptores.begin(); itrI != listaInterruptores.end(); itrI++) {
+		for (itrA = listaAtiradores.begin(); itrA != listaAtiradores.end(); itrA++) {
+			if ((*itrI)->getAtivado() && (*itrI)->getConexao() == (*itrA)->getConexao())
+				(*itrA)->setAtivado(false);
+			else if (!(*itrI)->getAtivado() && (*itrI)->getConexao() == (*itrA)->getConexao())
+				(*itrA)->setAtivado(true);
+		}
+	}
+
+	for (itrB = listaBotoes.begin(); itrB != listaBotoes.end(); itrB++) {
+		for (itrA = listaAtiradores.begin(); itrA != listaAtiradores.end(); itrA++) {
+			if ((*itrB)->getAtivado() && (*itrB)->getConexao() == (*itrA)->getConexao())
+				(*itrA)->setAtivado(false);
+			else if (!(*itrB)->getAtivado() && (*itrB)->getConexao() == (*itrA)->getConexao())
+				(*itrA)->setAtivado(true);
+		}
+	}
+}
+void Fase::ativador_porta()
+{
+	list<Porta*>::iterator itrP;
+	list<Porta*> listaPortas = gerenciadorEntidades->getListaPortas();
+	list<Interruptor*>::iterator itrI;
+	list<Interruptor*> listaInterruptores = gerenciadorEntidades->getListaInterruptores();
+	list<Botao*>::iterator itrB;
+	list<Botao*> listaBotoes = gerenciadorEntidades->getListaBotoes();
+
+
+	for (itrI = listaInterruptores.begin(); itrI != listaInterruptores.end(); itrI++) {
+		for (itrP = listaPortas.begin(); itrP != listaPortas.end(); itrP++) {
+			if ((*itrI)->getAtivado() && (*itrI)->getConexao() == (*itrP)->getConexao())
+				(*itrP)->setAtivado(true);
+			else if (!(*itrI)->getAtivado() && (*itrI)->getConexao() == (*itrP)->getConexao())
+				(*itrP)->setAtivado(false);
+		}
+	}
+
+	for (itrB = listaBotoes.begin(); itrB != listaBotoes.end(); itrB++) {
+		for (itrP = listaPortas.begin(); itrP != listaPortas.end(); itrP++) {
+			if ((*itrB)->getAtivado() && (*itrB)->getConexao() == (*itrP)->getConexao())
+				(*itrP)->setAtivado(true);
+			else if (!(*itrB)->getAtivado() && (*itrB)->getConexao() == (*itrP)->getConexao())
+				(*itrP)->setAtivado(false);
+		}
 	}
 }
 

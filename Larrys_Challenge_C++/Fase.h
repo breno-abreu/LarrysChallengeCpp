@@ -59,5 +59,8 @@ public:
 	void flecha_caixa();
 	void objetos_botao();
 	void caixa_barreira();
+	void ativador_espinhos();
+	void ativador_atirador();
+	void ativador_porta();
 };
 
