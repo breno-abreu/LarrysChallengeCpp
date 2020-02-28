@@ -4,7 +4,10 @@
 
 class Perseguidor : public Inimigo
 {
+private:
 	Vector2f coordenadasJogador;
+	int direcao;
+
 
 public:
 	Perseguidor();
@@ -12,6 +15,7 @@ public:
 	~Perseguidor();
 	void existir();
 	void setCoodenadasJogador(const float jx, const float jy);
+	int getDirecao()const;
 
 
 };

@@ -22,7 +22,8 @@ Perseguidor::~Perseguidor()
 }
 void Perseguidor::existir()
 {
-	double coeficienteAngular = 0;
+	//começa
+	/*double coeficienteAngular = 0;
 	//explicar essa equação
 	if (coordenadasJogador.x - coordenadas.x != 0)
 		coeficienteAngular = (coordenadasJogador.y - coordenadas.y) / (coordenadasJogador.x - coordenadas.x);
@@ -47,7 +48,13 @@ void Perseguidor::existir()
 
 	coordenadas.y = coeficienteAngular * coordenadas.x + coeficienteLinear;
 
-	int posicao = 0;
+	int posicao = 0;*/
+	//termina
+
+
+
+
+
 
 	/*float coeficienteLinear2 = coordenadas.y - coordenadas.x;
 	float y = coordenadas.x + coeficienteLinear2;
@@ -88,6 +95,10 @@ void Perseguidor::existir()
 
 	//float distancia = abs(coordenadas.x - coordenadasJogador.x);
 
+
+
+	//começa
+	/*
 	float distancia = 250;
 
 	float x1 = coordenadas.x - distancia;
@@ -96,7 +107,7 @@ void Perseguidor::existir()
 	//Cria dois pontos no eixo X, com uma distância definida, dependendo da posição em relação aos dois pontos, a animação muda
 	if (coordenadasJogador.y > coordenadas.y) {
 		if (coordenadasJogador.x > x1 && coordenadasJogador.x < x2)
-				posicao = 0;
+			posicao = 0;
 		else if (coordenadasJogador.x <= x1) 
 			posicao = 1;
 		else if(coordenadasJogador.x >= x2)
@@ -109,7 +120,15 @@ void Perseguidor::existir()
 			posicao = 1;
 		else if (coordenadasJogador.x >= x2)
 			posicao = 2;
-	}
+	}*/
+	//termina
+
+
+
+
+
+
+
 
 	/*float coeficienteLinear2 = coordenadas.y - coordenadas.x;
 	int posicao = 0;
@@ -153,6 +172,68 @@ void Perseguidor::existir()
 		else if(coordenadasJogador.y < y && coordenadasJogador.x < x)
 			posicao = 3;
 	}*/
+
+
+	float limiteDireita = coordenadas.x + abs(coordenadasJogador.y - coordenadas.y) * 2;
+	float limiteEsquerda = coordenadas.x - abs(coordenadasJogador.y - coordenadas.y) * 2;
+	float limiteCima = coordenadas.y + abs(coordenadasJogador.x - coordenadas.x) / 2;
+	float limiteBaixo = coordenadas.y - abs(coordenadasJogador.x - coordenadas.x) / 2;
+
+	/*RectangleShape auxD;
+	RectangleShape auxE;
+	auxD.setSize(Vector2f(5, 5));
+	auxE.setSize(Vector2f(5, 5));
+	auxD.setFillColor(Color::Blue);
+	auxE.setFillColor(Color::Blue);
+	auxD.setPosition(Vector2f(coordenadas.x, limiteCima));
+	auxE.setPosition(Vector2f(coordenadas.x, limiteBaixo));
+
+	window->draw(auxD);
+	window->draw(auxE);
+
+	RectangleShape auxC;
+	RectangleShape auxB;
+	auxC.setSize(Vector2f(5, 5));
+	auxB.setSize(Vector2f(5, 5));
+	auxC.setFillColor(Color::Blue);
+	auxB.setFillColor(Color::Blue);
+	auxC.setPosition(Vector2f(limiteDireita, coordenadas.y));
+	auxB.setPosition(Vector2f(limiteEsquerda, coordenadas.y));
+
+	window->draw(auxC);
+	window->draw(auxB);*/
+	
+
+	int posicao = 0;
+
+	if (coordenadasJogador.x >= limiteEsquerda && coordenadasJogador.x <= limiteDireita) {
+		if (coordenadasJogador.y >= coordenadas.y) {
+			posicao = 4;
+			coordenadas.y += velocidade;
+			direcao = BAIXO;
+		}
+		else {
+			posicao = 7;
+			coordenadas.y -= velocidade;
+			direcao = CIMA;
+		}
+	}
+	else if (coordenadasJogador.y >= limiteBaixo && coordenadasJogador.y <= limiteCima) {
+		if (coordenadasJogador.x >= coordenadas.x) {
+			posicao = 6;
+			coordenadas.x += velocidade;
+			direcao = DIREITA;
+		}
+		else {
+			posicao = 5;
+			coordenadas.x -= velocidade;
+			direcao = ESQUERDA;
+		}
+	}
+
+
+	
+
 	
 
 	coordenadasTile.height = posicao * dimensoes.y;
@@ -184,4 +265,9 @@ void Perseguidor::setCoodenadasJogador(const float jx, const float jy)
 {
 	coordenadasJogador.x = jx;
 	coordenadasJogador.y = jy;
+}
+
+int Perseguidor::getDirecao()const
+{
+	return direcao;
 }

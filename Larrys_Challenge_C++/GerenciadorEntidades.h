@@ -91,6 +91,7 @@ private:
 	list<Entidade*> listaObjetos;
 	list<Interruptor*> listaInterruptores;
 	list<Porta*> listaPortas;
+	list<Perseguidor*> listaPerseguidores;
 	Jogador* jogadorJ;
 
 	int quantidadeMoedas;
@@ -135,6 +136,7 @@ public:
 	list<Entidade*> getListaObjetos()const;
 	list<Interruptor*> getListaInterruptores()const;
 	list<Porta*> getListaPortas()const;
+	list<Perseguidor*> getListaPerseguidores()const;
 	Jogador* getJogador()const;
 	void setQuantidadeMoedas(const int _quantidadeMoedas);
 	int getQuantidadeMoedas()const;

@@ -42,6 +42,7 @@ void Fase::executar()
 	jogador_espinhos();
 	jogador_interativo();
 	jogador_portais();
+	jogador_inimigo();
 	atiradores();
 	flecha_barreira();
 	jogador_flecha();
@@ -51,6 +52,8 @@ void Fase::executar()
 	ativador_espinhos();
 	ativador_atirador(); 
 	ativador_porta();
+	perseguidor();
+	perseguidor_barreira();
 }
 
 bool Fase::verificar_colisao(Entidade* a, Entidade* b)
@@ -174,9 +177,19 @@ void Fase::jogador_inimigo()
 
 	for (itr = listaInimigos.begin(); itr != listaInimigos.end(); itr++) {
 		if (verificar_colisao(jogador, (*itr))) {
-
 			jogador->setExiste(false);
 		}
+	}
+}
+
+void Fase::perseguidor()
+{
+	list<Perseguidor*>::iterator itr;
+	list<Perseguidor*> listaPerseguidores = gerenciadorEntidades->getListaPerseguidores();
+	Jogador* jogador = gerenciadorEntidades->getJogador();
+
+	for (itr = listaPerseguidores.begin(); itr != listaPerseguidores.end(); itr++) {
+		(*itr)->setCoodenadasJogador(jogador->getCoordenadas().x, jogador->getCoordenadas().y);
 	}
 }
 
@@ -604,6 +617,31 @@ void Fase::ativador_porta()
 				(*itrP)->setAtivado(true);
 			else if (!(*itrB)->getAtivado() && (*itrB)->getConexao() == (*itrP)->getConexao())
 				(*itrP)->setAtivado(false);
+		}
+	}
+}
+
+void Fase::perseguidor_barreira()
+{
+	list<Perseguidor*>::iterator itrP;
+	list<Perseguidor*> listaPerseguidores = gerenciadorEntidades->getListaPerseguidores();
+	list<Barreira*>::iterator itrB;
+	list<Barreira*> listaBarreiras = gerenciadorEntidades->getListaBarreiras();
+
+	for (itrP = listaPerseguidores.begin(); itrP != listaPerseguidores.end(); itrP++) {
+		for (itrB = listaBarreiras.begin(); itrB != listaBarreiras.end(); itrB++) {
+			if(verificar_colisao((*itrP), (*itrB))) {
+				if ((*itrP)->getDirecao() == DIREITA)
+					(*itrP)->setxEntidade((*itrP)->getCoordenadas().x - (*itrP)->getVelocidade());
+				else if ((*itrP)->getDirecao() == ESQUERDA)
+					(*itrP)->setxEntidade((*itrP)->getCoordenadas().x + (*itrP)->getVelocidade());
+				else if ((*itrP)->getDirecao() == CIMA)
+					(*itrP)->setyEntidade((*itrP)->getCoordenadas().y + (*itrP)->getVelocidade());
+				else if ((*itrP)->getDirecao() == BAIXO)
+					(*itrP)->setyEntidade((*itrP)->getCoordenadas().y - (*itrP)->getVelocidade());
+
+				break;
+			}
 		}
 	}
 }

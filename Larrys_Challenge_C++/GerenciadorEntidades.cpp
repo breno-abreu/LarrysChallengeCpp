@@ -193,6 +193,7 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 	}
 	else if (tipo == 16) {
 		Perseguidor* esqueleto = new Perseguidor(window, &t_esqueleto, cx, cy, 3, codigo, 6, 8, 3);
+		listaPerseguidores.push_back(esqueleto);
 		Inimigo* esqueletoI = static_cast<Inimigo*>(esqueleto);
 		listaInimigos.push_back(esqueletoI);
 		Personagem* esqueletoP = static_cast<Personagem*>(esqueleto);
@@ -202,6 +203,7 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 	}
 	else if (tipo == 17) {
 		Perseguidor* zumbi = new Perseguidor(window, &t_zumbi, cx, cy, 3, codigo, 6, 8, 9);
+		listaPerseguidores.push_back(zumbi);
 		Inimigo* zumbiI = static_cast<Inimigo*>(zumbi);
 		listaInimigos.push_back(zumbiI);
 		Personagem* zumbiP = static_cast<Personagem*>(zumbi);
@@ -536,6 +538,10 @@ list<Flecha*> GerenciadorEntidades::getListaFlechas()const
 	return listaFlechas;
 }
 
+list<Perseguidor*> GerenciadorEntidades::getListaPerseguidores()const
+{
+	return listaPerseguidores;
+}
 list<Entidade*> GerenciadorEntidades::getListaObjetos()const
 {
 	return listaObjetos;

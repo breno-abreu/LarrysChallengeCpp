@@ -62,5 +62,7 @@ public:
 	void ativador_espinhos();
 	void ativador_atirador();
 	void ativador_porta();
+	void perseguidor();
+	void perseguidor_barreira();
 };
 
