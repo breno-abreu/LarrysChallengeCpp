@@ -236,7 +236,8 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 		return movimentadorCimaE;
 	}
 	else if (tipo == 22) {
-		Rato* ratoBaixo = new Rato(window, &t_rato, cx, cy, 3, codigo, 8, 1, BAIXO);
+		Rato* ratoBaixo = new Rato(window, &t_rato, cx, cy, 3, codigo, 2, 4, BAIXO);
+		listaRatos.push_back(ratoBaixo);
 		Inimigo* ratoBaixoI = static_cast<Inimigo*>(ratoBaixo);
 		listaInimigos.push_back(ratoBaixoI);
 		Personagem* ratoBaixoP = static_cast<Personagem*>(ratoBaixo);
@@ -245,7 +246,8 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 		return ratoBaixoE;
 	}
 	else if (tipo == 23) {
-		Rato* ratoEsquerda = new Rato(window, &t_rato, cx, cy, 3, codigo, 8, 1, ESQUERDA);
+		Rato* ratoEsquerda = new Rato(window, &t_rato, cx, cy, 3, codigo, 2, 4, ESQUERDA);
+		listaRatos.push_back(ratoEsquerda);
 		Inimigo* ratoEsquerdaI = static_cast<Inimigo*>(ratoEsquerda);
 		listaInimigos.push_back(ratoEsquerdaI);
 		Personagem* ratoEsquerdaP = static_cast<Personagem*>(ratoEsquerda);
@@ -254,7 +256,8 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 		return ratoEsquerdaE;
 	}
 	else if (tipo == 24) {
-		Rato* ratoDireita = new Rato(window, &t_rato, cx, cy, 3, codigo, 8, 1, DIREITA);
+		Rato* ratoDireita = new Rato(window, &t_rato, cx, cy, 3, codigo, 2, 4, DIREITA);
+		listaRatos.push_back(ratoDireita);
 		Inimigo* ratoDireitaI = static_cast<Inimigo*>(ratoDireita);
 		listaInimigos.push_back(ratoDireitaI);
 		Personagem* ratoDireitaP = static_cast<Personagem*>(ratoDireita);
@@ -263,7 +266,8 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 		return  ratoDireitaE;
 	}
 	else if (tipo == 25) {
-		Rato* ratoCima = new Rato(window, &t_rato, cx, cy, 3, codigo, 8, 1, CIMA);
+		Rato* ratoCima = new Rato(window, &t_rato, cx, cy, 3, codigo, 2, 4, CIMA);
+		listaRatos.push_back(ratoCima);
 		Inimigo* ratoCimaI = static_cast<Inimigo*>(ratoCima);
 		listaInimigos.push_back(ratoCimaI);
 		Personagem* ratoCimaP = static_cast<Personagem*>(ratoCima);
@@ -525,6 +529,12 @@ list<Porta*> GerenciadorEntidades::getListaPortas()const
 {
 	return listaPortas;
 }
+
+list<Rato*> GerenciadorEntidades::getListaRatos()const
+{
+	return listaRatos;
+}
+
 list<Interruptor*> GerenciadorEntidades::getListaInterruptores()const
 {
 	return listaInterruptores;

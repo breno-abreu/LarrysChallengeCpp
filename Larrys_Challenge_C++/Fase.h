@@ -64,5 +64,6 @@ public:
 	void ativador_porta();
 	void perseguidor();
 	void perseguidor_barreira();
+	void rato_barreira();
 };
 

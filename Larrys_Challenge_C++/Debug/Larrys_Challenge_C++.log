@@ -1,5 +1,5 @@
-﻿  Perseguidor.cpp
-C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\Perseguidor.cpp(239,35): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
+﻿  Rato.cpp
+C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\Rato.cpp(31,30): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=float
@@ -8,7 +8,7 @@ C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\L
           [
               T=int
           ]
-C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\Perseguidor.cpp(246,38): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
+C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\Rato.cpp(35,37): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=float
@@ -17,7 +17,7 @@ C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\L
           [
               T=int
           ]
-C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\Perseguidor.cpp(258,103): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\Rato.cpp(43,30): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=float
@@ -26,7 +26,25 @@ C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\L
           [
               T=int
           ]
-C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\Perseguidor.cpp(258,90): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\Rato.cpp(59,34): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\Rato.cpp(61,103): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+C:\Users\Breno Abreu\Downloads\Projeto Larry's Challenge\Larry's Challenge C++\Larrys_Challenge_C++\Larrys_Challenge_C++\Rato.cpp(61,90): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=float
