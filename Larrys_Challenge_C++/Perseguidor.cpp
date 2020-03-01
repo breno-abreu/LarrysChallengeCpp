@@ -15,6 +15,11 @@ Perseguidor::Perseguidor(RenderWindow* _window, Texture* _textura, const float c
 	dimensoesAux.x = dimensoes.x * proporcao;
 	dimensoesAux.y = dimensoes.x * proporcao;
 	entidade.setSize(dimensoesAux);*/
+
+	coordenadasOrigem.x = cx;
+	coordenadasOrigem.y = cy;
+	distanciaOrigemPadrao = 600;
+	distanciaJogadorPadrao = 150;
 }
 Perseguidor::~Perseguidor()
 {
@@ -174,10 +179,7 @@ void Perseguidor::existir()
 	}*/
 
 
-	float limiteDireita = coordenadas.x + abs(coordenadasJogador.y - coordenadas.y) * 2;
-	float limiteEsquerda = coordenadas.x - abs(coordenadasJogador.y - coordenadas.y) * 2;
-	float limiteCima = coordenadas.y + abs(coordenadasJogador.x - coordenadas.x) / 2;
-	float limiteBaixo = coordenadas.y - abs(coordenadasJogador.x - coordenadas.x) / 2;
+	
 
 	/*RectangleShape auxD;
 	RectangleShape auxE;
@@ -202,12 +204,28 @@ void Perseguidor::existir()
 
 	window->draw(auxC);
 	window->draw(auxB);*/
+
 	
+	/*float distanciaOrigem = sqrt(((coordenadas.x - xOrigem) * (coordenadas.x - xOrigem))
+									+ ((coordenadas.y - yOrigem) * (coordenadas.y - yOrigem)));
+	
+	if (distanciaOrigem >= distanciaOrigemPadrao) {
+		setCoodenadasJogador(xOrigem, yOrigem);
+	}*/
+
+	
+
+	
+
+	float limiteDireita = coordenadas.x + abs(coordenadasAlvo.y - coordenadas.y) * 2;
+	float limiteEsquerda = coordenadas.x - abs(coordenadasAlvo.y - coordenadas.y) * 2;
+	float limiteCima = coordenadas.y + abs(coordenadasAlvo.x - coordenadas.x) / 2;
+	float limiteBaixo = coordenadas.y - abs(coordenadasAlvo.x - coordenadas.x) / 2;
 
 	int posicao = 0;
 
-	if (coordenadasJogador.x >= limiteEsquerda && coordenadasJogador.x <= limiteDireita) {
-		if (coordenadasJogador.y >= coordenadas.y) {
+	if (coordenadasAlvo.x >= limiteEsquerda && coordenadasAlvo.x <= limiteDireita) {
+		if (coordenadasAlvo.y >= coordenadas.y) {
 			posicao = 4;
 			coordenadas.y += velocidade;
 			direcao = BAIXO;
@@ -218,8 +236,8 @@ void Perseguidor::existir()
 			direcao = CIMA;
 		}
 	}
-	else if (coordenadasJogador.y >= limiteBaixo && coordenadasJogador.y <= limiteCima) {
-		if (coordenadasJogador.x >= coordenadas.x) {
+	else if (coordenadasAlvo.y >= limiteBaixo && coordenadasAlvo.y <= limiteCima) {
+		if (coordenadasAlvo.x >= coordenadas.x) {
 			posicao = 6;
 			coordenadas.x += velocidade;
 			direcao = DIREITA;
@@ -230,11 +248,6 @@ void Perseguidor::existir()
 			direcao = ESQUERDA;
 		}
 	}
-
-
-	
-
-	
 
 	coordenadasTile.height = posicao * dimensoes.y;
 
@@ -261,6 +274,21 @@ void Perseguidor::existir()
 	window->draw(entidade);
 }
 
+void Perseguidor::perseguir(const bool _perseguir)
+{
+	if (_perseguir)
+		coordenadasAlvo = coordenadasJogador;
+	else
+		coordenadasAlvo = coordenadasOrigem;
+}
+
+
+void Perseguidor::setCoodenadasAlvo(const float jx, const float jy)
+{
+	coordenadasAlvo.x = jx;
+	coordenadasAlvo.y = jy;
+}
+
 void Perseguidor::setCoodenadasJogador(const float jx, const float jy)
 {
 	coordenadasJogador.x = jx;
@@ -270,4 +298,31 @@ void Perseguidor::setCoodenadasJogador(const float jx, const float jy)
 int Perseguidor::getDirecao()const
 {
 	return direcao;
+}
+
+float Perseguidor::getDistanciaOrigem()const
+{
+	return sqrt(((coordenadas.x - coordenadasOrigem.x) * (coordenadas.x - coordenadasOrigem.x)) + ((coordenadas.y - coordenadasOrigem.y) * (coordenadas.y - coordenadasOrigem.y)));
+}
+float Perseguidor::getxOrigem()const
+{
+	return coordenadasOrigem.x;
+}
+float Perseguidor::getyOrigem()const
+{
+	return coordenadasOrigem.y;
+}
+float Perseguidor::getDistanciaOrigemPadrao()const
+{
+	return distanciaOrigemPadrao;
+}
+
+float Perseguidor::getDistanciaJogador()const
+{
+	return sqrt(((coordenadasOrigem.x - coordenadasJogador.x) * (coordenadasOrigem.x - coordenadasJogador.x)) + ((coordenadasOrigem.y - coordenadasJogador.y) * (coordenadasOrigem.y - coordenadasJogador.y)));
+}
+
+float Perseguidor::getDistanciaJogadorPadrao()const
+{
+	return distanciaJogadorPadrao;
 }

@@ -75,8 +75,6 @@ bool Fase::verificar_colisao(Entidade* a, Entidade* b)
 	}
 	return false;*/
 
-
-
 	if (a->getCoordenadas().x + a->getHitBox().left < b->getCoordenadas().x + b->getDimensoes().x + b->getHitBox().width &&
 		a->getCoordenadas().x + a->getDimensoes().x + a->getHitBox().width > b->getCoordenadas().x + b->getHitBox().left &&
 		a->getCoordenadas().y + a->getHitBox().top < b->getCoordenadas().y + b->getDimensoes().y + b->getHitBox().height &&
@@ -190,7 +188,13 @@ void Fase::perseguidor()
 	Jogador* jogador = gerenciadorEntidades->getJogador();
 
 	for (itr = listaPerseguidores.begin(); itr != listaPerseguidores.end(); itr++) {
+
 		(*itr)->setCoodenadasJogador(jogador->getCoordenadas().x, jogador->getCoordenadas().y);
+
+		if ((*itr)->getDistanciaJogador() >= (*itr)->getDistanciaOrigemPadrao())
+			(*itr)->perseguir(false);
+		else
+			(*itr)->perseguir(true);
 	}
 }
 
@@ -628,10 +632,29 @@ void Fase::perseguidor_barreira()
 	list<Perseguidor*> listaPerseguidores = gerenciadorEntidades->getListaPerseguidores();
 	list<Barreira*>::iterator itrB;
 	list<Barreira*> listaBarreiras = gerenciadorEntidades->getListaBarreiras();
+	list<Caixa*>::iterator itrC;
+	list<Caixa*> listaCaixas = gerenciadorEntidades->getListaCaixas();
 
 	for (itrP = listaPerseguidores.begin(); itrP != listaPerseguidores.end(); itrP++) {
 		for (itrB = listaBarreiras.begin(); itrB != listaBarreiras.end(); itrB++) {
 			if(verificar_colisao((*itrP), (*itrB))) {
+				if ((*itrP)->getDirecao() == DIREITA)
+					(*itrP)->setxEntidade((*itrP)->getCoordenadas().x - (*itrP)->getVelocidade());
+				else if ((*itrP)->getDirecao() == ESQUERDA)
+					(*itrP)->setxEntidade((*itrP)->getCoordenadas().x + (*itrP)->getVelocidade());
+				else if ((*itrP)->getDirecao() == CIMA)
+					(*itrP)->setyEntidade((*itrP)->getCoordenadas().y + (*itrP)->getVelocidade());
+				else if ((*itrP)->getDirecao() == BAIXO)
+					(*itrP)->setyEntidade((*itrP)->getCoordenadas().y - (*itrP)->getVelocidade());
+
+				break;
+			}
+		}
+	}
+
+	for (itrP = listaPerseguidores.begin(); itrP != listaPerseguidores.end(); itrP++) {
+		for (itrC = listaCaixas.begin(); itrC != listaCaixas.end(); itrC++) {
+			if (verificar_colisao((*itrP), (*itrC))) {
 				if ((*itrP)->getDirecao() == DIREITA)
 					(*itrP)->setxEntidade((*itrP)->getCoordenadas().x - (*itrP)->getVelocidade());
 				else if ((*itrP)->getDirecao() == ESQUERDA)
@@ -652,12 +675,33 @@ void Fase::rato_barreira()
 	list<Rato*> listaRatos = gerenciadorEntidades->getListaRatos();
 	list<Barreira*>::iterator itrB;
 	list<Barreira*> listaBarreiras = gerenciadorEntidades->getListaBarreiras();
+	list<Caixa*>::iterator itrC;
+	list<Caixa*> listaCaixas = gerenciadorEntidades->getListaCaixas();
 
 	for (itrR = listaRatos.begin(); itrR != listaRatos.end(); itrR++) {
 		for (itrB = listaBarreiras.begin(); itrB != listaBarreiras.end(); itrB++) {
 			if (verificar_colisao((*itrR), (*itrB))) {
 				
 				
+				if ((*itrR)->getDirecao() == DIREITA)
+					(*itrR)->setxEntidade((*itrR)->getCoordenadas().x - (*itrR)->getVelocidade());
+				else if ((*itrR)->getDirecao() == ESQUERDA)
+					(*itrR)->setxEntidade((*itrR)->getCoordenadas().x + (*itrR)->getVelocidade());
+				else if ((*itrR)->getDirecao() == CIMA)
+					(*itrR)->setyEntidade((*itrR)->getCoordenadas().y + (*itrR)->getVelocidade());
+				else if ((*itrR)->getDirecao() == BAIXO)
+					(*itrR)->setyEntidade((*itrR)->getCoordenadas().y - (*itrR)->getVelocidade());
+
+				(*itrR)->alterar_direcao();
+			}
+		}
+	}
+
+	for (itrR = listaRatos.begin(); itrR != listaRatos.end(); itrR++) {
+		for (itrC = listaCaixas.begin(); itrC != listaCaixas.end(); itrC++) {
+			if (verificar_colisao((*itrR), (*itrC))) {
+
+
 				if ((*itrR)->getDirecao() == DIREITA)
 					(*itrR)->setxEntidade((*itrR)->getCoordenadas().x - (*itrR)->getVelocidade());
 				else if ((*itrR)->getDirecao() == ESQUERDA)
