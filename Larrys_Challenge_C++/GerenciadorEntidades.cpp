@@ -202,7 +202,7 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 		return esqueletoE;
 	}
 	else if (tipo == 17) {
-		Perseguidor* zumbi = new Perseguidor(window, &t_zumbi, cx, cy, 3, codigo, 6, 8, 9);
+		Perseguidor* zumbi = new Perseguidor(window, &t_zumbi, cx, cy, 3, codigo, 6, 8, 5);
 		listaPerseguidores.push_back(zumbi);
 		Inimigo* zumbiI = static_cast<Inimigo*>(zumbi);
 		listaInimigos.push_back(zumbiI);

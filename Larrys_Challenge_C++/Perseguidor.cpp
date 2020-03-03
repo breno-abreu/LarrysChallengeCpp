@@ -249,6 +249,14 @@ void Perseguidor::existir()
 		}
 	}
 
+	if (coordenadas.x == coordenadasOrigem.x && coordenadas.y == coordenadasOrigem.y + velocidade)
+		coordenadas.y -= velocidade;
+
+	if (coordenadas.x == coordenadasOrigem.x && coordenadas.y == coordenadasOrigem.y)
+		posicao = 0;
+
+
+
 	coordenadasTile.height = posicao * dimensoes.y;
 
 	contAnimacao++;
