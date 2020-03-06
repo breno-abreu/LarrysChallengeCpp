@@ -94,3 +94,12 @@ void Caixa::setBloqueadoBaixo(const bool _bloqueado)
 {
 	bloqueadoBaixo = _bloqueado;
 }
+
+void Caixa::setContato(const int _contato)
+{
+	contato = _contato;
+}
+int Caixa::getContato()const
+{
+	return contato;
+}

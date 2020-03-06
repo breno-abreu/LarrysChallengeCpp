@@ -11,6 +11,7 @@ private:
 	bool bloqueadoEsquerda;
 	bool bloqueadoCima;
 	bool bloqueadoBaixo;
+	int contato;
 
 public:
 	Caixa();
@@ -28,5 +29,7 @@ public:
 	void setBloqueadoCima(const bool _bloqueado);
 	bool getBloqueadoBaixo()const;
 	void setBloqueadoBaixo(const bool _bloqueado);
+	void setContato(const int _contato);
+	int getContato()const;
 };
 
