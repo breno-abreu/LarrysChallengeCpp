@@ -236,7 +236,7 @@ void Perseguidor::existir()
 			direcao = CIMA;
 		}
 	}
-	else if (coordenadasAlvo.y >= limiteBaixo && coordenadasAlvo.y <= limiteCima) {
+	else {
 		if (coordenadasAlvo.x >= coordenadas.x) {
 			posicao = 6;
 			coordenadas.x += velocidade;
@@ -248,6 +248,19 @@ void Perseguidor::existir()
 			direcao = ESQUERDA;
 		}
 	}
+
+	/*else if (coordenadasAlvo.y >= limiteBaixo && coordenadasAlvo.y <= limiteCima) {
+		if (coordenadasAlvo.x >= coordenadas.x) {
+			posicao = 6;
+			coordenadas.x += velocidade;
+			direcao = DIREITA;
+		}
+		else {
+			posicao = 5;
+			coordenadas.x -= velocidade;
+			direcao = ESQUERDA;
+		}
+	}*/
 
 	if (coordenadas.x == coordenadasOrigem.x && coordenadas.y == coordenadasOrigem.y + velocidade)
 		coordenadas.y -= velocidade;

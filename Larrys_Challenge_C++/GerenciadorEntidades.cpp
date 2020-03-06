@@ -129,6 +129,7 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 	else if (tipo == 6) {
 		Caixa* caixaLeve = new Caixa(window, &t_caixaleve, cx, cy, 3, codigo, 1, 1, LEVE);
 		listaCaixas.push_back(caixaLeve);
+		listaBarreirasCaixas.push_back(caixaLeve);
 		Entidade* caixaLeveE = static_cast<Entidade*>(caixaLeve);
 		listaObjetos.push_back(caixaLeveE);
 		return caixaLeveE;
@@ -136,6 +137,7 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 	else if (tipo == 7) {
 		Caixa* caixaPesada = new Caixa(window, &t_caixapesada, cx, cy, 3, codigo, 1, 1, PESADA);	
 		listaCaixas.push_back(caixaPesada);
+		listaBarreirasCaixas.push_back(caixaPesada);
 		Entidade* caixaPesadaE = static_cast<Entidade*>(caixaPesada);
 		listaObjetos.push_back(caixaPesadaE);
 		return caixaPesadaE;
@@ -155,6 +157,7 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 		Coluna* colunaHorizontal = new Coluna(window, &t_colunahorizontal, cx, cy, 4, codigo, 1, 1, HORIZONTAL);
 		Barreira* colunaHorizontalB = static_cast<Barreira*>(colunaHorizontal);
 		listaBarreiras.push_back(colunaHorizontal);
+		listaBarreirasCaixas.push_back(colunaHorizontal);
 		Entidade* colunaHorizontalE = static_cast<Entidade*>(colunaHorizontal);
 		return colunaHorizontalE;
 	}
@@ -162,6 +165,7 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 		Coluna* colunaVerticalDireita = new Coluna(window, &t_colunaverticaldireita, cx, cy, 4, codigo, 1, 1, VERTICALDIREITA);
 		Barreira* colunaVerticalDireitaB = static_cast<Barreira*>(colunaVerticalDireita);
 		listaBarreiras.push_back(colunaVerticalDireita);
+		listaBarreirasCaixas.push_back(colunaVerticalDireita);
 		Entidade* colunaVerticalDireitaE = static_cast<Entidade*>(colunaVerticalDireita);
 		return colunaVerticalDireitaE;
 	}
@@ -169,17 +173,20 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 		Coluna* colunaVerticalEsquerda = new Coluna(window, &t_colunaverticalesquerda, cx, cy, 4, codigo, 1, 1, VERTICALESQUERDA);
 		Barreira* colunaVerticalEsquerdaB = static_cast<Barreira*>(colunaVerticalEsquerda);
 		listaBarreiras.push_back(colunaVerticalEsquerdaB);
+		listaBarreirasCaixas.push_back(colunaVerticalEsquerda);
 		Entidade* colunaVerticalEsquerdaE = static_cast<Entidade*>(colunaVerticalEsquerda);
 		return colunaVerticalEsquerdaE;
 	}
 	else if (tipo == 13) {
 		Superficie* colunaVerticalDireita2 = new Superficie(window, &t_colunaverticaldireitab, cx, cy, 2, codigo, 1, 1);
 		Entidade* colunaVerticalDireitaBE = static_cast<Entidade*>(colunaVerticalDireita2);
+		listaBarreirasCaixas.push_back(colunaVerticalDireita2);
 		return colunaVerticalDireitaBE;
 	}
 	else if (tipo == 14) {
 		Superficie* colunaVerticalEsquerda2 = new Superficie(window, &t_colunaverticalesquerdab, cx, cy, 2, codigo, 1, 1);
 		Entidade* colunaVerticalEsquerdaBE = static_cast<Entidade*>(colunaVerticalEsquerda2);
+		listaBarreirasCaixas.push_back(colunaVerticalEsquerda2);
 		return colunaVerticalEsquerdaBE;
 	}
 	else if (tipo == 15) {
@@ -401,11 +408,13 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 		Barreira* pedraAux = static_cast<Barreira*>(pedra);
 		listaBarreiras.push_back(pedraAux);
 		Entidade* pedraE = static_cast<Entidade*>(pedra);
+		listaBarreirasCaixas.push_back(pedraE);
 		return pedraE;
 	}
 	else if (tipo == 48) {
 		Atirador* atiradorBaixo = new Atirador(window, &t_atirador, cx, cy, 3, codigo, 4, 1, BAIXO, conexao);
 		listaAtiradores.push_back(atiradorBaixo);
+		listaBarreirasCaixas.push_back(atiradorBaixo);
 		Barreira* atiradorBaixoAux = static_cast<Barreira*>(atiradorBaixo);
 		listaBarreiras.push_back(atiradorBaixo);
 		Entidade* atiradorBaixoE = static_cast<Entidade*>(atiradorBaixo);
@@ -414,6 +423,7 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 	else if (tipo == 49) {
 		Atirador* atiradorEsquerda = new Atirador(window, &t_atirador, cx, cy, 3, codigo, 4, 1, ESQUERDA, conexao);
 		listaAtiradores.push_back(atiradorEsquerda);
+		listaBarreirasCaixas.push_back(atiradorEsquerda);
 		Barreira* atiradorEsquerdaAux = static_cast<Barreira*>(atiradorEsquerda);
 		listaBarreiras.push_back(atiradorEsquerda);
 		Entidade* atiradorEsquerdaE = static_cast<Entidade*>(atiradorEsquerda);
@@ -422,6 +432,7 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 	else if (tipo == 50) {
 		Atirador* atiradorDireita = new Atirador(window, &t_atirador, cx, cy, 3, codigo, 4, 1, DIREITA, conexao);
 		listaAtiradores.push_back(atiradorDireita);
+		listaBarreirasCaixas.push_back(atiradorDireita);
 		Barreira* atiradorDireitaAux = static_cast<Barreira*>(atiradorDireita);
 		listaBarreiras.push_back(atiradorDireita);
 		Entidade* atiradorDireitaE = static_cast<Entidade*>(atiradorDireita);
@@ -430,6 +441,7 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 	else if (tipo == 51) {
 		Atirador* atiradorCima = new Atirador(window, &t_atirador, cx, cy, 3, codigo, 4, 1, CIMA, conexao);
 		listaAtiradores.push_back(atiradorCima);
+		listaBarreirasCaixas.push_back(atiradorCima);
 		Barreira* atiradorCimaAux = static_cast<Barreira*>(atiradorCima);
 		listaBarreiras.push_back(atiradorCima);
 		Entidade* atiradorCimaE = static_cast<Entidade*>(atiradorCima);
@@ -546,6 +558,11 @@ list<Caixa*> GerenciadorEntidades::getListaCaixas()const
 list<Flecha*> GerenciadorEntidades::getListaFlechas()const
 {
 	return listaFlechas;
+}
+
+list<Entidade*> GerenciadorEntidades::getListaBarreirasCaixas()const
+{
+	return listaBarreirasCaixas;
 }
 
 list<Perseguidor*> GerenciadorEntidades::getListaPerseguidores()const
