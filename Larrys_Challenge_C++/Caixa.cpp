@@ -14,20 +14,29 @@ Caixa::Caixa(RenderWindow* _window, Texture* _textura, const float cx, const flo
 {
 	tipo = _tipo;
 
-	if (tipo == LEVE)
+	if (tipo == LEVE) {
 		peso = 2;
-	else
+		hitBox.width = 0;
+		hitBox.height = 0;
+		hitBox.left = 5;
+		hitBox.top = 0;
+	}
+		
+	else {
 		peso = 4;
+		hitBox.width = 6;
+		hitBox.height = 0;
+		hitBox.left = 6;
+		hitBox.top = 0;
+	}
+		
 
 	bloqueadoDireita = false;
 	bloqueadoEsquerda = false;
 	bloqueadoCima = false;
 	bloqueadoBaixo = false;
 
-	hitBox.width = 0;
-	hitBox.height = 0;
-	hitBox.left = 0;
-	hitBox.top = 0;
+	
 }
 Caixa::~Caixa()
 {

@@ -343,7 +343,7 @@ void Fase::jogador_interativo()
 			}
 		}
 		if (verificar_colisao_aux((*itr), jogador) && (*itr)->getClasse() == 2) {
-			if (jogador->getAcao() && !(*itr)->getAtivado() && jogador->getChaves() > 0) {
+			if (jogador->getAcao() && !(*itr)->getAtivado() && jogador->getChaves() > 0 && (*itr)->getConexao() == 0) {
 				(*itr)->setAtivado(true);
 				jogador->retirarChave();
 			}
