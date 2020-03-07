@@ -17,7 +17,7 @@ Botao::Botao(RenderWindow* _window, Texture* _textura, const float cx, const flo
 	coordenadasTile.height = 0;
 	coordenadasTile.width = 0;
 	ativado = false;
-	existe = false;
+	existe = true;
 	conexao = _conexao;
 	hitBox.width = -10;
 	hitBox.height = -10;

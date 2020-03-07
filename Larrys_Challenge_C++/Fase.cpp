@@ -84,6 +84,17 @@ bool Fase::verificar_colisao(Entidade* a, Entidade* b)
 	return false;
 }
 
+bool Fase::verificar_colisao_aux(Entidade* a, Entidade* b)
+{
+	if (a->getCoordenadas().x < b->getCoordenadas().x + b->getDimensoes().x &&
+		a->getCoordenadas().x + a->getDimensoes().x > b->getCoordenadas().x &&
+		a->getCoordenadas().y < b->getCoordenadas().y + b->getDimensoes().y &&
+		a->getCoordenadas().y + a->getDimensoes().y > b->getCoordenadas().y) {
+		return true;
+	}
+	return false;
+}
+
 
 Vector2f Fase::getCoordenadasJogador()const
 {
@@ -300,7 +311,6 @@ void Fase::jogador_interativo()
 
 	for (itr = listaInterativos.begin(); itr != listaInterativos.end(); itr++) {
 		if (verificar_colisao(jogador, (*itr))) {
-
 			if ((*itr)->getClasse() != 2) {
 				if (jogador->getDirecao() == DIREITA)
 					jogador->setxEntidade(jogador->getCoordenadas().x - jogador->getVelocidade());
@@ -325,19 +335,17 @@ void Fase::jogador_interativo()
 			}
 			else {
 				if (!(*itr)->getAtivado()) {
-					if (verificar_colisao(jogador, (*itr))) {
-
-						if (jogador->getDirecao() == CIMA)
-							jogador->setyEntidade(jogador->getCoordenadas().y + jogador->getVelocidade());
-						else if (jogador->getDirecao() == BAIXO)
-							jogador->setyEntidade(jogador->getCoordenadas().y - jogador->getVelocidade());
-					}
-
-					if (jogador->getAcao() && !(*itr)->getAtivado() && jogador->getChaves() > 0) {
-						(*itr)->setAtivado(true);
-						jogador->retirarChave();
-					}
+					if (jogador->getDirecao() == CIMA)
+						jogador->setyEntidade(jogador->getCoordenadas().y + jogador->getVelocidade());
+					else if (jogador->getDirecao() == BAIXO)
+						jogador->setyEntidade(jogador->getCoordenadas().y - jogador->getVelocidade());
 				}
+			}
+		}
+		if (verificar_colisao_aux((*itr), jogador) && (*itr)->getClasse() == 2) {
+			if (jogador->getAcao() && !(*itr)->getAtivado() && jogador->getChaves() > 0) {
+				(*itr)->setAtivado(true);
+				jogador->retirarChave();
 			}
 		}
 	}

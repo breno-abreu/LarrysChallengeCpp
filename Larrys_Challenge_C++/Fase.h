@@ -65,5 +65,6 @@ public:
 	void perseguidor();
 	void perseguidor_barreira();
 	void rato_barreira();
+	bool verificar_colisao_aux(Entidade* a, Entidade* b);
 };
 
