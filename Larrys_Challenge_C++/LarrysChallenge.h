@@ -10,18 +10,18 @@
 #include "Fase.h"
 #include "GerenciadorEntidades.h"
 #include "GerenciadorPersistencia.h"
+#include "Menu.h"
 
 class LarrysChallenge
 {
 private:
+	bool opmenu;
+	int opcao;
 	RenderWindow* window;
 	ListaEntidades* listaEntidades;
 	Jogador* jogador;
-
-	Movimentador* movimentador;
-	Movimentador* movimentador2;
-	Movimentador* movimentador3;
 	Botao* botao;
+	Menu* menu;
 	Interruptor* interruptor;
 	Bau* bau;
 	Text* texto;

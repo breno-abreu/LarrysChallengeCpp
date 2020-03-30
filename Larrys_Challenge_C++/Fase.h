@@ -49,6 +49,7 @@ public:
 	void jogador_interativo();
 	void jogador_caixas();
 	void jogador_portais();
+	void checar_fim_de_jogo();
 	Vector2f getCoordenadasJogador()const;
 	bool getJogadorVivo()const;
 	void excluir_entidades();

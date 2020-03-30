@@ -55,8 +55,16 @@ void Fase::executar()
 	perseguidor();
 	perseguidor_barreira();
 	rato_barreira();
+	checar_fim_de_jogo();
 }
-
+void Fase::checar_fim_de_jogo()
+{
+	Bau* bau = gerenciadorEntidades->getBau();
+	if (bau->getFim()) {
+		Jogador* jogador = gerenciadorEntidades->getJogador();
+		jogador->setExiste(false);
+	}
+}
 bool Fase::verificar_colisao(Entidade* a, Entidade* b)
 {
 	/*if (a->getHitBox().left < b->getHitBox().left + b->getHitBox().width &&
@@ -295,8 +303,7 @@ void Fase::jogador_espinhos()
 
 	for (itr = listaEspinhos.begin(); itr != listaEspinhos.end(); itr++) {
 		if (verificar_colisao(jogador, (*itr))) {
-
-			if (!(*itr)->getDesativado()){
+			if ((*itr)->getAtivado()){
 				jogador->setExiste(false);
 			}
 		}
@@ -713,6 +720,10 @@ void Fase::perseguidor_barreira()
 	list<Barreira*> listaBarreiras = gerenciadorEntidades->getListaBarreiras();
 	list<Caixa*>::iterator itrC;
 	list<Caixa*> listaCaixas = gerenciadorEntidades->getListaCaixas();
+	list<Abismo*>::iterator itrA;
+	list<Abismo*> listaAbismo = gerenciadorEntidades->getListaAbismo();
+	list<ParedeLevadica*>::iterator itrPL;
+	list<ParedeLevadica*> listaParedesLevadicas = gerenciadorEntidades->getListaParedesLevadicas();
 
 	for (itrP = listaPerseguidores.begin(); itrP != listaPerseguidores.end(); itrP++) {
 		for (itrB = listaBarreiras.begin(); itrB != listaBarreiras.end(); itrB++) {
@@ -734,6 +745,39 @@ void Fase::perseguidor_barreira()
 	for (itrP = listaPerseguidores.begin(); itrP != listaPerseguidores.end(); itrP++) {
 		for (itrC = listaCaixas.begin(); itrC != listaCaixas.end(); itrC++) {
 			if (verificar_colisao((*itrP), (*itrC))) {
+				if ((*itrP)->getDirecao() == DIREITA)
+					(*itrP)->setxEntidade((*itrP)->getCoordenadas().x - (*itrP)->getVelocidade());
+				else if ((*itrP)->getDirecao() == ESQUERDA)
+					(*itrP)->setxEntidade((*itrP)->getCoordenadas().x + (*itrP)->getVelocidade());
+				else if ((*itrP)->getDirecao() == CIMA)
+					(*itrP)->setyEntidade((*itrP)->getCoordenadas().y + (*itrP)->getVelocidade());
+				else if ((*itrP)->getDirecao() == BAIXO)
+					(*itrP)->setyEntidade((*itrP)->getCoordenadas().y - (*itrP)->getVelocidade());
+
+				break;
+			}
+		}
+	}
+	for (itrP = listaPerseguidores.begin(); itrP != listaPerseguidores.end(); itrP++) {
+		for (itrA = listaAbismo.begin(); itrA != listaAbismo.end(); itrA++) {
+			if (verificar_colisao((*itrP), (*itrA))) {
+				if ((*itrP)->getDirecao() == DIREITA)
+					(*itrP)->setxEntidade((*itrP)->getCoordenadas().x - (*itrP)->getVelocidade());
+				else if ((*itrP)->getDirecao() == ESQUERDA)
+					(*itrP)->setxEntidade((*itrP)->getCoordenadas().x + (*itrP)->getVelocidade());
+				else if ((*itrP)->getDirecao() == CIMA)
+					(*itrP)->setyEntidade((*itrP)->getCoordenadas().y + (*itrP)->getVelocidade());
+				else if ((*itrP)->getDirecao() == BAIXO)
+					(*itrP)->setyEntidade((*itrP)->getCoordenadas().y - (*itrP)->getVelocidade());
+
+				break;
+			}
+		}
+	}
+
+	for (itrP = listaPerseguidores.begin(); itrP != listaPerseguidores.end(); itrP++) {
+		for (itrPL = listaParedesLevadicas.begin(); itrPL != listaParedesLevadicas.end(); itrPL++) {
+			if ((*itrPL)->getAtivado() && verificar_colisao((*itrP), (*itrPL))) {
 				if ((*itrP)->getDirecao() == DIREITA)
 					(*itrP)->setxEntidade((*itrP)->getCoordenadas().x - (*itrP)->getVelocidade());
 				else if ((*itrP)->getDirecao() == ESQUERDA)

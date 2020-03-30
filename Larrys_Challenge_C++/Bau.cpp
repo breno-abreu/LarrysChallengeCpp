@@ -45,3 +45,8 @@ void Bau::existir()
 	window->draw(entidade);
 	
 }
+
+bool Bau::getFim()
+{
+	return fim;
+}

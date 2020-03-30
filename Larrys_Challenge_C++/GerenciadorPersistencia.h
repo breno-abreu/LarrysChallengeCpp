@@ -10,6 +10,7 @@ public:
 	~GerenciadorPersistencia();
 	bool pesquisar_lista_arquivos(const string nomeArquivo);
 	void listar_arquivos();
-	Fase* carregar(const string nomeArqvuio, RenderWindow* _window);
+	Fase* carregar(const int _fase, RenderWindow* _window);
+	int getQuantidadeFases();
 };
 

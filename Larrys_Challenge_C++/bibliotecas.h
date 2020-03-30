@@ -8,6 +8,7 @@
 #include <math.h>
 #include <filesystem>
 #include <cstdio>
+#include <windows.h>
 
 enum {
 	DIREITA,
@@ -23,7 +24,9 @@ enum {
 	VERTICALDIREITA,
 	VERTICALESQUERDA,
 	PESADA,
-	LEVE
+	LEVE,
+	INICIARJOGO,
+	SAIR
 };
 
 using namespace std;

@@ -22,10 +22,31 @@ void GerenciadorPersistencia::listar_arquivos()
 		cout << entry.path().string() << endl;
 	}
 }
-Fase* GerenciadorPersistencia::carregar(const string nomeArquivo, RenderWindow* _window)
+int GerenciadorPersistencia::getQuantidadeFases()
 {
+	int quantidadeFases = 0;
+	for (const auto& entry : filesystem::directory_iterator("Fases")) {
+		quantidadeFases++;
+	}
+
+	return quantidadeFases;
+}
+Fase* GerenciadorPersistencia::carregar(const int _nfase, RenderWindow* _window)
+{
+	int cont = 0;
+	string nomeArquivo;
+
+	for (const auto& entry : filesystem::directory_iterator("Fases")) {
+		nomeArquivo = entry.path().string();
+		cont++;
+
+		if (cont == _nfase)
+			break;
+	}
+
 	Fase* fase = new Fase(_window);
-	ifstream arquivo("Fases/" + nomeArquivo + ".lcs");
+	ifstream arquivo(nomeArquivo);
+
 	int tipo = 1;
 	float xEntidade = 0;
 	float yEntidade = 0;

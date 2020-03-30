@@ -95,6 +95,7 @@ private:
 	list<Entidade*> listaBarreirasCaixas;
 	list<Rato*> listaRatos;
 	Jogador* jogadorJ;
+	Bau* bauA;
 
 	int quantidadeMoedas;
 
@@ -141,6 +142,7 @@ public:
 	list<Perseguidor*> getListaPerseguidores()const;
 	list<Rato*> getListaRatos()const;
 	list<Entidade*> getListaBarreirasCaixas()const;
+	Bau* getBau()const;
 	Jogador* getJogador()const;
 	void setQuantidadeMoedas(const int _quantidadeMoedas);
 	int getQuantidadeMoedas()const;

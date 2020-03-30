@@ -7,6 +7,7 @@ GerenciadorEntidades::GerenciadorEntidades()
 GerenciadorEntidades::GerenciadorEntidades(RenderWindow* _window)
 {
 	jogadorJ = NULL;
+	bauA = NULL;
 	
 	window = _window;
 	t_flecha.loadFromFile("Textures/Arrow.png");
@@ -92,6 +93,7 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 		Interativo* bauI = static_cast<Interativo*>(bau);
 		listaInterativos.push_back(bauI);
 		Entidade* bauE = static_cast<Entidade*>(bau);
+		bauA = bau;
 		return bauE;
 	}
 
@@ -209,7 +211,7 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 		return esqueletoE;
 	}
 	else if (tipo == 17) {
-		Perseguidor* zumbi = new Perseguidor(window, &t_zumbi, cx, cy, 3, codigo, 6, 8, 5);
+		Perseguidor* zumbi = new Perseguidor(window, &t_zumbi, cx, cy, 3, codigo, 6, 8, 7);
 		listaPerseguidores.push_back(zumbi);
 		Inimigo* zumbiI = static_cast<Inimigo*>(zumbi);
 		listaInimigos.push_back(zumbiI);
@@ -588,6 +590,11 @@ list<Item*> GerenciadorEntidades::getListaItens()const
 Jogador* GerenciadorEntidades::getJogador()const
 {
 	return jogadorJ;
+}
+
+Bau* GerenciadorEntidades::getBau()const
+{
+	return bauA;
 }
 
 list<Abismo*> GerenciadorEntidades::getListaAbismo()const
