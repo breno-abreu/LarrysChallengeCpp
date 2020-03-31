@@ -12,6 +12,7 @@ Personagem::Personagem(RenderWindow* _window, Texture* _textura, const float cx,
 	direcao = BAIXO;
 	velocidade = 7;
 }
+
 Personagem::~Personagem()
 {
 

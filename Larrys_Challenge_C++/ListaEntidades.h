@@ -7,22 +7,22 @@
 class ListaEntidades
 {
 private:
-	list<Entidade*> listaEntidades;
-	int codigo;
-	RenderWindow* window;
 	GerenciadorEntidades* gerenciadorEntidades;
+	int codigo;
+	list<Entidade*> listaEntidades;
+	RenderWindow* window;
 
 public:
 	ListaEntidades();
 	ListaEntidades(RenderWindow* _window, GerenciadorEntidades* _gerenciador);
 	~ListaEntidades();
-	void adicionar_entidade(const float cx, const float cy, const int tipo, const int conexao);
-	void excluir_entidades();
-	void percorrer();
-	void limpar();
-	void ordenar();
 	bool vazio();
 	list<Entidade*> getLista();
+	void adicionar_entidade(const float cx, const float cy, const int tipo, const int conexao);
+	void excluir_entidades();
+	void limpar();
+	void ordenar();
+	void percorrer();
 	void setLista(list<Entidade*> lista);
 };
 

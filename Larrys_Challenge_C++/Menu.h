@@ -5,18 +5,18 @@
 class Menu
 {
 private:
-	int opcao;
-	int opcaoSelecionada;
-	int nfase;
-	int quantidadeFases;
 	bool auxDireita;
 	bool auxEsquerda;
-	RenderWindow* window;
 	Font fonte;
+	GerenciadorPersistencia* gerenciadorPersistencia;
+	int nfase;
+	int opcao;
+	int opcaoSelecionada;
+	int quantidadeFases;
+	RenderWindow* window;
+	Text fase;
 	Text iniciarJogo;
 	Text sair;
-	Text fase;
-	GerenciadorPersistencia* gerenciadorPersistencia;
 
 public:
 	Menu(RenderWindow* _window);

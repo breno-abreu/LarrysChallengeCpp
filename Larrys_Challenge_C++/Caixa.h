@@ -5,31 +5,31 @@
 class Caixa : public Entidade
 {
 private:
-	float peso;
-	int tipo;
+	bool bloqueadoBaixo;
+	bool bloqueadoCima;
 	bool bloqueadoDireita;
 	bool bloqueadoEsquerda;
-	bool bloqueadoCima;
-	bool bloqueadoBaixo;
+	float peso;
 	int contato;
+	int tipo;
 
 public:
 	Caixa();
 	Caixa(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo, const int _xTile, const int _yTile, const int _tipo);
 	~Caixa();
-	void existir();
-	void setPeso(const float _peso);
-	float getPeso()const;
-	int getTipo()const;
-	bool getBloqueadoDireita()const;
-	void setBloqueadoDireita(const bool _bloqueado);
-	bool getBloqueadoEsquerda()const;
-	void setBloqueadoEsquerda(const bool _bloqueado);
-	bool getBloqueadoCima()const;
-	void setBloqueadoCima(const bool _bloqueado);
 	bool getBloqueadoBaixo()const;
-	void setBloqueadoBaixo(const bool _bloqueado);
-	void setContato(const int _contato);
+	bool getBloqueadoCima()const;
+	bool getBloqueadoDireita()const;
+	bool getBloqueadoEsquerda()const;
+	float getPeso()const;
 	int getContato()const;
+	int getTipo()const;
+	void existir();
+	void setBloqueadoBaixo(const bool _bloqueado);
+	void setBloqueadoCima(const bool _bloqueado);
+	void setBloqueadoDireita(const bool _bloqueado);
+	void setBloqueadoEsquerda(const bool _bloqueado);
+	void setContato(const int _contato);
+	void setPeso(const float _peso);
 };
 

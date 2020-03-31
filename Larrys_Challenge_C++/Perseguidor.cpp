@@ -4,30 +4,26 @@ Perseguidor::Perseguidor()
 {
 
 }
+
 Perseguidor::Perseguidor(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo, const int _xTile, const int _yTile, const float _velocidade):
 	Inimigo(_window, _textura, cx, cy, _profundidade, _codigo, _xTile, _yTile)
 {
 	velocidade = _velocidade;
-	/*quantidadeTile.x = 6;
-	quantidadeTile.y = 8;
-	dimensoes.x = (textura->getSize().x / quantidadeTile.x);
-	dimensoes.y = (textura->getSize().y / quantidadeTile.y);
-	dimensoesAux.x = dimensoes.x * proporcao;
-	dimensoesAux.y = dimensoes.x * proporcao;
-	entidade.setSize(dimensoesAux);*/
 
 	coordenadasOrigem.x = cx;
 	coordenadasOrigem.y = cy;
 	distanciaOrigemPadrao = 600;
 	distanciaJogadorPadrao = 150;
 }
+
 Perseguidor::~Perseguidor()
 {
 
 }
+
 void Perseguidor::existir()
 {
-	//começa
+	//Algoritmo mais preciso de perseguição, estudar posteriormente.
 	/*double coeficienteAngular = 0;
 	//explicar essa equação
 	if (coordenadasJogador.x - coordenadas.x != 0)
@@ -53,57 +49,11 @@ void Perseguidor::existir()
 
 	coordenadas.y = coeficienteAngular * coordenadas.x + coeficienteLinear;
 
-	int posicao = 0;*/
-	//termina
+	int posicao = 0;
 
 
-
-
-
-
-	/*float coeficienteLinear2 = coordenadas.y - coordenadas.x;
-	float y = coordenadas.x + coeficienteLinear2;
+	//--------------------/----------------------//
 	
-
-	if (coordenadasJogador.x < coordenadas.x && coordenadasJogador.y > coordenadas.y) {
-		coeficienteLinear2 = coordenadas.y - coordenadas.x;
-		y = coordenadasJogador.x + coeficienteLinear2;
-		if (coordenadasJogador.y > y)
-			posicao = 0;
-		else
-			posicao = 1;
-	}
-	else if (coordenadasJogador.x > coordenadas.x&& coordenadasJogador.y < coordenadas.y) {
-		coeficienteLinear2 = coordenadas.y - coordenadas.x;
-		y = coordenadasJogador.x + coeficienteLinear2;
-		if (coordenadasJogador.y > y)
-			posicao = 2;
-		else
-			posicao = 3;
-	}
-	else if (coordenadasJogador.x < coordenadas.x && coordenadasJogador.y < coordenadas.y) {
-		coeficienteLinear2 = coordenadas.y + coordenadas.x;
-		y = coeficienteLinear2 - coordenadasJogador.x;
-		if (coordenadasJogador.y < y)
-			posicao = 1;
-		else
-			posicao = 3;
-	}
-	else if (coordenadasJogador.x > coordenadas.x&& coordenadasJogador.y > coordenadas.y) {
-		coeficienteLinear2 = coordenadas.y + coordenadas.x;
-		y = coeficienteLinear2 - coordenadasJogador.x;
-		if (coordenadasJogador.y < y)
-			posicao = 0;
-		else
-			posicao = 2;
-	}*/
-
-	//float distancia = abs(coordenadas.x - coordenadasJogador.x);
-
-
-
-	//começa
-	/*
 	float distancia = 250;
 
 	float x1 = coordenadas.x - distancia;
@@ -128,94 +78,6 @@ void Perseguidor::existir()
 	}*/
 	//termina
 
-
-
-
-
-
-
-
-	/*float coeficienteLinear2 = coordenadas.y - coordenadas.x;
-	int posicao = 0;
-
-	float x = 0;
-	float y = 0;
-
-	if (coordenadasJogador.x < coordenadas.x && coordenadasJogador.y > coordenadas.y) {
-		coeficienteLinear2 = coordenadas.y - coordenadas.x;
-		y = coordenadas.x + coeficienteLinear2;
-		x = coordenadas.y - coeficienteLinear2;
-		if (coordenadasJogador.y > y && coordenadasJogador.x > x)
-			posicao = 0;
-		else if(coordenadasJogador.y < y && coordenadasJogador.x < x)
-			posicao = 1;
-	}
-	else if (coordenadasJogador.x < coordenadas.x && coordenadasJogador.y < coordenadas.y) {
-		coeficienteLinear2 = coordenadas.y + coordenadas.x;
-		y = (-coordenadas.x) + coeficienteLinear2;
-		x = (-coordenadas.y) + coeficienteLinear2;
-		if (coordenadasJogador.y > y && coordenadasJogador.x < x)
-			posicao = 1;
-		else if(coordenadasJogador.y < y && coordenadasJogador.x > x)
-			posicao = 3;
-	}
-	else if (coordenadasJogador.x > coordenadas.x && coordenadasJogador.y > coordenadas.y) {
-		coeficienteLinear2 = coordenadas.y + coordenadas.x;
-		y = (-coordenadas.x) + coeficienteLinear2;
-		x = (-coordenadas.y) + coeficienteLinear2;
-		if (coordenadasJogador.y > y && coordenadasJogador.x < x)
-			posicao = 0;
-		else if(coordenadasJogador.y < y && coordenadasJogador.x > x)
-			posicao = 2;
-	}
-	else if (coordenadasJogador.x > coordenadas.x && coordenadasJogador.y < coordenadas.y) {
-		coeficienteLinear2 = coordenadas.y - coordenadas.x;
-		y = coordenadas.x + coeficienteLinear2;
-		x = coordenadas.y - coeficienteLinear2;
-		if (coordenadasJogador.y > y && coordenadasJogador.x > x)
-			posicao = 2;
-		else if(coordenadasJogador.y < y && coordenadasJogador.x < x)
-			posicao = 3;
-	}*/
-
-
-	
-
-	/*RectangleShape auxD;
-	RectangleShape auxE;
-	auxD.setSize(Vector2f(5, 5));
-	auxE.setSize(Vector2f(5, 5));
-	auxD.setFillColor(Color::Blue);
-	auxE.setFillColor(Color::Blue);
-	auxD.setPosition(Vector2f(coordenadas.x, limiteCima));
-	auxE.setPosition(Vector2f(coordenadas.x, limiteBaixo));
-
-	window->draw(auxD);
-	window->draw(auxE);
-
-	RectangleShape auxC;
-	RectangleShape auxB;
-	auxC.setSize(Vector2f(5, 5));
-	auxB.setSize(Vector2f(5, 5));
-	auxC.setFillColor(Color::Blue);
-	auxB.setFillColor(Color::Blue);
-	auxC.setPosition(Vector2f(limiteDireita, coordenadas.y));
-	auxB.setPosition(Vector2f(limiteEsquerda, coordenadas.y));
-
-	window->draw(auxC);
-	window->draw(auxB);*/
-
-	
-	/*float distanciaOrigem = sqrt(((coordenadas.x - xOrigem) * (coordenadas.x - xOrigem))
-									+ ((coordenadas.y - yOrigem) * (coordenadas.y - yOrigem)));
-	
-	if (distanciaOrigem >= distanciaOrigemPadrao) {
-		setCoodenadasJogador(xOrigem, yOrigem);
-	}*/
-
-	
-
-	
 
 	float limiteDireita = coordenadas.x + abs(coordenadasAlvo.y - coordenadas.y) * 2;
 	float limiteEsquerda = coordenadas.x - abs(coordenadasAlvo.y - coordenadas.y) * 2;
@@ -249,29 +111,13 @@ void Perseguidor::existir()
 		}
 	}
 
-	/*else if (coordenadasAlvo.y >= limiteBaixo && coordenadasAlvo.y <= limiteCima) {
-		if (coordenadasAlvo.x >= coordenadas.x) {
-			posicao = 6;
-			coordenadas.x += velocidade;
-			direcao = DIREITA;
-		}
-		else {
-			posicao = 5;
-			coordenadas.x -= velocidade;
-			direcao = ESQUERDA;
-		}
-	}*/
-
 	if (coordenadas.x == coordenadasOrigem.x && coordenadas.y == coordenadasOrigem.y + velocidade)
 		coordenadas.y -= velocidade;
 
 	if (coordenadas.x == coordenadasOrigem.x && coordenadas.y == coordenadasOrigem.y)
 		posicao = 0;
 
-
-
 	coordenadasTile.height = posicao * dimensoes.y;
-
 	contAnimacao++;
 
 	if (contAnimacao >= velAnimacao) {
@@ -288,10 +134,8 @@ void Perseguidor::existir()
 		}
 	}
 
-
 	entidade.setTextureRect(IntRect(coordenadasTile.width, coordenadasTile.height, dimensoes.x, dimensoes.y));
 	entidade.setPosition(coordenadas.x, coordenadas.y);
-	//entidade.setSize(Vector2f(dimensoes.x * proporcao, dimensoes.y * proporcao));
 	window->draw(entidade);
 }
 
@@ -302,7 +146,6 @@ void Perseguidor::perseguir(const bool _perseguir)
 	else
 		coordenadasAlvo = coordenadasOrigem;
 }
-
 
 void Perseguidor::setCoodenadasAlvo(const float jx, const float jy)
 {
@@ -325,14 +168,17 @@ float Perseguidor::getDistanciaOrigem()const
 {
 	return sqrt(((coordenadas.x - coordenadasOrigem.x) * (coordenadas.x - coordenadasOrigem.x)) + ((coordenadas.y - coordenadasOrigem.y) * (coordenadas.y - coordenadasOrigem.y)));
 }
+
 float Perseguidor::getxOrigem()const
 {
 	return coordenadasOrigem.x;
 }
+
 float Perseguidor::getyOrigem()const
 {
 	return coordenadasOrigem.y;
 }
+
 float Perseguidor::getDistanciaOrigemPadrao()const
 {
 	return distanciaOrigemPadrao;

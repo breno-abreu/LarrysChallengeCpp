@@ -4,43 +4,40 @@
 class Entidade
 {
 protected:
-	int codigo;
-	Vector2f coordenadas;
-	int profundidade;
-	Vector2f dimensoes;
 	bool existe;
 	float proporcao;
-	int contAnimacao;
-	int velAnimacao;
-	int contFrames;
-	Vector2f dimensoesAux;
 	FloatRect hitBox;
-	int conexao;
 	int classe;
+	int codigo;
+	int conexao;
+	int contAnimacao;
+	int contFrames;
+	int profundidade;
 	IntRect coordenadasTile;
-	Vector2i quantidadeTile;
-	RenderWindow* window;
+	int velAnimacao;
 	RectangleShape entidade;
+	RenderWindow* window;
 	Texture* textura;
-
-	
-
+	Vector2f coordenadas;
+	Vector2f dimensoes;
+	Vector2f dimensoesAux;
+	Vector2i quantidadeTile;
 
 public:
 	Entidade();
 	Entidade(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo, const int _xTile, const int _yTile);
 	~Entidade();
-	virtual void existir() = 0;
-	int getProfundidade() const;
-	Vector2f getDimensoes() const;
 	bool getExiste() const;
+	FloatRect getHitBox() const;
+	int getClasse()const;
+	int getCodigo()const;
+	int getConexao()const;
+	int getProfundidade() const;
 	Vector2f getCoordenadas() const;
+	Vector2f getDimensoes() const;
+	virtual void existir() = 0;
 	void setExiste(const bool _existe);
 	void setxEntidade(const float x);
 	void setyEntidade(const float y);
-	int getCodigo()const;
-	int getClasse()const;
-	FloatRect getHitBox() const;
-	int getConexao()const;
 };
 

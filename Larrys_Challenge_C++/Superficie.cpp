@@ -18,6 +18,5 @@ Superficie::~Superficie()
 
 void Superficie::existir()
 {
-	//entidade.setSize(Vector2f(dimensoes.x * proporcao, dimensoes.y * proporcao));
 	window->draw(entidade);
 }

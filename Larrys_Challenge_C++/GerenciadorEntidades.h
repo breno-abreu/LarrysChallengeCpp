@@ -72,79 +72,64 @@ private:
 	Texture t_tocha;
 	Texture t_zumbi;
 
-	list<Letal*> listaLetais;
+	Bau* bauA;
+	int quantidadeMoedas;
+	Jogador* jogadorJ;
+	list<Abismo*> listaAbismo;
+	list<Atirador*> listaAtiradores;
 	list<Barreira*> listaBarreiras;
-	list<Interativo*> listaInterativos;
-	list<SuperficieInterativa*> listaSuperficiesInterativas;
+	list<Botao*> listaBotoes;
 	list<Caixa*> listaCaixas;
+	list<Entidade*> listaBarreirasCaixas;
+	list<Entidade*> listaObjetos;
+	list<Espinhos*> listaEspinhos;
 	list<Flecha*> listaFlechas;
 	list<Inimigo*> listaInimigos;
-	list<Personagem*> listaPersonagens;
-	list<Item*> listaItens;
-	list<Abismo*> listaAbismo;
-	list<Movimentador*> listaMovimentadores;
-	list<Botao*> listaBotoes;
-	list<ParedeLevadica*> listaParedesLevadicas;
-	list<Espinhos*> listaEspinhos;
-	list<Atirador*> listaAtiradores;
+	list<Interativo*> listaInterativos;
 	list<Interativo*> listaPortais;
-	list<Entidade*> listaObjetos;
 	list<Interruptor*> listaInterruptores;
-	list<Porta*> listaPortas;
+	list<Item*> listaItens;
+	list<Letal*> listaLetais;
+	list<Movimentador*> listaMovimentadores;
+	list<ParedeLevadica*> listaParedesLevadicas;
 	list<Perseguidor*> listaPerseguidores;
-	list<Entidade*> listaBarreirasCaixas;
+	list<Personagem*> listaPersonagens;
+	list<Porta*> listaPortas;
 	list<Rato*> listaRatos;
-	Jogador* jogadorJ;
-	Bau* bauA;
-
-	int quantidadeMoedas;
-
-
-
-
-	/*int profundidade[37] = {3, 3, 3, 3, 3, 3, 3, 3, 3, 0,
-							3, 2, 4, 4, 4, 2, 2, 1, 1, 1, 
-							2, 4, 4, 4, 1, 3, 3, 3, 3, 2,
-							2, 2, 2, 4, 4, 2, 3};
-
-	Texture* texturas[60] = { &a, &b, &c, &d, &e, &f, &g, &h, &i, &j,
-							  &k, &l, &m, &n, &o, &p, &q, &r, &s, &t,
-							  &u, &v, &w, &x, &y, &z, &aa, &ab, &ac, &ad,
-							  &ae, &af, &ag, &ah, &ai, &aj, &ak};*/
-
+	list<SuperficieInterativa*> listaSuperficiesInterativas;
 
 public:
 	GerenciadorEntidades();
 	GerenciadorEntidades(RenderWindow *_window);
 	~GerenciadorEntidades();
+	Bau* getBau()const;
 	Entidade* adicionar_entidade(const float cx, const float cy, const int tipo, const int codigo, const int conexao);
-	void excluir_itens();
-	void excluir_flechas();
-	list<Letal*> getListaLetais()const;
+	int getQuantidadeMoedas()const;
+	Jogador* getJogador()const;
+	list<Abismo*> getListaAbismo()const;
+	list<Atirador*> getListaAtiradores()const;
 	list<Barreira*> getListaBarreiras()const;
-	list<Interativo*> getListaInterativos()const;
-	list<SuperficieInterativa*> getListaSuperficiesInterativas()const;
+	list<Botao*> getListaBotoes()const;
 	list<Caixa*> getListaCaixas()const;
+	list<Entidade*> getListaBarreirasCaixas()const;
+	list<Entidade*> getListaObjetos()const;
+	list<Espinhos*> getListaEspinhos()const;
 	list<Flecha*> getListaFlechas()const;
 	list<Inimigo*> getListaInimigos()const;
-	list<Personagem*> getListaPersonagens()const;
-	list<Item*> getListaItens()const;
-	list<Abismo*> getListaAbismo()const;
-	list<Movimentador*> getListaMovimentadores()const;
-	list<Botao*> getListaBotoes()const;
-	list<ParedeLevadica*> getListaParedesLevadicas()const;
-	list<Espinhos*> getListaEspinhos()const;
+	list<Interativo*> getListaInterativos()const;
 	list<Interativo*> getListaPortais()const;
-	list<Atirador*> getListaAtiradores()const;
-	list<Entidade*> getListaObjetos()const;
 	list<Interruptor*> getListaInterruptores()const;
-	list<Porta*> getListaPortas()const;
+	list<Item*> getListaItens()const;
+	list<Letal*> getListaLetais()const;
+	list<Movimentador*> getListaMovimentadores()const;
+	list<ParedeLevadica*> getListaParedesLevadicas()const;
 	list<Perseguidor*> getListaPerseguidores()const;
+	list<Personagem*> getListaPersonagens()const;
+	list<Porta*> getListaPortas()const;
 	list<Rato*> getListaRatos()const;
-	list<Entidade*> getListaBarreirasCaixas()const;
-	Bau* getBau()const;
-	Jogador* getJogador()const;
+	list<SuperficieInterativa*> getListaSuperficiesInterativas()const;
+	void excluir_flechas();
+	void excluir_itens();
 	void setQuantidadeMoedas(const int _quantidadeMoedas);
-	int getQuantidadeMoedas()const;
 };
 

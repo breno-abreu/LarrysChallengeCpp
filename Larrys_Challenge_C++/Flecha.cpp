@@ -5,6 +5,7 @@ Flecha::Flecha()
 	direcao = 0;
 	velocidade = 0;
 }
+
 Flecha::Flecha(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo, const int _xTile, const int _yTile, const int _direcao):
 	Letal(_window, _textura, cx, cy, _profundidade, _codigo, _xTile, _yTile)
 {
@@ -12,8 +13,6 @@ Flecha::Flecha(RenderWindow* _window, Texture* _textura, const float cx, const f
 	velocidade = 10;
 	if (direcao == BAIXO)
 		entidade.rotate(270);
-	/*else if (direcao == ESQUERDA)
-		entidade.rotate(180);*/	
 	else if (direcao == DIREITA)
 		entidade.rotate(180);
 	else if (direcao == CIMA)
@@ -24,10 +23,12 @@ Flecha::Flecha(RenderWindow* _window, Texture* _textura, const float cx, const f
 	hitBox.left = 15;
 	hitBox.top = 5;
 }
+
 Flecha::~Flecha()
 {
 
 }
+
 void Flecha::existir()
 {
 	if (direcao == DIREITA)

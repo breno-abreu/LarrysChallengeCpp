@@ -1,6 +1,5 @@
 #include "Fase.h"
 
-
 Fase::Fase()
 {
 	window = NULL;
@@ -67,22 +66,6 @@ void Fase::checar_fim_de_jogo()
 }
 bool Fase::verificar_colisao(Entidade* a, Entidade* b)
 {
-	/*if (a->getHitBox().left < b->getHitBox().left + b->getHitBox().width &&
-		a->getHitBox().left + a->getHitBox().width > b->getHitBox().left &&
-		a->getHitBox().top < b->getHitBox().top + b->getHitBox().height &&
-		a->getHitBox().top + a->getHitBox().height > b->getHitBox().top) {
-		return true;
-	}
-	return false;
-
-	if (a->getCoordenadas().x < b->getCoordenadas().x + b->getDimensoes().x &&
-		a->getCoordenadas().x + a->getDimensoes().x > b->getCoordenadas().x&&
-		a->getCoordenadas().y < b->getCoordenadas().y + b->getDimensoes().y &&
-		a->getCoordenadas().y + a->getDimensoes().y > b->getCoordenadas().y) {
-		return true;
-	}
-	return false;*/
-
 	if (a->getCoordenadas().x + a->getHitBox().left < b->getCoordenadas().x + b->getDimensoes().x + b->getHitBox().width &&
 		a->getCoordenadas().x + a->getDimensoes().x + a->getHitBox().width > b->getCoordenadas().x + b->getHitBox().left &&
 		a->getCoordenadas().y + a->getHitBox().top < b->getCoordenadas().y + b->getDimensoes().y + b->getHitBox().height &&
@@ -102,7 +85,6 @@ bool Fase::verificar_colisao_aux(Entidade* a, Entidade* b)
 	}
 	return false;
 }
-
 
 Vector2f Fase::getCoordenadasJogador()const
 {
@@ -150,6 +132,7 @@ void Fase::jogador_item()
 		gerenciadorEntidades->excluir_itens();
 	}
 }
+
 void Fase::jogador_barreira()
 {
 	list<Barreira*>::iterator itr;
@@ -366,26 +349,6 @@ void Fase::jogador_caixas()
 	list<Entidade*> listaCaixas2 = gerenciadorEntidades->getListaBarreirasCaixas();
 	Jogador* jogador = gerenciadorEntidades->getJogador();
 
-
-	/*else {
-	jogador->setxEntidade(jogador->getCoordenadas().x - jogador->getVelocidade() - (*itr)->getPeso());
-	(*itr)->setxEntidade((*itr)->getCoordenadas().x - jogador->getVelocidade() + (*itr)->getPeso());
-							}
-	
-							else {
-							jogador->setxEntidade(jogador->getCoordenadas().x + jogador->getVelocidade() + (*itr)->getPeso());
-							(*itr)->setxEntidade((*itr)->getCoordenadas().x + jogador->getVelocidade() - (*itr)->getPeso());
-							}
-							else {
-							jogador->setyEntidade(jogador->getCoordenadas().y + jogador->getVelocidade() + (*itr)->getPeso());
-							(*itr)->setyEntidade((*itr)->getCoordenadas().y + jogador->getVelocidade() - (*itr)->getPeso());
-							}
-							else {
-							jogador->setyEntidade(jogador->getCoordenadas().y - jogador->getVelocidade() - (*itr)->getPeso());
-							(*itr)->setyEntidade((*itr)->getCoordenadas().y - jogador->getVelocidade() + (*itr)->getPeso());
-							}*/
-
-
 	for (itr = listaCaixas.begin(); itr != listaCaixas.end(); itr++) {
 		if (verificar_colisao(jogador, (*itr))) {
 			if ((*itr)->getTipo() == LEVE || ((*itr)->getTipo() == PESADA && jogador->getRedOrb())) {
@@ -455,31 +418,6 @@ void Fase::jogador_caixas()
 			}
 		}
 	}
-
-	/*else if (verificar_colisao(jogador, (*itr)) && verificar_colisao((*itr), (*itr2))) {
-
-	if (jogador->getDirecao() == DIREITA) {
-		jogador->setxEntidade(jogador->getCoordenadas().x - jogador->getVelocidade());
-		(*itr)->setxEntidade(jogador->getCoordenadas().x + jogador->getDimensoes().x + jogador->getHitBox().width - (*itr)->getHitBox().left - jogador->getVelocidade() + 2);
-	}
-
-	else if (jogador->getDirecao() == ESQUERDA) {
-		jogador->setxEntidade(jogador->getCoordenadas().x + jogador->getVelocidade());
-		(*itr)->setxEntidade(jogador->getCoordenadas().x - (*itr)->getDimensoes().x + jogador->getHitBox().left - (*itr)->getHitBox().width + jogador->getVelocidade() - 2);
-	}
-
-	else if (jogador->getDirecao() == CIMA) {
-		jogador->setyEntidade(jogador->getCoordenadas().y + jogador->getVelocidade());
-		(*itr)->setyEntidade(jogador->getCoordenadas().y - (*itr)->getDimensoes().y + jogador->getHitBox().top - (*itr)->getHitBox().height + jogador->getVelocidade() - 2);
-	}
-
-	else if (jogador->getDirecao() == BAIXO) {
-		jogador->setyEntidade(jogador->getCoordenadas().y - jogador->getVelocidade());
-		(*itr)->setyEntidade(jogador->getCoordenadas().y + jogador->getDimensoes().y + jogador->getHitBox().height - (*itr)->getHitBox().top - jogador->getVelocidade() + 2);
-	}
-				}*/
-
-
 }
 
 void Fase::caixa_barreira()
@@ -636,7 +574,6 @@ void Fase::ativador_espinhos()
 	list<Botao*>::iterator itrB;
 	list<Botao*> listaBotoes = gerenciadorEntidades->getListaBotoes();
 
-
 	for (itrI = listaInterruptores.begin(); itrI != listaInterruptores.end(); itrI++) {
 		for (itrE = listaEspinhos.begin(); itrE != listaEspinhos.end(); itrE++) {
 			if ((*itrI)->getAtivado() && (*itrI)->getConexao() == (*itrE)->getConexao()) 
@@ -664,7 +601,6 @@ void Fase::ativador_atirador()
 	list<Botao*>::iterator itrB;
 	list<Botao*> listaBotoes = gerenciadorEntidades->getListaBotoes();
 
-
 	for (itrI = listaInterruptores.begin(); itrI != listaInterruptores.end(); itrI++) {
 		for (itrA = listaAtiradores.begin(); itrA != listaAtiradores.end(); itrA++) {
 			if ((*itrI)->getAtivado() && (*itrI)->getConexao() == (*itrA)->getConexao())
@@ -691,7 +627,6 @@ void Fase::ativador_porta()
 	list<Interruptor*> listaInterruptores = gerenciadorEntidades->getListaInterruptores();
 	list<Botao*>::iterator itrB;
 	list<Botao*> listaBotoes = gerenciadorEntidades->getListaBotoes();
-
 
 	for (itrI = listaInterruptores.begin(); itrI != listaInterruptores.end(); itrI++) {
 		for (itrP = listaPortas.begin(); itrP != listaPortas.end(); itrP++) {
@@ -792,6 +727,7 @@ void Fase::perseguidor_barreira()
 		}
 	}
 }
+
 void Fase::rato_barreira()
 {
 	list<Rato*>::iterator itrR;

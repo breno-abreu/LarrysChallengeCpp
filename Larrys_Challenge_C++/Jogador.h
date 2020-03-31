@@ -7,36 +7,34 @@ class Jogador : public Personagem
 private:
 	bool acao;
 	bool acaoPressionado;
+	bool blueOrb;
+	bool greenOrb;
+	bool redOrb;
+	float hitBoxAux;
 	int chaves;
 	int moedas;
-	bool blueOrb;
-	bool redOrb;
-	bool greenOrb;
-	float hitBoxAux;
 
 public:
 	Jogador();
 	Jogador(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo, const int _xTile, const int _yTile);
 	~Jogador();
-	void existir();
 	bool getAcao()const;
-	void setMovimentadorx(const float _velocidade);
-	void setMovimentadory(const float _velocidade);
 	bool getAcaoPressionado() const;
-	//int getDirecao()const;
-	void setBlueOrb(const bool _blueOrb);
-	void setRedOrb(const bool _redOrb);
-	void setGreenOrb(const bool _greenOrb);
-	void adicionarMoeda();
-	void adicionarChave();
-	void retirarMoeda();
-	void retirarChave();
 	bool getBlueOrb()const;
-	bool getRedOrb()const;
 	bool getGreenOrb()const;
+	bool getRedOrb()const;
+	float getHitBoxAux()const;
 	int getChaves()const;
 	int getMoedas()const;
-	float getHitBoxAux()const;
-
+	void adicionarChave();
+	void adicionarMoeda();
+	void existir();
+	void retirarChave();
+	void retirarMoeda();
+	void setBlueOrb(const bool _blueOrb);
+	void setGreenOrb(const bool _greenOrb);
+	void setMovimentadorx(const float _velocidade);
+	void setMovimentadory(const float _velocidade);
+	void setRedOrb(const bool _redOrb);
 };
 

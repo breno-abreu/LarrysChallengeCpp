@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+//Biblioteca gráfica do SFML
 #include <SFML/Graphics.hpp>
 #include <list>
 #include <fstream>
@@ -30,4 +31,5 @@ enum {
 };
 
 using namespace std;
+//SFML utiliza o namespace 'sf' para seus métodos
 using namespace sf;

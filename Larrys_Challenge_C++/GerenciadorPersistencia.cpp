@@ -3,10 +3,12 @@ GerenciadorPersistencia::GerenciadorPersistencia()
 {
 
 }
+
 GerenciadorPersistencia::~GerenciadorPersistencia()
 {
 
 }
+
 bool GerenciadorPersistencia::pesquisar_lista_arquivos(const string nomeArquivo)
 {
 	for (const auto& entry : filesystem::directory_iterator("Fases")) {
@@ -16,12 +18,14 @@ bool GerenciadorPersistencia::pesquisar_lista_arquivos(const string nomeArquivo)
 	}
 	return false;
 }
+
 void GerenciadorPersistencia::listar_arquivos()
 {
 	for (const auto& entry : filesystem::directory_iterator("Fases")) {
 		cout << entry.path().string() << endl;
 	}
 }
+
 int GerenciadorPersistencia::getQuantidadeFases()
 {
 	int quantidadeFases = 0;
@@ -31,6 +35,7 @@ int GerenciadorPersistencia::getQuantidadeFases()
 
 	return quantidadeFases;
 }
+
 Fase* GerenciadorPersistencia::carregar(const int _nfase, RenderWindow* _window)
 {
 	int cont = 0;

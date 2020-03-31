@@ -4,11 +4,12 @@ GerenciadorEntidades::GerenciadorEntidades()
 {
 	window = NULL;
 }
+
 GerenciadorEntidades::GerenciadorEntidades(RenderWindow* _window)
 {
 	jogadorJ = NULL;
 	bauA = NULL;
-	
+	quantidadeMoedas = 0;
 	window = _window;
 	t_flecha.loadFromFile("Textures/Arrow.png");
 	t_blueorb.loadFromFile("Textures/Blue_orb.png");
@@ -47,9 +48,8 @@ GerenciadorEntidades::GerenciadorEntidades(RenderWindow* _window)
 	t_topocolunaesquerda.loadFromFile("Textures/Topo_Coluna_Esquerda.png");
 	t_tocha.loadFromFile("Textures/Torch.png");
 	t_zumbi.loadFromFile("Textures/Zombie.png");
-
-	quantidadeMoedas = 0;
 }
+
 GerenciadorEntidades::~GerenciadorEntidades()
 {
 
@@ -81,6 +81,7 @@ void GerenciadorEntidades::setQuantidadeMoedas(const int _quantidadeMoedas)
 {
 	quantidadeMoedas = _quantidadeMoedas;
 }
+
 int GerenciadorEntidades::getQuantidadeMoedas()const
 {
 	return quantidadeMoedas;
@@ -96,7 +97,6 @@ Entidade* GerenciadorEntidades::adicionar_entidade(const float cx, const float c
 		bauA = bau;
 		return bauE;
 	}
-
 	else if (tipo == 1) {
 		Item* blueOrb = new Item(window, &t_blueorb, cx, cy, 2, codigo, 1, 1, BLUEORB);
 		listaItens.push_back(blueOrb);
@@ -526,14 +526,17 @@ list<Letal*> GerenciadorEntidades::getListaLetais()const
 {
 	return listaLetais;
 }
+
 list<Barreira*> GerenciadorEntidades::getListaBarreiras()const
 {
 	return listaBarreiras;
 }
+
 list<Interativo*> GerenciadorEntidades::getListaInterativos()const
 {
 	return listaInterativos;
 }
+
 list<SuperficieInterativa*> GerenciadorEntidades::getListaSuperficiesInterativas()const
 {
 	return listaSuperficiesInterativas;
@@ -553,10 +556,12 @@ list<Interruptor*> GerenciadorEntidades::getListaInterruptores()const
 {
 	return listaInterruptores;
 }
+
 list<Caixa*> GerenciadorEntidades::getListaCaixas()const
 {
 	return listaCaixas;
 }
+
 list<Flecha*> GerenciadorEntidades::getListaFlechas()const
 {
 	return listaFlechas;
@@ -571,22 +576,27 @@ list<Perseguidor*> GerenciadorEntidades::getListaPerseguidores()const
 {
 	return listaPerseguidores;
 }
+
 list<Entidade*> GerenciadorEntidades::getListaObjetos()const
 {
 	return listaObjetos;
 }
+
 list<Inimigo*> GerenciadorEntidades::getListaInimigos()const
 {
 	return listaInimigos;
 }
+
 list<Personagem*> GerenciadorEntidades::getListaPersonagens()const
 {
 	return listaPersonagens;
 }
+
 list<Item*> GerenciadorEntidades::getListaItens()const
 {
 	return listaItens;
 }
+
 Jogador* GerenciadorEntidades::getJogador()const
 {
 	return jogadorJ;
@@ -626,6 +636,7 @@ list<Interativo*> GerenciadorEntidades::getListaPortais()const
 {
 	return listaPortais;
 }
+
 list<Atirador*> GerenciadorEntidades::getListaAtiradores()const
 {
 	return listaAtiradores;

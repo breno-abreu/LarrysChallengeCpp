@@ -5,8 +5,8 @@
 class Flecha : public Letal
 {
 private:
-	int direcao;
 	float velocidade;
+	int direcao;
 
 public:
 	Flecha();

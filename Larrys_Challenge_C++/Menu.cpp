@@ -38,10 +38,12 @@ Menu::Menu(RenderWindow* _window)
 	sair.setPosition(Vector2f(0, -50));
 	fase.setPosition(Vector2f(0, 100));
 }
+
 Menu::~Menu()
 {
 	delete gerenciadorPersistencia;
 }
+
 int Menu::executar()
 {
 	if (Keyboard::isKeyPressed(Keyboard::Key::Up)) {

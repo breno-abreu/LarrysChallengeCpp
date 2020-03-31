@@ -6,6 +6,7 @@ Atirador::Atirador()
 	velAtivar = 0;
 	atirar = false;
 }
+
 Atirador::Atirador(RenderWindow* _window, Texture* _textura, const float cx, const float cy, const int _profundidade, const int _codigo, const int _xTile, const int _yTile, const int _direcao, const int _conexao):
 	Barreira(_window, _textura, cx, cy, _profundidade, _codigo, _xTile, _yTile)
 {
@@ -17,13 +18,6 @@ Atirador::Atirador(RenderWindow* _window, Texture* _textura, const float cx, con
 	coordenadasTile.height = 0;
 	classe = 1;
 	ativado = true;
-	/*quantidadeTile.x = 4;
-	quantidadeTile.y = 1;
-	dimensoes.x = (textura->getSize().x / quantidadeTile.x);
-	dimensoes.y = (textura->getSize().y / quantidadeTile.y);
-	dimensoesAux.x = dimensoes.x * proporcao;
-	dimensoesAux.y = dimensoes.y * proporcao;
-	entidade.setSize(dimensoesAux);*/
 
 	if (direcao == BAIXO)
 		coordenadasTile.width = 0;
@@ -37,10 +31,12 @@ Atirador::Atirador(RenderWindow* _window, Texture* _textura, const float cx, con
 	entidade.setTextureRect(IntRect(coordenadasTile.width, coordenadasTile.height, dimensoes.x, dimensoes.y));
 
 }
+
 Atirador::~Atirador()
 {
 
 }
+
 void Atirador::existir()
 {
 	if (ativado) {
@@ -53,7 +49,6 @@ void Atirador::existir()
 		}
 		contAtivar++;
 	}
-	
 	window->draw(entidade);
 }
 
@@ -66,6 +61,7 @@ bool Atirador::getAtivado()const
 {
 	return ativado;
 }
+
 void Atirador::setAtivado(const bool _ativado)
 {
 	ativado = _ativado;
@@ -75,6 +71,7 @@ bool Atirador::getAtirar()const
 {
 	return atirar;
 }
+
 void Atirador::setAtirar(const bool _atirar)
 {
 	atirar = _atirar;

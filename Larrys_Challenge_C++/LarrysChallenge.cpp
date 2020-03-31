@@ -7,7 +7,6 @@ LarrysChallenge::LarrysChallenge():
 	window = new RenderWindow(VideoMode(1600, 900), "Larry's Challenge", Style::Close | Style::Resize);
 	window->setFramerateLimit(60);
 	opmenu = true;
-	aux = true;
 	menu = new Menu(window);
 	fase = new Fase(window);
 	gerenciadorPersistencia = new GerenciadorPersistencia();
@@ -17,7 +16,6 @@ LarrysChallenge::LarrysChallenge():
 LarrysChallenge::~LarrysChallenge()
 {
 	delete window;
-	delete listaEntidades;
 	delete view;
 	delete gerenciadorPersistencia;
 	delete fase;
@@ -25,21 +23,6 @@ LarrysChallenge::~LarrysChallenge()
 }
 void LarrysChallenge::executar()
 {
-	string arquivo;
-	bool done = false;
-	/*while (!done) {
-		system("cls");
-		gerenciadorPersistencia->listar_arquivos();
-		cout << endl;
-		cin >> arquivo;
-		if (gerenciadorPersistencia->pesquisar_lista_arquivos(arquivo)) {
-			fase = gerenciadorPersistencia->carregar(arquivo, window);
-			done = true;
-		}
-		else
-			cout << "Arquivo não existente!\nEscolha outro arquivo:" << endl;
-	}*/
-	
 	while (window->isOpen()) {
 		Event evnt;
 		while (window->pollEvent(evnt)) {
@@ -52,7 +35,6 @@ void LarrysChallenge::executar()
 				break;
 			}
 		}
-
 		window->clear(Color(50, 90, 80, 255));
 		window->setView(*view);
 
@@ -80,37 +62,5 @@ void LarrysChallenge::executar()
 			opmenu = true;
 
 		window->display();
-		
-
-		/*if (!fase->getJogadorVivo()) {
-
-			
-			system("cls");
-			string opcao;
-			cout << "Voce perdeu!\nO Que deseja fazer?" << endl;
-			cin >> opcao;
-
-			done = false;
-
-			if (opcao == "Recomecar" || opcao == "recomecar" || opcao == "r")
-				fase = gerenciadorPersistencia->carregar(arquivo, window);
-
-			
-			else if (opcao == "mudarfase") {
-
-				while (!done) {
-					system("cls");
-					gerenciadorPersistencia->listar_arquivos();
-					cout << endl;
-					cin >> arquivo;
-					if (gerenciadorPersistencia->pesquisar_lista_arquivos(arquivo)) {
-						fase = gerenciadorPersistencia->carregar(arquivo, window);
-						done = true;
-					}
-					else
-						cout << "Arquivo não existente!" << endl;
-				}
-			}
-		}*/
 	}
 }

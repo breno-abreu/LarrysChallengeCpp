@@ -24,6 +24,7 @@ void ListaEntidades::adicionar_entidade(const float cx, const float cy, const in
 	listaEntidades.push_back(entidade);
 	ordenar();
 }
+
 void ListaEntidades::excluir_entidades()
 {
 	list<Entidade*>::iterator itr;
@@ -34,6 +35,7 @@ void ListaEntidades::excluir_entidades()
 		}
 	}
 }
+
 void ListaEntidades::percorrer()
 {
 	list<Entidade*>::iterator itr;
@@ -41,11 +43,13 @@ void ListaEntidades::percorrer()
 		(*itr)->existir();
 	}
 }
+
 void ListaEntidades::limpar()
 {
 	listaEntidades.clear();
 	codigo = 0;
 }
+
 void ListaEntidades::ordenar()
 {
 	listaEntidades.sort([](Entidade* a, Entidade* b) {return a->getProfundidade() < b->getProfundidade(); });
